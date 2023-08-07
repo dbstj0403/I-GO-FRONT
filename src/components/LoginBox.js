@@ -5,6 +5,35 @@ import { GithubLoginButton } from 'react-social-login-buttons';
 import { RiKakaoTalkFill } from 'react-icons/ri';
 export default function LoginBox () {
 
+    /**
+     * 카카오 로그인 관련 변수 및 AUTH URL
+     */
+    const KAKAO_REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
+    const KAKAO_REDIRECT_URI = 'http://localhost:3000'; // 리다이렉션 URI 협의 필요
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code&scope=account_email`;
+    const handleKakaoLogin = () => {
+    window.location.href = KAKAO_AUTH_URL;
+    }
+    /**
+     * 구글 로그인 관련 변수 및 AUTH URL
+     */
+    const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+    const GOOGLE_REDIRECT_URI = `http://localhost:3000`;
+    const GOOGLE_AUTH_URL = `https://accounts.google.com/o/oauth2/v2/auth?scope=profile%20email%20openid&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=${GOOGLE_REDIRECT_URI}&response_type=code&client_id=${GOOGLE_CLIENT_ID}&access_type=offline&prompt=consent`;
+    const handleGoogleLogin = () => {
+        window.location.href = GOOGLE_AUTH_URL;
+    }
+    /**
+     * 깃허브 로그인 관련 변수 및 AUTH URL
+     */
+    const GITHUB_CLIENT_ID = process.env.REACT_APP_GITHUB_CLIENT_ID;
+    const GITHUB_REDIRECT_URI = `http://localhost:3000`;
+    const GITHUB_AUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${GITHUB_REDIRECT_URI}&scope=user:email`;
+
+    const handGithubleLogin = () => {
+    window.location.href = GITHUB_AUTH_URL;
+    };
+    
     const kakaoBtnStyle = {
         width: "350px",
         height: "48px",
@@ -41,6 +70,7 @@ export default function LoginBox () {
         justifyContent: "center",
         alignItems: "center"
     }
+
     return(
         <div className='loginbox-container'>
             <div className='loginbox'>
@@ -49,12 +79,12 @@ export default function LoginBox () {
                     <p className="welcome2">로그인 후 자유롭게 이용하세요.</p>
                     <div>
                         <AmazonLoginButton icon={RiKakaoTalkFill} activeStyle={{background: '#FFDC37'}} align={'center'}
-                        iconSize={'35px'} iconColor={'black'} style={kakaoBtnStyle}>카카오로 로그인</AmazonLoginButton>
+                        iconSize={'35px'} iconColor={'black'} style={kakaoBtnStyle} onClick={handleKakaoLogin}>카카오로 로그인</AmazonLoginButton>
                     </div>
                     <div className='google'>
-                        <GoogleLoginButton align={'center'} iconSize={'35px'} style={googleBtnStyle}>구글로 로그인</GoogleLoginButton>
+                        <GoogleLoginButton align={'center'} iconSize={'35px'} style={googleBtnStyle} onClick={handleGoogleLogin}>구글로 로그인</GoogleLoginButton>
                     </div>
-                    <div className='github'><GithubLoginButton align={'center'} iconSize={'35px'} style={githubBtnStyle}>깃허브로 로그인</GithubLoginButton>
+                    <div className='github'><GithubLoginButton align={'center'} iconSize={'35px'} style={githubBtnStyle} onClick={handGithubleLogin}>깃허브로 로그인</GithubLoginButton>
                     </div>
                 </div>
             </div>
