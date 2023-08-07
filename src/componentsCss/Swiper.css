@@ -1,0 +1,8 @@
+.swiper-button-prev:after, 
+.swiper-button-next:after{
+    
+}
+
+.banner{
+    --swiper-theme-color: black;
+}
