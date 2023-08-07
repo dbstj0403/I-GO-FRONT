@@ -24,12 +24,19 @@
     margin-right: 30px;
 }
 
+.nav-item:hover{
+    text-decoration: underline;
+}
+
 .nav-menu{
     text-decoration: none;
 }
 
 .logo{
     margin-left: 100px;
+    width: 182px;
+    height: 65px;
+    cursor: pointer;
 }
 
 .loginbtn{

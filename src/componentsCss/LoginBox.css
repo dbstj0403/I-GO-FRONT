@@ -1,0 +1,35 @@
+.loginbox-container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-left: 160px;
+    margin-right: 120px;
+}
+
+.loginbox{
+    width: 350px;
+    height: 352px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.welcome{
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 66px;
+}
+
+.welcome2{
+    font-size: 16px;
+    line-height: 30px;
+    color: #717171;
+    margin-bottom: 20px;
+}
+
+.google{
+    margin-top: 15px;
+}
+
+.github{
+    margin-top: 15px;
+}

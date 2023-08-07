@@ -17,8 +17,7 @@ export default function Introduction () {
                     <button className='btn2'>전자기기 대여하러 가기</button>
                 </div>
             </div>
-
-            <div>
+            <div className='intro-img'>
                 <img alt='' src={introImg}/>
             </div>
         </div>
