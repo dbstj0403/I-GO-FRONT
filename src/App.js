@@ -5,10 +5,9 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginCallbackPage from './pages/LoginCallbackPage';
-import { RecoilRoot } from 'recoil';
+import AddInfoPage from './pages/AddInfoPage';
 function App() {
   return (
-  <RecoilRoot>
    <div className='app-container'>
       <BrowserRouter>
         <NavBar/>
@@ -16,11 +15,11 @@ function App() {
             <Route path='/' element={<HomePage/>}/>
             <Route path='/login' element={<LoginPage/>}/>
             <Route path='/loginCallback' element={<LoginCallbackPage/>}/>
+            <Route path='/addInfo' element={<AddInfoPage/>}/>
           </Routes>
          <Footer/>
       </BrowserRouter>
    </div>
-  </RecoilRoot>
   );
 }
 
