@@ -45,7 +45,7 @@ export default function AddInfoForCarer () {
             <Container>
                 <div>
                     <Text>복지시설 위치</Text>
-                    <Input width='392px' required={true} name='address' onChange={handleInput} value={enrollAddress.addres}></Input>
+                    <Input width='392px' type='text' required={true} name='address' onChange={handleInput} value={enrollAddress.address}></Input>
                 </div>
                 <Box>
                     <SearchAdressBtn onClick={handleComplete}>주소 찾기</SearchAdressBtn>
@@ -53,8 +53,12 @@ export default function AddInfoForCarer () {
                 </Box>
             </Container>
             <Container>
-                <SubmitBtn>입력 완료</SubmitBtn>
+                <div>
+                    <Text>상세 주소</Text>
+                    <Input width='392px' onChange={(e) => {setEnrollAddress(enrollAddress.detailAddress)}}></Input>
+                </div>
             </Container>
+            <SubmitBtn>입력 완료</SubmitBtn>
         </div>
     );
 }

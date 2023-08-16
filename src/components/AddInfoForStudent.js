@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Postcode from './Postcode';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 export default function AddInfoForStudent () {
     const [name, setName] = useState('');
     const [birthDate, setBirthDate]= useState('');
@@ -9,7 +12,8 @@ export default function AddInfoForStudent () {
     
     const [enrollAddress, setEnrollAddress] = useState({
         address: '',
-        zoneCode: ''
+        zoneCode: '',
+        detailAddress: ''
     });
     
     const [popup, setPopup] = useState(false);
@@ -24,6 +28,26 @@ export default function AddInfoForStudent () {
     const handleComplete = () => {
         setPopup(!popup);
     }
+    
+    const submitInfo = async () => {
+        try{
+            await axios.post('http://localhost:8000/accounts/?type=student', {
+            name: name,
+            birthdate: birthDate,
+            phone: phone,
+            address: {
+                address: enrollAddress.address,
+                detail_address: enrollAddress.detailAddress,
+                zone_code: enrollAddress.zoneCode
+            }
+        }, {headers: {Authorization: `Bearer ${localStorage.getItem('access-token')}`}});
+        useNavigate('/');
+        }
+        catch(error){
+            console.log('SubmitInfo Error!');
+        }
+    }
+
     console.log(enrollAddress);
     return (
         <div>
@@ -60,8 +84,12 @@ export default function AddInfoForStudent () {
                 </Box>
             </Container>
             <Container>
-                <SubmitBtn>입력 완료</SubmitBtn>
+                <div>
+                    <Text>상세 주소</Text>
+                    <Input width='392px' onChange={(e) => {setEnrollAddress(enrollAddress.detailAddress)}}></Input>
+                </div>
             </Container>
+            <SubmitBtn onClick={submitInfo}>입력 완료</SubmitBtn>
         </div>
     );
     
