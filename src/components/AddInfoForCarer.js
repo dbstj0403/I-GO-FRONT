@@ -1,11 +1,21 @@
 import styled from "styled-components";
 import Postcode from "./Postcode";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 export default function AddInfoForCarer() {
+  const [facilityName, setFacilityName] = useState("");
+  const [adminName, setAdminName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const movePage = useNavigate();
   const [enrollAddress, setEnrollAddress] = useState({
     address: "",
+    zoneCode: "",
+    detailAddress: "",
   });
-
+  const [userInfo, setUserInfo] = useState({});
   const [popup, setPopup] = useState(false);
 
   const handleInput = (e) => {
@@ -18,27 +28,88 @@ export default function AddInfoForCarer() {
   const handleComplete = (data) => {
     setPopup(!popup);
   };
+
+  const getProfile = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/accounts", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      });
+      setUserInfo(response.data.profile); // 서버에서 가져온 유저 정보
+      //이걸 리덕스에 dispatch하기
+    } catch (error) {
+      console.log("Fetch User Info Error!");
+    }
+  };
+
+  const submitInfo = async () => {
+    try {
+      await axios.post(
+        "http://localhost:8000/accounts/?type=carer",
+        {
+          facility_name: facilityName,
+          admin_name: adminName,
+          phone: phone,
+          email: email,
+          address: {
+            address: enrollAddress.address,
+            detail_address: enrollAddress.detailAddress,
+            zone_code: enrollAddress.zoneCode,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+          },
+        }
+      );
+      //로그인 성공 여부 스토어에 저장
+      getProfile();
+      //리덕스에 user객체 store
+      movePage("/");
+    } catch (error) {
+      console.log("SubmitInfo Error!");
+    }
+  };
+
   return (
     <div>
       <Container>
         <div>
           <Text>복지시설 이름 (10자 이내)</Text>
-          <Input placeholder="아이고 요양센터" width="266px"></Input>
+          <Input
+            placeholder="아이고 요양센터"
+            width="266px"
+            onChange={(e) => setFacilityName(e.target.value)}
+          ></Input>
         </div>
         <Box>
           <Text>관리자 이름</Text>
-          <Input placeholder="홍길동" width="266px"></Input>
+          <Input
+            placeholder="홍길동"
+            width="266px"
+            onChange={(e) => setAdminName(e.target.value)}
+          ></Input>
         </Box>
       </Container>
 
       <Container>
         <div>
           <Text>복지시설 전화번호</Text>
-          <Input placeholder="02-1234-5678" width="266px"></Input>
+          <Input
+            placeholder="02-1234-5678"
+            width="266px"
+            onChange={(e) => setPhone(e.target.value)}
+          ></Input>
         </div>
         <Box>
           <Text>관리자 Email</Text>
-          <Input placeholder="example@email.com" width="266px"></Input>
+          <Input
+            placeholder="example@email.com"
+            width="266px"
+            onChange={(e) => setEmail(e.target.value)}
+          ></Input>
         </Box>
       </Container>
 

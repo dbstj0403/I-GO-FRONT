@@ -52,6 +52,7 @@ export default function LoginCallbackPage() {
         },
       });
       setUserInfo(response.data.profile); // 서버에서 가져온 유저 정보
+      console.log(response.data.profile);
       //이걸 리덕스에 dispatch하기
     } catch (error) {
       console.log("Fetch User Info Error!");
