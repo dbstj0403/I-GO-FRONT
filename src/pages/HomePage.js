@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import '../componentsCss/Swiper.css';
 import 'swiper/swiper.min.css';
-//import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.min.css';
 export default function HomePage () {
     SwiperCore.use([Navigation, Pagination, Autoplay])

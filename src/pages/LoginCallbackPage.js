@@ -57,7 +57,7 @@ export default function LoginCallbackPage () {
 
   return (
     <div>
-        {registerState === null ? <Spinner/> : null}
+        <Spinner/>
     </div>
   );
 }
