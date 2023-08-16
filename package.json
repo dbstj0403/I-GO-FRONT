@@ -19,6 +19,7 @@
     "react-spinners": "^0.13.8",
     "recoil": "^0.7.7",
     "redux": "^4.2.1",
+    "redux-saga": "^1.2.3",
     "styled-components": "^6.0.7",
     "swiper": "^6.8.4",
     "web-vitals": "^2.1.4"
@@ -46,5 +47,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.9",
+    "redux-logger": "^3.0.6"
   }
 }

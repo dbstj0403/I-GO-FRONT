@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Postcode from "./Postcode";
 import axios from "axios";
+
 export default function AddInfoForStudent() {
   const [name, setName] = useState("");
   const [birthDate, setBirthDate] = useState("");
@@ -14,6 +15,7 @@ export default function AddInfoForStudent() {
     zoneCode: "",
     detailAddress: "",
   });
+  const [userInfo, setUserInfo] = useState({});
 
   const [popup, setPopup] = useState(false);
 
@@ -28,6 +30,20 @@ export default function AddInfoForStudent() {
     setPopup(!popup);
   };
 
+  const getProfile = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/accounts", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      });
+      setUserInfo(response.data.profile); // 서버에서 가져온 유저 정보
+      //이걸 리덕스에 dispatch하기
+    } catch (error) {
+      console.log("Fetch User Info Error!");
+    }
+  };
+
   const submitInfo = async () => {
     try {
       await axios.post(
@@ -36,6 +52,7 @@ export default function AddInfoForStudent() {
           name: name,
           birthdate: birthDate,
           phone: phone,
+          email: email,
           address: {
             address: enrollAddress.address,
             detail_address: enrollAddress.detailAddress,
@@ -49,13 +66,14 @@ export default function AddInfoForStudent() {
         }
       );
       //로그인 성공 여부 스토어에 저장
+      getProfile();
+      //리덕스에 user객체 store
       movePage("/");
     } catch (error) {
       console.log("SubmitInfo Error!");
     }
   };
 
-  console.log(enrollAddress);
   return (
     <div>
       <Container>
@@ -125,8 +143,12 @@ export default function AddInfoForStudent() {
           <Text>상세 주소</Text>
           <Input
             width="392px"
+            name="detailAddress"
             onChange={(e) => {
-              setEnrollAddress(enrollAddress.detailAddress);
+              setEnrollAddress({
+                ...enrollAddress,
+                [e.target.name]: e.target.value,
+              });
             }}
           ></Input>
         </div>
