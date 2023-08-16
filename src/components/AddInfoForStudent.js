@@ -34,6 +34,7 @@ export default function AddInfoForStudent () {
             name: name,
             birthdate: birthDate,
             phone: phone,
+            email: email,
             address: {
                 address: enrollAddress.address,
                 detail_address: enrollAddress.detailAddress,
@@ -44,6 +45,21 @@ export default function AddInfoForStudent () {
         }
         catch(error){
             console.log('SubmitInfo Error!');
+            if (name === ''){
+                alert('이름을 입력해 주세요!');
+            }
+            else if (birthDate === ''){
+                alert('생년월일을 입력해 주세요!');
+            }
+            else if (phone === ''){
+                alert('전화번호를 입력해 주세요!');
+            }
+            else if (enrollAddress.address === '' || enrollAddress.detailAddress === '' || enrollAddress.zoneCode === ''){
+                alert('주소를 입력해 주세요!');
+            }
+            else {
+                alert('생년월일과 전화번호를 형식에 맞게 입력해 주세요!');
+            }
         }
     }
 
@@ -85,7 +101,7 @@ export default function AddInfoForStudent () {
             <Container>
                 <div>
                     <Text>상세 주소</Text>
-                    <Input width='392px' onChange={(e) => {setEnrollAddress(enrollAddress.detailAddress)}}></Input>
+                    <Input width='392px' name='detailAddress' onChange={(e) => {setEnrollAddress({...enrollAddress, [e.target.name]: e.target.value,})}}></Input>
                 </div>
             </Container>
             <SubmitBtn onClick={submitInfo}>입력 완료</SubmitBtn>
