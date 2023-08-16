@@ -8,7 +8,7 @@ export default function AddInfoForStudent () {
     const [birthDate, setBirthDate]= useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
-    
+    const movePage = useNavigate();
     const [enrollAddress, setEnrollAddress] = useState({
         address: '',
         zoneCode: '',
@@ -40,7 +40,7 @@ export default function AddInfoForStudent () {
                 zone_code: enrollAddress.zoneCode
             }
         }, {headers: {Authorization: `Bearer ${localStorage.getItem('access-token')}`}});
-        useNavigate('/');
+            movePage('/');
         }
         catch(error){
             console.log('SubmitInfo Error!');
