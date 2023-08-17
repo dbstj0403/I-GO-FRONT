@@ -9,6 +9,7 @@ import AddInfoPage from "./pages/AddInfoPage";
 import DonationPage from "./pages/DonationPage";
 import ProgramPage from "./pages/ProgramPage";
 import ProgramDetailPage from "./pages/ProgramDetailPage";
+import RegisterProgramPage from "./pages/RegisterProgramPage";
 function App() {
   return (
     <div className="app-container">
@@ -22,6 +23,7 @@ function App() {
           <Route path="/donation" element={<DonationPage />} />
           <Route path="/program" element={<ProgramPage />} />
           <Route path="/programDetail" element={<ProgramDetailPage />} />
+          <Route path="/registerProgram" element={<RegisterProgramPage/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>
