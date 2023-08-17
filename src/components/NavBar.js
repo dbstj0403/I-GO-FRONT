@@ -33,6 +33,10 @@ export default function NavBar() {
   display: flex;
   justify-content: center;
   `
+  const Container = styled.div`
+  display: flex;
+  width: 350px;
+  height: 124px;`
   return (
     <nav className="navBar">
       <div className="logo" onClick={moveToMain}>
@@ -56,10 +60,10 @@ export default function NavBar() {
         </li>
       </ul>
       {userData.is_register && userData.is_student ? (
-        <div>
+        <Container>
           <PointBtn className="pointbtn"><img src={point} alt='' style={{paddingRight: '10px'}}></img>{userData.point} P</PointBtn>
           <button className="profilebtn">{userData.name}</button>
-        </div>
+        </Container>
       ) : userData.is_carer ? (
         <button className="profilebtn">{userData.name}</button>
       ) : (
