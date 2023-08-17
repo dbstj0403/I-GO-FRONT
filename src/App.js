@@ -7,7 +7,7 @@ import HomePage from "./pages/HomePage";
 import LoginCallbackPage from "./pages/LoginCallbackPage";
 import AddInfoPage from "./pages/AddInfoPage";
 import DonationPage from "./pages/DonationPage";
-
+import ProgramPage from "./pages/ProgramPage";
 function App() {
   return (
     <div className="app-container">
@@ -19,6 +19,7 @@ function App() {
           <Route path="/loginCallback" element={<LoginCallbackPage />} />
           <Route path="/addInfo" element={<AddInfoPage />} />
           <Route path="/donation" element={<DonationPage />} />
+          <Route path="program" element={<ProgramPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

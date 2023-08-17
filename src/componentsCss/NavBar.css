@@ -34,6 +34,8 @@
 
 .logo{
     margin-left: 100px;
+    position: relative;
+    bottom: 10px;
     width: 182px;
     height: 65px;
     cursor: pointer;
