@@ -35,7 +35,7 @@ export default function AddInfoForStudent() {
   const getProfile = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/accounts?type=student",
+        "http://api.igoofficial.com/accounts?type=student",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access-token")}`,
@@ -62,7 +62,7 @@ export default function AddInfoForStudent() {
   const submitInfo = async () => {
     try {
       await axios.post(
-        "http://localhost:8000/accounts/?type=student",
+        "http://api.igoofficial.com/accounts/?type=student",
         {
           name: name,
           birthdate: birthDate,

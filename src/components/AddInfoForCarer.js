@@ -34,7 +34,7 @@ export default function AddInfoForCarer() {
   const getProfile = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/accounts?type=carer",
+        "http://api.igoofficial.com/accounts?type=carer",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access-token")}`,
@@ -61,7 +61,7 @@ export default function AddInfoForCarer() {
   const submitInfo = async () => {
     try {
       await axios.post(
-        "http://localhost:8000/accounts/?type=carer",
+        "http://api.igoofficial.com/accounts/?type=carer",
         {
           facility_name: facilityName,
           admin_name: adminName,

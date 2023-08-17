@@ -13,7 +13,7 @@ export default function ProgramPage() {
   const search = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/program/?address=${selectGu}&activity=${selectActivity}`,
+        `http://api.igoofficial.com/program/?address=${selectGu}&activity=${selectActivity}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access-token")}`,

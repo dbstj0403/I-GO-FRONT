@@ -34,7 +34,7 @@ export default function LoginCallbackPage() {
     }
     try {
       const response = await axios.post(
-        `http://localhost:8000/auth/${provider}/token`,
+        `http://api.igoofficial.com/auth/${provider}/token`,
         { code: CODE }
       );
       localStorage.setItem("access-token", response.data.access);
@@ -47,7 +47,7 @@ export default function LoginCallbackPage() {
 
   const getProfile = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/accounts", {
+      const response = await axios.get("http://api.igoofficial.com/accounts", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access-token")}`,
         },

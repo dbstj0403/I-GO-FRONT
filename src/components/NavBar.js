@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import "../componentsCss/NavBar.css";
 import logo from "../img/logo.png";
 import { useSelector } from "react-redux";
-import styled from 'styled-components';
-import point from '../img/point.png';
+import styled from "styled-components";
+import point from "../img/point.png";
 
 export default function NavBar() {
   //   const { isLogin } = useSelector(({ login }) => login);
@@ -22,21 +22,34 @@ export default function NavBar() {
     moveToPage("/");
   };
   const PointBtn = styled.button`
-  width: 143px;
-  height: 54px;
-  border-radius: 30px;
-  border: 1px #CCCCCC solid;
-  background-color: white;
-  font-size: 18px;
-  line-height: 18px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  `
+    width: 143px;
+    height: 54px;
+    border-radius: 30px;
+    border: 1px #cccccc solid;
+    background-color: white;
+    font-size: 18px;
+    line-height: 18px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+  `;
+  const ProfileBtn = styled.button`
+    width: 189px;
+    height: 54px;
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+    border: 0;
+    font-size: 18px;
+    line-height: 18px;
+  `;
   const Container = styled.div`
-  display: flex;
-  width: 350px;
-  height: 124px;`
+    display: flex;
+    width: 350px;
+    position: relative;
+    right: 50px;
+  `;
   return (
     <nav className="navBar">
       <div className="logo" onClick={moveToMain}>
@@ -61,8 +74,13 @@ export default function NavBar() {
       </ul>
       {userData.is_register && userData.is_student ? (
         <Container>
-          <PointBtn className="pointbtn"><img src={point} alt='' style={{paddingRight: '10px'}}></img>{userData.point} P</PointBtn>
-          <button className="profilebtn">{userData.name}</button>
+          <PointBtn className="pointbtn">
+            <img src={point} alt="" style={{ paddingRight: "10px" }}></img>
+            {userData.point} P
+          </PointBtn>
+          <ProfileBtn>
+            <img src={userData.img} alt=""></img>학생 {userData.name}님
+          </ProfileBtn>
         </Container>
       ) : userData.is_carer ? (
         <button className="profilebtn">{userData.name}</button>
