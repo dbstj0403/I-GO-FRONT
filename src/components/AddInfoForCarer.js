@@ -3,6 +3,8 @@ import Postcode from "./Postcode";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { userSuccess } from "../store/user/actions";
 
 export default function AddInfoForCarer() {
   const [facilityName, setFacilityName] = useState("");
@@ -15,7 +17,7 @@ export default function AddInfoForCarer() {
     zoneCode: "",
     detailAddress: "",
   });
-  const [userInfo, setUserInfo] = useState({});
+  const dispatch = useDispatch();
   const [popup, setPopup] = useState(false);
 
   const handleInput = (e) => {
@@ -37,6 +39,13 @@ export default function AddInfoForCarer() {
         },
       });
       //이걸 리덕스에 dispatch하기
+      const user = response.data;
+      const newUser = {
+        id: response.data.id,
+        name: user.profile.name,
+        img: user.profile.image,
+      };
+      dispatch(userSuccess(newUser));
     } catch (error) {
       console.log("Fetch User Info Error!");
     }
