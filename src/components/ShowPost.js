@@ -50,7 +50,7 @@ export default function ShowPost () {
             <TableTitle width='152px'>{searchList.activity_category}</TableTitle>
             <TableTitle width='152px'>{searchList.nursingHomeName}</TableTitle>
             <TableTitle width='152px'>{searchList.activity_start_at}~{searchList.activity_end_at}</TableTitle>
-            <TableTitle width='152px' bold='700'>300p</TableTitle>
+            <TableTitle width='152px' bold='700'>300P</TableTitle>
         </Container>
         
     );

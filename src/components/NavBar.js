@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import "../componentsCss/NavBar.css";
 import logo from "../img/logo.png";
 import { useSelector } from "react-redux";
+import styled from 'styled-components';
+import point from '../img/point.png';
 
 export default function NavBar() {
   //   const { isLogin } = useSelector(({ login }) => login);
@@ -19,6 +21,18 @@ export default function NavBar() {
   const moveToMain = () => {
     moveToPage("/");
   };
+  const PointBtn = styled.button`
+  width: 143px;
+  height: 54px;
+  border-radius: 30px;
+  border: 1px #CCCCCC solid;
+  background-color: white;
+  font-size: 18px;
+  line-height: 18px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  `
   return (
     <nav className="navBar">
       <div className="logo" onClick={moveToMain}>
@@ -43,7 +57,7 @@ export default function NavBar() {
       </ul>
       {userData.is_register && userData.is_student ? (
         <div>
-          <button className="pointbtn">{userData.point}</button>
+          <PointBtn className="pointbtn"><img src={point} alt='' style={{paddingRight: '10px'}}></img>{userData.point} P</PointBtn>
           <button className="profilebtn">{userData.name}</button>
         </div>
       ) : userData.is_carer ? (
