@@ -10,6 +10,7 @@ import DonationPage from "./pages/DonationPage";
 import ProgramPage from "./pages/ProgramPage";
 import ProgramDetailPage from "./pages/ProgramDetailPage";
 import Mypage from "./pages/Mypage";
+import RegisterProgramPage from "./pages/RegisterProgramPage";
 function App() {
   return (
     <div className="app-container">
@@ -24,6 +25,7 @@ function App() {
           <Route path="/program" element={<ProgramPage />} />
           <Route path="/programDetail" element={<ProgramDetailPage />} />
           <Route path="/mypage" element={<Mypage />} />
+          <Route path="/registerProgram" element={<RegisterProgramPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
