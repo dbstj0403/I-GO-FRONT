@@ -9,7 +9,6 @@ import { userSuccess } from "../store/user/actions";
 export default function LoginCallbackPage() {
   const CODE = new URL(window.location.href).searchParams.get("code");
   const [registerState, setRegisterState] = useState(null);
-  const [isLogin, setIsLogin] = useState(true);
   const [provider, setProvider] = useState(
     localStorage.getItem("login-provider")
   );

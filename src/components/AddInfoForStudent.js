@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Postcode from "./Postcode";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 export default function AddInfoForStudent() {
   const [name, setName] = useState("");
@@ -15,7 +16,7 @@ export default function AddInfoForStudent() {
     zoneCode: "",
     detailAddress: "",
   });
-  const [userInfo, setUserInfo] = useState({});
+  const dispatch = useDispatch();
 
   const [popup, setPopup] = useState(false);
 
@@ -38,6 +39,12 @@ export default function AddInfoForStudent() {
         },
       });
       //이걸 리덕스에 dispatch하기
+      const userProfile = response.data.profile;
+      const newUser = {
+        name: userProfile.name,
+        img: userProfile.image,
+      };
+      dispatch(userSuccess(newUser));
     } catch (error) {
       console.log("Fetch User Info Error!");
     }
