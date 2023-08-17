@@ -55,6 +55,10 @@ export default function LoginCallbackPage() {
       //이걸 리덕스에 dispatch하기
       const user = response.data;
       const newUser = {
+        is_student: response.data.is_student,
+        is_carer: response.data.is_carer,
+        is_register: response.data.is_register,
+        point: response.data.point,
         id: response.data.id,
         name: user.profile.name,
         img: user.profile.image,

@@ -41,11 +41,14 @@ export default function NavBar() {
           </NavLink>
         </li>
       </ul>
-      {userData.name.length > 0 && (
-        //눌렀을 때 마이페이지 이동
+      {userData.is_register && userData.is_student ? (
+        <div>
+          <button className="pointbtn">{userData.point}</button>
+          <button className="profilebtn">{userData.name}</button>
+        </div>
+      ) : userData.is_carer ? (
         <button className="profilebtn">{userData.name}</button>
-      )}
-      {userData.name.length === 0 && (
+      ) : (
         <button className="loginbtn" onClick={moveToLogin}>
           로그인
         </button>
