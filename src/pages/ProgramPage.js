@@ -115,7 +115,7 @@ export default function ProgramPage() {
         </SelectContainer>
         <SearchBtn onClick={search}>검색</SearchBtn>
       </SearchContainer>
-      {onSearch && <TitleTable searchList={searchList}/>}
+      {onSearch && <TitleTable searchList={searchList} isStudent={userData.is_student}/>}
       <ComponentContainer onSearch={onSearch}>
       {searchList.length !== 0 ? searchList.map((item) => <ShowPost key={item.id} searchList={searchList}/> ): null}
       </ComponentContainer>

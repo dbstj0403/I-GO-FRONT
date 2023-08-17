@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import point from '../img/point.png';
 import { useNavigate } from 'react-router-dom';
-export default function TitleTable () {
+export default function TitleTable ({isStudent}) {
     const searchList= [];
     const PostContainer = styled.div`
     width: 1220px;
@@ -10,13 +10,15 @@ export default function TitleTable () {
     const SearchingResultText = styled.div`
     font-size: 16px;
     line-height: 24px;
+    position: relative;
+    top: ${isStudent ? null : '17px'};
     span {
       color: #d88e00;
     }
     `
     const TextContainer = styled.div`
     display: flex;
-    height: 61px;
+    height: ${isStudent ? '24px' : '61px'};
     width: 1220px;
     align-items: baseline;
     `
@@ -34,6 +36,8 @@ export default function TitleTable () {
     font-size: 16px;
     line-height: 24px;
     color: #717171;
+    position: relative;
+    top: ${isStudent ? null : '17px'}
     `
     const TableTitle = styled.div`
     width: ${props => props.width};
@@ -70,7 +74,7 @@ export default function TitleTable () {
             <DateInfoText>
                 ※ 모집/활동 시작일은 해당 월의 1일, 마감일은 해당 월의 마지막 일을 의미합니다.
             </DateInfoText>
-            <RegisterProgramBtn onClick={moveToRegisterProgramPage}>프로그램 등록하기</RegisterProgramBtn>
+            {!isStudent && <RegisterProgramBtn onClick={moveToRegisterProgramPage}>프로그램 등록하기</RegisterProgramBtn>}
             </TextContainer>
         <Table>
           <TableTitle width="153px">모집 여부</TableTitle>
