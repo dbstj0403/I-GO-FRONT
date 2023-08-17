@@ -2,6 +2,7 @@ const { USER_SUCCESS, USER_FAIL, PURGE_USER } = require("./actionTypes");
 
 const initialState = {
   userData: {
+    id: "",
     name: "",
     img: "",
   },

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Postcode from "./Postcode";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { userSuccess } from "../store/user/actions";
 
 export default function AddInfoForStudent() {
   const [name, setName] = useState("");
@@ -39,10 +40,11 @@ export default function AddInfoForStudent() {
         },
       });
       //이걸 리덕스에 dispatch하기
-      const userProfile = response.data.profile;
+      const user = response.data;
       const newUser = {
-        name: userProfile.name,
-        img: userProfile.image,
+        id: response.data.id,
+        name: user.profile.name,
+        img: user.profile.image,
       };
       dispatch(userSuccess(newUser));
     } catch (error) {

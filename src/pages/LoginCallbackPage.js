@@ -53,10 +53,11 @@ export default function LoginCallbackPage() {
         },
       });
       //이걸 리덕스에 dispatch하기
-      const userProfile = response.data.profile;
+      const user = response.data;
       const newUser = {
-        name: userProfile.name,
-        img: userProfile.image,
+        id: response.data.id,
+        name: user.profile.name,
+        img: user.profile.image,
       };
       dispatch(userSuccess(newUser));
     } catch (error) {
