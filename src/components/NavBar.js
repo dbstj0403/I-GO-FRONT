@@ -15,6 +15,10 @@ export default function NavBar() {
     console.log("user: ", userData);
   }, []);
 
+  const moveToMypage = () => {
+    moveToPage("/mypage");
+  };
+
   const moveToLogin = () => {
     moveToPage("/login");
   };
@@ -78,12 +82,16 @@ export default function NavBar() {
             <img src={point} alt="" style={{ paddingRight: "10px" }}></img>
             {userData.point} P
           </PointBtn>
-          <ProfileBtn>
+          <ProfileBtn onClick={moveToMypage}>
             <img src={userData.img} alt=""></img>학생 {userData.name}님
           </ProfileBtn>
         </Container>
       ) : userData.is_carer ? (
-        <button className="profilebtn">{userData.name}</button>
+        <Container>
+          <ProfileBtn onClick={moveToMypage}>
+            <img src={userData.img} alt=""></img>관리자 {userData.name}님
+          </ProfileBtn>
+        </Container>
       ) : (
         <button className="loginbtn" onClick={moveToLogin}>
           로그인
