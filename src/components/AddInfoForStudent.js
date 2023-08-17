@@ -64,6 +64,7 @@ export default function AddInfoForStudent () {
     }
 
     console.log(enrollAddress);
+    
     return (
         <div>
             <Container>
