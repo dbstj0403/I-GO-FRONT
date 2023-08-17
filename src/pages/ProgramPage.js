@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import {useState, useEffect} from 'react';
 import arrow from '../img/arrow.png';
 import point from '../img/point.png';
+import ShowPost from '../components/ShowPost';
 
 export default function ProgramPage () {
     const Si = '서울특별시'; 
+    const searchList = [];
     const [selectGu, setSelectGu] = useState('');
     
     const option1 = [
@@ -81,8 +83,12 @@ export default function ProgramPage () {
     line-height: 24px;
     align-items: center;
     display: flex;
-    justify-content: center;`
-    
+    justify-content: center;
+    font-weight: ${props => props.bold}
+    `
+    const ShowPostContainer = styled.div`
+    border-bottom: ${searchList.length === 0 ? '1px solid black' : null};
+    min-height: 600px;`
     return (
         <Container>
             <TitleContainer>
@@ -110,7 +116,7 @@ export default function ProgramPage () {
             
             <PostContainer>
                 <TextContainer>
-                    <SearchingResultText>총 <span>30</span>건의 검색 결과가 있습니다.</SearchingResultText>
+                    <SearchingResultText>총 <span>{searchList.length}</span>건의 검색 결과가 있습니다.</SearchingResultText>
                     <DateInfoText>※ 모집/활동 시작일은 해당월의 1일, 마감일은 해당 월의 마지막 일을 의미합니다.</DateInfoText>
                 </TextContainer>
                 <Table>
@@ -119,9 +125,14 @@ export default function ProgramPage () {
                     <TableTitle width='152px'>활동 분야</TableTitle>
                     <TableTitle width='152px'>요양원</TableTitle>
                     <TableTitle width='152px'>활동 기간</TableTitle>
-                    <TableTitle width='152px'><img src={point} alt=''></img>포인트</TableTitle>
+                    <TableTitle width='152px' bold='700'><img src={point}  style={{'padding-right': '10px'}}alt=''></img>포인트</TableTitle>
                 </Table>
             </PostContainer>
+            
+            <ShowPostContainer>
+                {searchList.map((item) => <ShowPost key={item.id} searchList={item}/>)}
+            </ShowPostContainer>
+           
 
         </Container>
     );

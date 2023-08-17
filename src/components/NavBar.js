@@ -26,7 +26,7 @@ export default function NavBar() {
       </div>
       <ul className="navBar-container">
         <li className="nav-item">
-          <NavLink to="/" className="nav-menu">
+          <NavLink to="/program" className="nav-menu">
             프로그램
           </NavLink>
         </li>
