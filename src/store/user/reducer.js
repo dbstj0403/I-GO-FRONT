@@ -1,23 +1,26 @@
-const { LOGIN_SUCCESS, LOGIN_FAIL } = require("./actionTypes");
+const { USER_SUCCESS, USER_FAIL, PURGE_USER } = require("./actionTypes");
 
 const initialState = {
-  isLogin: false,
+  userData: {
+    name: "",
+    img: "",
+  },
 };
 
-const login = (state = initialState, action) => {
+const user = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_SUCCESS:
+    case USER_SUCCESS:
       return {
         ...state,
-        isLogin: action.isLogin,
+        userData: action.userData,
       };
-    case LOGIN_FAIL:
-      console.error("[Login Fail] ", action.payload);
-      return state;
+    // case  CALIBRATION_FAIL:
+    //     console.error("[Calibration Fail] ", action.payload);
+    //     return state;
     default:
       break;
   }
   return state;
 };
 
-export default login;
+export default user;

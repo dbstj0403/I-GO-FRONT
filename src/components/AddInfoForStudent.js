@@ -37,7 +37,6 @@ export default function AddInfoForStudent() {
           Authorization: `Bearer ${localStorage.getItem("access-token")}`,
         },
       });
-      setUserInfo(response.data.profile); // 서버에서 가져온 유저 정보
       //이걸 리덕스에 dispatch하기
     } catch (error) {
       console.log("Fetch User Info Error!");

@@ -1,9 +1,10 @@
 import Spinner from "../components/Spinner";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { loginSuccess } from "@store/actions";
 import axios from "axios";
+import { userSuccess } from "../store/user/actions";
 
 export default function LoginCallbackPage() {
   const CODE = new URL(window.location.href).searchParams.get("code");
@@ -12,8 +13,9 @@ export default function LoginCallbackPage() {
   const [provider, setProvider] = useState(
     localStorage.getItem("login-provider")
   );
-  const [userInfo, setUserInfo] = useState({});
-  //   const dispatch = useDispatch();
+  // const [userInfo, setUserInfo] = useState({});
+  // const userInfo = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const selectProvider = () => {
     if (provider === "kakao") {
@@ -51,9 +53,13 @@ export default function LoginCallbackPage() {
           Authorization: `Bearer ${localStorage.getItem("access-token")}`,
         },
       });
-      setUserInfo(response.data.profile); // 서버에서 가져온 유저 정보
-      console.log(response.data.profile);
       //이걸 리덕스에 dispatch하기
+      const userProfile = response.data.profile;
+      const newUser = {
+        name: userProfile.name,
+        img: userProfile.image,
+      };
+      dispatch(userSuccess(newUser));
     } catch (error) {
       console.log("Fetch User Info Error!");
     }
@@ -63,7 +69,6 @@ export default function LoginCallbackPage() {
   const moveToPage = () => {
     if (registerState === true) {
       // 로그인 여부 리덕스 스토어 저장
-      //   dispatch(loginSuccess(isLogin));
       getProfile();
       movePage("/");
     } else if (registerState === false) {

@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "../componentsCss/NavBar.css";
 import logo from "../img/logo.png";
 import { useSelector } from "react-redux";
@@ -7,6 +8,11 @@ import { useSelector } from "react-redux";
 export default function NavBar() {
   //   const { isLogin } = useSelector(({ login }) => login);
   const moveToPage = useNavigate();
+  const { userData } = useSelector(({ user }) => user);
+  useEffect(() => {
+    console.log("user: ", userData);
+  }, []);
+
   const moveToLogin = () => {
     moveToPage("/login");
   };
@@ -35,9 +41,15 @@ export default function NavBar() {
           </NavLink>
         </li>
       </ul>
-      <button className="loginbtn" onClick={moveToLogin}>
-        로그인
-      </button>
+      {userData.name.length > 0 && (
+        //눌렀을 때 마이페이지 이동
+        <button className="profilebtn">{userData.name}</button>
+      )}
+      {userData.name.length === 0 && (
+        <button className="loginbtn" onClick={moveToLogin}>
+          로그인
+        </button>
+      )}
     </nav>
   );
 }

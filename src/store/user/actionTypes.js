@@ -1,2 +1,3 @@
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAIL = "LOGIN_FAIL";
+export const USER_SUCCESS = "USER_SUCCESS";
+export const USER_FAIL = "USER_FAIL";
+export const PURGE_USER = "PURGE_USER";

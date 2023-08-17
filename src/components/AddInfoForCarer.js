@@ -36,7 +36,6 @@ export default function AddInfoForCarer() {
           Authorization: `Bearer ${localStorage.getItem("access-token")}`,
         },
       });
-      setUserInfo(response.data.profile); // 서버에서 가져온 유저 정보
       //이걸 리덕스에 dispatch하기
     } catch (error) {
       console.log("Fetch User Info Error!");
@@ -152,7 +151,7 @@ export default function AddInfoForCarer() {
           ></Input>
         </div>
       </Container>
-      <SubmitBtn>입력 완료</SubmitBtn>
+      <SubmitBtn onClick={submitInfo}>입력 완료</SubmitBtn>
     </div>
   );
 }

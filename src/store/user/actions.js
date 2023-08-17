@@ -1,17 +1,17 @@
-import { createPromiseAction } from "@adobe/redux-saga-promise";
-import { LOGIN_SUCCESS, LOGIN_FAIL } from "./actionTypes";
+// import { createPromiseAction } from "@adobe/redux-saga-promise";
+import { USER_FAIL, USER_SUCCESS, PURGE_USER } from "./actionTypes";
 
-export const loginSuccess = (isLogin) => {
-  console.log("success", isLogin);
+export const userSuccess = (userData) => {
+  console.log("success", userData);
   return {
-    type: LOGIN_SUCCESS,
-    isLogin: isLogin,
+    type: USER_SUCCESS,
+    userData: userData,
   };
 };
 
-export const loginFail = (error) => {
+export const userFail = (error) => {
   return {
-    type: LOGIN_FAIL,
+    type: USER_FAIL,
     error: error,
   };
 };
