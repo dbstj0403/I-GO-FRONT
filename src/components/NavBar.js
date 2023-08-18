@@ -93,7 +93,7 @@ export default function NavBar() {
       ) : userData.is_carer ? (
         <Container>
           <ProfileBtn onClick={moveToMypageCarer}>
-            <img src={userData.img} alt=""></img>관리자 {userData.name}님
+            <img src={userData.img} alt=""></img>관리자 {userData.admin_name}님
           </ProfileBtn>
         </Container>
       ) : (

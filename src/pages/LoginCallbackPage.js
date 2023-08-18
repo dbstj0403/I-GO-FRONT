@@ -61,6 +61,7 @@ export default function LoginCallbackPage() {
         point: response.data.point,
         id: response.data.id,
         name: user.profile.name,
+        adminName: user.profile.admin_name,
         img: user.profile.image,
       };
       dispatch(userSuccess(newUser));

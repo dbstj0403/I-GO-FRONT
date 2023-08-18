@@ -34,6 +34,7 @@ export default function MypageStudent() {
       setTimeout(() => {
         alert("현재 준비 중인 기능입니다!");
       }, 0);
+      window.location.reload();
     }
   };
 
@@ -103,7 +104,8 @@ export default function MypageStudent() {
       //로그인 성공 여부 스토어에 저장
       getProfile();
       //리덕스에 user객체 store
-      movePage("/mypage");
+      alert("수정이 완료되었습니다:)");
+      movePage("/mypageStudent");
     } catch (error) {
       console.log("SubmitInfo Error!");
     }
