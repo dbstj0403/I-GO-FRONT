@@ -1,5 +1,10 @@
 import styled from 'styled-components';
+import { useNavigate, useLocation } from 'react-router-dom';
 export default function ShowPost ({searchList}) {
+    const movePage = useNavigate();
+    const moveToProgramDetailPage = () => {
+        movePage('/programDetail');
+    }
     const Container = styled.div`
     width: 1220px;
     height: 68px;
@@ -33,13 +38,13 @@ export default function ShowPost ({searchList}) {
     font-weight: ${props => props.bold}
     `
     return (
-        <Container>
+        <Container onClick={moveToProgramDetailPage}>
             <IsApplied width='153px'>
                 {searchList.acticity_status === 'before' ? '모집 전' : (searchList.acticity_status === 'now' ? '모집 중' : '모집 마감' )}
             </IsApplied>
             <TableTitle width='459px'>{searchList.title}</TableTitle>
             <TableTitle width='152px'>{searchList.activity_category}</TableTitle>
-            <TableTitle width='152px'>{searchList.nursingHomeName}</TableTitle>
+            <TableTitle width='152px'>{searchList.facility_name}</TableTitle>
             <TableTitle width='152px'>{searchList.activity_start_at}~{searchList.activity_end_at}</TableTitle>
             <TableTitle width='152px' bold='700'>{searchList.reward}</TableTitle>
         </Container>
