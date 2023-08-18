@@ -1,7 +1,10 @@
-import styled from "styled-components";
-import point from "../img/point.png";
-export default function ProgramInfo() {
-  const ProgramInfoContainer = styled.div`
+import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
+import point from '../img/point.png';
+export default function ProgramInfo () {
+    const location = useLocation();
+    const searchList = location.state.searchList;
+    const ProgramInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,85 +69,58 @@ export default function ProgramInfo() {
     height: 38px;
     font-size: 20px;
     line-height: 24px;
-  `;
-  const DetailInfoContainer = styled.div`
-    width: 1008px;
-    height: 322px;
-    border-radius: 10px;
-    border: 1px solid #bfbfbf;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  `;
-  const DetailInfoText = styled.div`
-    width: 750px;
-    height; 180px;
-    font-size: 20px;
-    line-height: 24px;
-    `;
-  return (
-    <ProgramInfoContainer>
-      <TitleAndPointContainer>
-        <Title>매주 금요일 키오스크 교육해 주실 분 모집합니다</Title>
-        <PointBtn>
-          <img src={point} alt="" style={{ paddingRight: "10px" }}></img>300 P
-        </PointBtn>
-      </TitleAndPointContainer>
-      <InfoContainer>
-        <TextContainer>
-          <Text>
-            <TextKind>요양원</TextKind>
-            <TextAbout>서울행복요양원</TextAbout>
-          </Text>
-          <Text>
-            <TextKind>모집기간</TextKind>
-            <TextAbout>2023.07~2023.08</TextAbout>
-          </Text>
-        </TextContainer>
-        <TextContainer>
-          <Text>
-            <TextKind>활동 분야</TextKind>
-            <TextAbout>키오스크 사용법</TextAbout>
-          </Text>
-          <Text>
-            <TextKind>모집인원</TextKind>
-            <TextAbout>30명</TextAbout>
-          </Text>
-        </TextContainer>
-        <TextContainer>
-          <Text>
-            <TextKind>활동기간</TextKind>
-            <TextAbout>2023.08~2023.12</TextAbout>
-          </Text>
-          <Text>
-            <TextKind>주소</TextKind>
-            <TextAbout>서울시 00구 00로 00길 00</TextAbout>
-          </Text>
-        </TextContainer>
-        <TextContainer>
-          <Text>
-            <TextKind>연락처</TextKind>
-            <TextAbout>010-7241-0441</TextAbout>
-          </Text>
-          <Text>
-            <TextKind>Email</TextKind>
-            <TextAbout>example.@email.com</TextAbout>
-          </Text>
-        </TextContainer>
-      </InfoContainer>
-      <DetailInfoContainer>
-        <TextKind>상세설명</TextKind>
-        <DetailInfoText>
-          설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설
-          명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
-          설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설
-          명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
-          설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
-        </DetailInfoText>
-      </DetailInfoContainer>
-    </ProgramInfoContainer>
-  );
+    `
+    return (
+        <ProgramInfoContainer>
+            <TitleAndPointContainer>
+                <Title>{searchList.title}</Title>
+                <PointBtn><img src={point} alt='' style={{paddingRight: '10px'}}></img>300 P</PointBtn>
+            </TitleAndPointContainer>
+            <InfoContainer>
+                <TextContainer>
+                    <Text>
+                        <TextKind>요양원</TextKind>
+                        <TextAbout>{searchList.facility_name}</TextAbout>
+                    </Text>
+                    <Text>
+                        <TextKind>모집기간</TextKind>
+                        <TextAbout>{searchList.regist_start_at}~{searchList.regist_end_at}</TextAbout>
+                    </Text>
+                </TextContainer>
+                <TextContainer>
+                    <Text>
+                        <TextKind>활동 분야</TextKind>
+                        <TextAbout>{searchList.activity_category}</TextAbout>
+                    </Text>
+                    <Text>
+                        <TextKind>모집인원</TextKind>
+                        <TextAbout>{searchList.subscriber_limit}명</TextAbout>
+                    </Text>
+                </TextContainer>
+                <TextContainer>
+                    <Text>
+                        <TextKind>활동기간</TextKind>
+                        <TextAbout>{searchList.activity_start_at}~{searchList.activity_end_at}</TextAbout>
+                    </Text>
+                    <Text>
+                        <TextKind>주소</TextKind>
+                        <TextAbout>{searchList.address.address} {searchList.address.detail_address}</TextAbout>
+                    </Text>
+                </TextContainer>
+                <TextContainer>
+                    <Text>
+                        <TextKind>연락처</TextKind>
+                        <TextAbout>{searchList.phone}</TextAbout>
+                    </Text>
+                    <Text>
+                        <TextKind>Email</TextKind>
+                        <TextAbout>{searchList.email}</TextAbout>
+                    </Text>
+                </TextContainer>
+
+            </InfoContainer>
+
+        </ProgramInfoContainer>
+
+    );
 }
