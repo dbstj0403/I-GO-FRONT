@@ -13,6 +13,7 @@ export default function ProgramPage() {
   const [searchList, setSearchList] = useState([]);
   const [onSearch, setOnsearch] = useState(false);
   const { userData } = useSelector(({ user }) => user);
+
   const search = async () => {
     setOnsearch(true);
     try {
@@ -120,8 +121,8 @@ export default function ProgramPage() {
       )}
       <ComponentContainer onSearch={onSearch}>
         {searchList.length !== 0
-          ? searchList.map((item) => (
-              <ShowPost key={item.id} searchList={searchList} />
+          ? searchList.map((item, idx) => (
+              <ShowPost key={item.id} searchList={searchList[idx]} />
             ))
           : null}
       </ComponentContainer>
