@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import point from "../img/point.png";
+import KakaoMap from "./KakaoMap";
 export default function ProgramInfo() {
   const ProgramInfoContainer = styled.div`
     display: flex;
@@ -145,6 +146,7 @@ export default function ProgramInfo() {
           설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
         </DetailInfoText>
       </DetailInfoContainer>
+      <KakaoMap />
     </ProgramInfoContainer>
   );
 }

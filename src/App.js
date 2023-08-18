@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
@@ -13,8 +12,8 @@ import ProgramDetailPage from "./pages/ProgramDetailPage";
 import MypageStudent from "./pages/MypageStudent";
 import MypageCarer from "./pages/MypageCarer";
 import RegisterProgramPage from "./pages/RegisterProgramPage";
-import RentalHome from './pages/RentalHome';
-import RentalDetail from './pages/RentalDetail';
+import RentalHome from "./pages/RentalHome";
+import RentalDetail from "./pages/RentalDetail";
 function App() {
   return (
     <div className="app-container">
@@ -30,8 +29,8 @@ function App() {
           <Route path="/mypageStudent" element={<MypageStudent />} />
           <Route path="/mypageCarer" element={<MypageCarer />} />
           <Route path="/registerProgram" element={<RegisterProgramPage />} />
-          <Route path='/rental' element={<RentalHome/>}/>
-          <Route path='/rental/:id' element={<RentalDetail/>}/>  
+          <Route path="/rental" element={<RentalHome />} />
+          <Route path="/rental/:id" element={<RentalDetail />} />
         </Routes>
         <Footer />
       </BrowserRouter>
