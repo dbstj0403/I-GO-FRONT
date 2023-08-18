@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import arrow from "../img/arrow.png";
 import TitleTable from "../components/TitleTable";
 import axios from "axios";
