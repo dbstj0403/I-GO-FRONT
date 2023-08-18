@@ -9,7 +9,7 @@ import { userSuccess } from "../store/user/actions";
 import styled from "styled-components";
 import pencil from "../img/addInfo.png";
 
-export default function Mypage() {
+export default function MypageStudent() {
   const { userData } = useSelector(({ user }) => user);
   const [name, setName] = useState("");
   const [birthDate, setBirthDate] = useState("");
@@ -24,8 +24,18 @@ export default function Mypage() {
   });
   const [zipcode, setZipcode] = useState("");
   const [popup, setPopup] = useState(false);
+  const [activeTab, setActiveTab] = useState("modify");
   const movePage = useNavigate();
   const dispatch = useDispatch();
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+    if (tabName === "program" || tabName === "rent") {
+      setTimeout(() => {
+        alert("현재 준비 중인 기능입니다!");
+      }, 0);
+    }
+  };
 
   useEffect(() => {
     setProfile();
@@ -126,10 +136,6 @@ export default function Mypage() {
     }
   };
 
-  /**
-   * 스타일 컴포넌트
-   */
-
   return (
     <div
       style={{
@@ -143,96 +149,133 @@ export default function Mypage() {
       <ul style={{ fontSize: "16px", color: "#717171", marginTop: "15px" }}>
         나의 프로필 및 활동 내역을 관리하세요
       </ul>
-      <ModifyInfoContainer>
-        <img alt="" src={pencil} />
-        <InputContainer>
-          <InputTitle>프로필 정보 수정</InputTitle>
-          <Container>
-            <div>
-              <Text>이름</Text>
-              <Input
-                placeholder={name}
-                width="266px"
-                onChange={(e) => setName(e.target.value)}
-              ></Input>
-            </div>
-            <Box>
-              <Text>생년월일</Text>
-              <Input
-                placeholder={birthDate}
-                width="266px"
-                onChange={(e) => setBirthDate(e.target.value)}
-              ></Input>
-            </Box>
-          </Container>
-          <Container>
-            <div>
-              <Text>전화번호</Text>
-              <Input
-                placeholder={phone}
-                width="266px"
-                onChange={(e) => setPhone(e.target.value)}
-              ></Input>
-            </div>
-            <Box>
-              <Text>Email</Text>
-              <Input
-                placeholder={email}
-                width="266px"
-                onChange={(e) => setEmail(e.target.value)}
-              ></Input>
-            </Box>
-          </Container>
+      <MypageContainer>
+        <Category
+          active={activeTab === "modify"}
+          onClick={() => handleTabClick("modify")}
+        >
+          👤 프로필 관리
+        </Category>
+        <Category
+          active={activeTab === "program"}
+          onClick={() => handleTabClick("program")}
+        >
+          📋 나의 프로그램
+        </Category>
+        <Category
+          active={activeTab === "rent"}
+          onClick={() => handleTabClick("rent")}
+        >
+          📱 대여 관리
+        </Category>
+      </MypageContainer>
+      {activeTab === "modify" && (
+        <ModifyInfoContainer>
+          <img alt="" src={pencil} />
+          <InputContainer>
+            <InputTitle>프로필 정보 수정</InputTitle>
+            <Container>
+              <div>
+                <Text>이름</Text>
+                <Input
+                  placeholder={name}
+                  width="266px"
+                  onChange={(e) => setName(e.target.value)}
+                ></Input>
+              </div>
+              <Box>
+                <Text>생년월일</Text>
+                <Input
+                  placeholder={birthDate}
+                  width="266px"
+                  onChange={(e) => setBirthDate(e.target.value)}
+                ></Input>
+              </Box>
+            </Container>
+            <Container>
+              <div>
+                <Text>전화번호</Text>
+                <Input
+                  placeholder={phone}
+                  width="266px"
+                  onChange={(e) => setPhone(e.target.value)}
+                ></Input>
+              </div>
+              <Box>
+                <Text>Email</Text>
+                <Input
+                  placeholder={email}
+                  width="266px"
+                  onChange={(e) => setEmail(e.target.value)}
+                ></Input>
+              </Box>
+            </Container>
 
-          <Container>
-            <div>
-              <Text>거주지</Text>
-              <Input
-                width="392px"
-                type="text"
-                required={true}
-                name="address"
-                placeholder={address}
-                onChange={handleInput}
-                value={enrollAddress.address}
-              ></Input>
-            </div>
-            <Box>
-              <SearchAdressBtn onClick={handleComplete}>
-                주소 찾기
-              </SearchAdressBtn>
-              {popup && (
-                <Postcode
-                  enrollAddress={enrollAddress}
-                  setEnrollAddress={setEnrollAddress}
-                  popup={popup}
-                  setPopup={setPopup}
-                ></Postcode>
-              )}
-            </Box>
-          </Container>
-          <Container>
-            <div>
-              <Text>상세 주소</Text>
-              <Input
-                width="392px"
-                name="detailAddress"
-                placeholder={detailedAddress}
-                onChange={(e) => {
-                  setEnrollAddress({
-                    ...enrollAddress,
-                    [e.target.name]: e.target.value,
-                  });
-                }}
-              ></Input>
-            </div>
-          </Container>
-          <SubmitBtn onClick={submitInfo}>수정 완료</SubmitBtn>
-        </InputContainer>
-      </ModifyInfoContainer>
+            <Container>
+              <div>
+                <Text>거주지</Text>
+                <Input
+                  width="392px"
+                  type="text"
+                  required={true}
+                  name="address"
+                  placeholder={address}
+                  onChange={handleInput}
+                  value={enrollAddress.address}
+                ></Input>
+              </div>
+              <Box>
+                <SearchAdressBtn onClick={handleComplete}>
+                  주소 찾기
+                </SearchAdressBtn>
+                {popup && (
+                  <Postcode
+                    enrollAddress={enrollAddress}
+                    setEnrollAddress={setEnrollAddress}
+                    popup={popup}
+                    setPopup={setPopup}
+                  ></Postcode>
+                )}
+              </Box>
+            </Container>
+            <Container>
+              <div>
+                <Text>상세 주소</Text>
+                <Input
+                  width="392px"
+                  name="detailAddress"
+                  placeholder={detailedAddress}
+                  onChange={(e) => {
+                    setEnrollAddress({
+                      ...enrollAddress,
+                      [e.target.name]: e.target.value,
+                    });
+                  }}
+                ></Input>
+              </div>
+            </Container>
+            <SubmitBtn onClick={submitInfo}>수정 완료</SubmitBtn>
+          </InputContainer>
+        </ModifyInfoContainer>
+      )}
     </div>
   );
 }
+
+/**
+ * 스타일 컴포넌트
+ */
+
+const Category = styled.div`
+  display: flex;
+  padding: 17px 28px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 50px;
+  background-color: ${(props) => (props.active ? "#fdd888" : "white")};
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+`;
 const ModifyInfoContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -272,6 +315,12 @@ line-height: 18px;
 &:focus {
     outline: 2px solid black;
 }
+`;
+const MypageContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  padding-top: 28px;
 `;
 
 const Box = styled.div`

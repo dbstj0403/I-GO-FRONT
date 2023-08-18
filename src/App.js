@@ -9,7 +9,8 @@ import AddInfoPage from "./pages/AddInfoPage";
 import DonationPage from "./pages/DonationPage";
 import ProgramPage from "./pages/ProgramPage";
 import ProgramDetailPage from "./pages/ProgramDetailPage";
-import Mypage from "./pages/Mypage";
+import MypageStudent from "./pages/MypageStudent";
+import MypageCarer from "./pages/MypageCarer";
 import RegisterProgramPage from "./pages/RegisterProgramPage";
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
           <Route path="/donation" element={<DonationPage />} />
           <Route path="/program" element={<ProgramPage />} />
           <Route path="/programDetail" element={<ProgramDetailPage />} />
-          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/mypageStudent" element={<MypageStudent />} />
+          <Route path="/mypageCarer" element={<MypageCarer />} />
           <Route path="/registerProgram" element={<RegisterProgramPage />} />
         </Routes>
         <Footer />
