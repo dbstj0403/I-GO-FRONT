@@ -1,173 +1,178 @@
 .dona_home {
-    padding-top: 140px;
-    padding-bottom: 210px;
-    padding-left: 110px;
-    padding-right: 110px;
-  }
-  
-  .dona_container {
-    flex-direction: row;
-    justify-content: center;
-    gap: 30px;
-    margin: 50px 50px;
-  }
-  
-  .dona_direction {
-    width: 620px;
-    white-space: nowrap;
-    color: #717171;
-    margin: 20px;
-    font-family: DM Sans;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 40px;
-  }
-  
-  .dona_direction br {
-    font-size: 10px;
-    line-height: 50%;
-  }
-  
-  .dona_direction span {
-    line-height: 70px;
-    justify-content: center;
-    color: var(--gray-5, #2C2C2C);
-    /* Headings/H1 */
-    font-family: DM Sans;
-    font-size: 50px;
-    font-weight: bold;
-    line-height: 66px; /* 117.857% */
-  }
-  
-  
-  .input_title {
-    color: var(--gray-5, #2C2C2C);
-    width: 120px;
-    line-height: 72px;
-    font-feature-settings: 'clig' off, 'liga' off;
-    justify-content: center;
-    /* Text single/200/Bold */
-    font-family: DM Sans;
-    font-size: 18px;
-    font-style: normal;
-    font-weight:bold;
-    line-height: 18px; /* 100% */
-  }
-  
-  .input_title span {
-    color: #C52F61;
-    font-size: 24px;
-  }
-  
-  
-  
-  
-  
-  .input_box {
-    margin: auto;
-    width: 400px;
-    text-align: center;
-    height: 72px;
-    line-height: 72px;
-    border: none;
-    font-size: 18px;
-    border-radius: 30px;
-    background: #FFF;
-  }
-  
-  .input_box input {
-    margin: auto;
-    padding: 0px 20px 0px 20px;
-    width: 360px;
-    height: 72px;
-    border: none;
-    font-size: 18px;
-    border-radius: 30px;
-    background: #FFF;
-  }
-  
-  .input_box textarea {
-    margin: auto;
-    padding: 20px 20px 20px 20px;
-    width: 360px;
-    height: 120px;
-    border: none;
-    font-family: DM Sans;
-    font-size: 18px;
-    border-radius: 30px;
-    background: #FFF; 
-    resize: none;
-  }
-  
-  
-  .deliver_info {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 20px;
-  }
-  
-  .round_container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    justify-content: center;
-    margin: 20px 0px 20px 0px;
-    padding: 60px;
-    align-items: center;
-    border-radius: 30px;
-    border: 1px solid var(--gray-2, #E3E3E3);
-    background: var(--gray-2, #E3E3E3);
-  }
-  
-  .round_container_pink {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    justify-content:baseline;
-    margin: 20px;
-    height: 320px;
-    padding: 60px;
-    border-radius: 30px;
-    border: 1px solid var(--gray-2, #E3E3E3);
-    background: var(--red-1, #F4DEE5);
-  }
-  
-  
-  .dona_text {
-    display: flex;
-    width: 1220px;
-    height: 42px;
-    margin: auto;
-    padding-top: 10px;
-    justify-content: center;
-    color: var(--gray-5, #2C2C2C);
-    text-align: center;
-    font-family: DM Sans;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 30px; /* 150% */
-  }
-  
-  .btn_container {
-    margin: 30px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .dona_btn {
-    width: 194px;
-    height: 67px;
-    border: 0px;
-    border-radius: 30px;
-    background-color: var(--red-2, #FF98BA);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    color: #000;
-    text-align: center;
-    font-family: DM Sans;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    cursor: pointer;  
-  }  
+  padding-top: 140px;
+  padding-bottom: 210px;
+  padding-left: 110px;
+  padding-right: 110px;
+}
+
+.dona_container {
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+  margin: 50px 50px;
+}
+
+.dona_direction {
+  width: 620px;
+  white-space: nowrap;
+  color: #717171;
+  margin: 20px;
+  font-family: DM Sans;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.dona_direction br {
+  font-size: 10px;
+  line-height: 50%;
+}
+
+.dona_direction span {
+  line-height: 70px;
+  justify-content: center;
+  color: var(--gray-5, #2c2c2c);
+  /* Headings/H1 */
+  font-family: DM Sans;
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 66px; /* 117.857% */
+}
+
+.input_title {
+  color: var(--gray-5, #2c2c2c);
+  width: 120px;
+  line-height: 72px;
+  font-feature-settings: "clig" off, "liga" off;
+  justify-content: center;
+  /* Text single/200/Bold */
+  font-family: DM Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 18px; /* 100% */
+}
+
+.input_title span {
+  color: #c52f61;
+  font-size: 24px;
+}
+
+.remark_box {
+  margin: auto;
+  width: 400px;
+  text-align: center;
+  height: 108px;
+  line-height: 108px;
+  border: none;
+  font-size: 18px;
+  border-radius: 30px;
+  background: #fff;
+}
+
+.input_box {
+  margin: auto;
+  width: 400px;
+  text-align: center;
+  height: 72px;
+  line-height: 72px;
+  border: none;
+  font-size: 18px;
+  border-radius: 30px;
+  background: #fff;
+}
+
+.input_box input {
+  margin: auto;
+  padding: 0px 20px 0px 20px;
+  width: 360px;
+  height: 72px;
+  border: none;
+  font-size: 18px;
+  border-radius: 30px;
+  background: #fff;
+}
+
+.input_box textarea {
+  margin: auto;
+  padding: 20px 20px 20px 20px;
+  width: 360px;
+  height: 120px;
+  border: none;
+  font-family: DM Sans;
+  font-size: 18px;
+  border-radius: 30px;
+  background: #fff;
+  resize: none;
+}
+
+.deliver_info {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.round_container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  margin: 20px 0px 20px 0px;
+  padding: 60px;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid var(--gray-2, #e3e3e3);
+  background: var(--gray-2, #e3e3e3);
+}
+
+.round_container_pink {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: baseline;
+  margin: 20px;
+  height: 320px;
+  padding: 60px;
+  border-radius: 30px;
+  border: 1px solid var(--gray-2, #e3e3e3);
+  background: var(--red-1, #f4dee5);
+}
+
+.dona_text {
+  display: flex;
+  width: 1220px;
+  height: 42px;
+  margin: auto;
+  padding-top: 10px;
+  justify-content: center;
+  color: var(--gray-5, #2c2c2c);
+  text-align: center;
+  font-family: DM Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px; /* 150% */
+}
+
+.btn_container {
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.dona_btn {
+  width: 194px;
+  height: 67px;
+  border: 0px;
+  border-radius: 30px;
+  background-color: var(--red-2, #ff98ba);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #000;
+  text-align: center;
+  font-family: DM Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+}
