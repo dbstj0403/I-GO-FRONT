@@ -58,18 +58,6 @@
   font-size: 24px;
 }
 
-.remark_box {
-  margin: auto;
-  width: 400px;
-  text-align: center;
-  height: 108px;
-  line-height: 108px;
-  border: none;
-  font-size: 18px;
-  border-radius: 30px;
-  background: #fff;
-}
-
 .input_box {
   margin: auto;
   width: 400px;
