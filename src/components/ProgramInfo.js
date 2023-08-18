@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 import point from "../img/point.png";
-import KakaoMap from "./KakaoMap";
 export default function ProgramInfo() {
+  const location = useLocation();
+  const searchList = location.state.searchList;
   const ProgramInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
