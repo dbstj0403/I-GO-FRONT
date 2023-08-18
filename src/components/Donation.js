@@ -16,17 +16,14 @@ export default function App() {
   const submitDona = async () => {
     // 응답 (성공)
     try {
-      const response = await axios.post(
-        "http://api.igoofficial.com/donation/",
-        {
-          model_category: model_category,
-          model_name: model_name,
-          remarks: remarks,
-          sender_name: sender_name,
-          sender_phone: sender_phone,
-          sender_address: sender_address,
-        }
-      );
+      const response = await axios.post("http://localhost:8000/donation/", {
+        model_category: model_category,
+        model_name: model_name,
+        remarks: remarks,
+        sender_name: sender_name,
+        sender_phone: sender_phone,
+        sender_address: sender_address,
+      });
       console.log(response);
     } catch {
       // 응답 (실패)
