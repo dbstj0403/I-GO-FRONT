@@ -9,7 +9,7 @@ export default function LoginBox() {
    * 카카오 로그인 관련 변수 및 AUTH URL
    */
   const KAKAO_REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
-  const KAKAO_REDIRECT_URI = "http://www.igoifficial.com/loginCallback"; // 리다이렉션 URI 협의 필요
+  const KAKAO_REDIRECT_URI = "http://www.igoofficial.com/loginCallback"; // 리다이렉션 URI 협의 필요
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code&scope=account_email`;
   const handleKakaoLogin = () => {
     localStorage.setItem("login-provider", "kakao");
@@ -19,7 +19,7 @@ export default function LoginBox() {
    * 구글 로그인 관련 변수 및 AUTH URL
    */
   const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  const GOOGLE_REDIRECT_URI = `http://www.igoifficial.com/loginCallback`;
+  const GOOGLE_REDIRECT_URI = `http://www.igoofficial.com/loginCallback`;
   const GOOGLE_AUTH_URL = `https://accounts.google.com/o/oauth2/v2/auth?scope=profile%20email%20openid&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=${GOOGLE_REDIRECT_URI}&response_type=code&client_id=${GOOGLE_CLIENT_ID}&access_type=offline&prompt=consent`;
   const handleGoogleLogin = () => {
     localStorage.setItem("login-provider", "google");
@@ -29,7 +29,7 @@ export default function LoginBox() {
    * 깃허브 로그인 관련 변수 및 AUTH URL
    */
   const GITHUB_CLIENT_ID = process.env.REACT_APP_GITHUB_CLIENT_ID;
-  const GITHUB_REDIRECT_URI = `http://www.igoifficial.com/loginCallback`;
+  const GITHUB_REDIRECT_URI = `http://www.igoofficial.com/loginCallback`;
   const GITHUB_AUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${GITHUB_REDIRECT_URI}&scope=user:email`;
 
   const handGithubleLogin = () => {
