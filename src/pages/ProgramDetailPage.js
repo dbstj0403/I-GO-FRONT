@@ -1,8 +1,4 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-import arrow from "../img/arrow.png";
-import point from "../img/point.png";
-import axios from "axios";
 import ProgramInfo from "../components/ProgramInfo";
 
 export default function ProgramDetailPage() {
