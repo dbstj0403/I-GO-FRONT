@@ -69,7 +69,7 @@ export default function NavBar() {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/" className="nav-menu">
+          <NavLink to="/rental" className="nav-menu">
             기기 대여
           </NavLink>
         </li>
