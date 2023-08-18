@@ -3,7 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 export default function ShowPost ({searchList}) {
     const movePage = useNavigate();
     const moveToProgramDetailPage = () => {
-        movePage('/programDetail');
+        movePage('/programDetail', {state: {searchList: searchList}
+        });
     }
     const Container = styled.div`
     width: 1220px;
