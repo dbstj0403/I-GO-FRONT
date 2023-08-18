@@ -8,6 +8,7 @@ const initialState = {
     point: 0,
     id: "",
     name: "",
+    adminName: "",
     img: "",
   },
 };

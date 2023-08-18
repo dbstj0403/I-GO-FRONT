@@ -17,7 +17,7 @@ export default function ProgramPage() {
     setOnsearch(true);
     try {
       const response = await axios.get(
-        `http://localhost:8000/program/?address=${selectGu}&activity=${selectActivity}`,
+        `http://api.igoofficial.com/program/?address=${selectGu}&activity=${selectActivity}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access-token")}`,
@@ -115,18 +115,25 @@ export default function ProgramPage() {
         </SelectContainer>
         <SearchBtn onClick={search}>검색</SearchBtn>
       </SearchContainer>
-      {onSearch && <TitleTable searchList={searchList} isStudent={userData.is_student}/>}
+      {onSearch && (
+        <TitleTable searchList={searchList} isStudent={userData.is_student} />
+      )}
       <ComponentContainer onSearch={onSearch}>
-      {searchList.length !== 0 ? searchList.map((item) => <ShowPost key={item.id} searchList={searchList}/> ): null}
+        {searchList.length !== 0
+          ? searchList.map((item) => (
+              <ShowPost key={item.id} searchList={searchList} />
+            ))
+          : null}
       </ComponentContainer>
-      {onSearch && <ProgramExample/>}
+      {onSearch && <ProgramExample />}
     </Container>
   );
 }
 const ComponentContainer = styled.div`
   width: 1220px;
   min-height: 600px;
-  border-bottom: ${ props => props.onSearch ? '1px solid' : null}`
+  border-bottom: ${(props) => (props.onSearch ? "1px solid" : null)};
+`;
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -154,7 +161,8 @@ const SearchContainer = styled.div`
   width: 806px;
   height: 212px;
   border-radius: 30px;
-  background-color: ${props => props.isStudent === true ? '#fdd888' : '#ADBBEC'};
+  background-color: ${(props) =>
+    props.isStudent === true ? "#fdd888" : "#ADBBEC"};
   margin-top: 20px;
   display: flex;
   flex-direction: column;

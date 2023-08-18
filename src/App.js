@@ -9,12 +9,15 @@ import AddInfoPage from "./pages/AddInfoPage";
 import DonationPage from "./pages/DonationPage";
 import ProgramPage from "./pages/ProgramPage";
 import ProgramDetailPage from "./pages/ProgramDetailPage";
+import MypageStudent from "./pages/MypageStudent";
+import MypageCarer from "./pages/MypageCarer";
 import RegisterProgramPage from "./pages/RegisterProgramPage";
+import RentalHome from './pages/RentalHome';
+import RentalDetail from './pages/RentalDetail';
 function App() {
   return (
     <div className="app-container">
       <BrowserRouter>
-        <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -23,7 +26,11 @@ function App() {
           <Route path="/donation" element={<DonationPage />} />
           <Route path="/program" element={<ProgramPage />} />
           <Route path="/programDetail" element={<ProgramDetailPage />} />
-          <Route path="/registerProgram" element={<RegisterProgramPage/>}/>
+          <Route path="/mypageStudent" element={<MypageStudent />} />
+          <Route path="/mypageCarer" element={<MypageCarer />} />
+          <Route path="/registerProgram" element={<RegisterProgramPage />} />
+          <Route path='/rental' element={<RentalHome/>}/>
+          <Route path='/rental/:id' element={<RentalDetail/>}/>  
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -35,7 +35,7 @@ export default function AddInfoForStudent() {
   const getProfile = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/accounts?type=student",
+        "http://api.igoofficial.com/accounts?type=student",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access-token")}`,
@@ -62,7 +62,7 @@ export default function AddInfoForStudent() {
   const submitInfo = async () => {
     try {
       await axios.post(
-        "http://localhost:8000/accounts/?type=student",
+        "http://api.igoofficial.com/accounts/?type=student",
         {
           name: name,
           birthdate: birthDate,
@@ -93,86 +93,12 @@ export default function AddInfoForStudent() {
     <div>
       <Container>
         <div>
-          <Container>
-            <div>
-              <Text>이름</Text>
-              <Input
-                placeholder="홍길동"
-                width="266px"
-                onChange={(e) => setName(e.target.value)}
-              ></Input>
-            </div>
-            <Box>
-              <Text>생년월일</Text>
-              <Input
-                placeholder="2007-01-01"
-                width="266px"
-                onChange={(e) => setBirthDate(e.target.value)}
-              ></Input>
-            </Box>
-          </Container>
-
-          <Container>
-            <div>
-              <Text>전화번호</Text>
-              <Input
-                placeholder="010-1234-5678"
-                width="266px"
-                onChange={(e) => setPhone(e.target.value)}
-              ></Input>
-            </div>
-            <Box>
-              <Text>Email</Text>
-              <Input
-                placeholder="example@email.com"
-                width="266px"
-                onChange={(e) => setEmail(e.target.value)}
-              ></Input>
-            </Box>
-          </Container>
-
-          <Container>
-            <div>
-              <Text>거주지</Text>
-              <Input
-                width="392px"
-                type="text"
-                required={true}
-                name="address"
-                onChange={handleInput}
-                value={enrollAddress.address}
-              ></Input>
-            </div>
-            <Box>
-              <SearchAdressBtn onClick={handleComplete}>
-                주소 찾기
-              </SearchAdressBtn>
-              {popup && (
-                <Postcode
-                  enrollAddress={enrollAddress}
-                  setEnrollAddress={setEnrollAddress}
-                  popup={popup}
-                  setPopup={setPopup}
-                ></Postcode>
-              )}
-            </Box>
-          </Container>
-          <Container>
-            <div>
-              <Text>상세 주소</Text>
-              <Input
-                width="392px"
-                name="detailAddress"
-                onChange={(e) => {
-                  setEnrollAddress({
-                    ...enrollAddress,
-                    [e.target.name]: e.target.value,
-                  });
-                }}
-              ></Input>
-            </div>
-          </Container>
-          <SubmitBtn onClick={submitInfo}>입력 완료</SubmitBtn>
+          <Text>이름</Text>
+          <Input
+            placeholder="홍길동"
+            width="266px"
+            onChange={(e) => setName(e.target.value)}
+          ></Input>
         </div>
         <Box>
           <Text>생년월일</Text>
@@ -183,7 +109,6 @@ export default function AddInfoForStudent() {
           ></Input>
         </Box>
       </Container>
-
       <Container>
         <div>
           <Text>전화번호</Text>

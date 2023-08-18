@@ -6,15 +6,28 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { persistStore, persistReducer } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 import rootReducer from "./store";
+import storage from "redux-persist/lib/storage";
 // import store from "./store";
 
-const store = createStore(rootReducer, composeWithDevTools());
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(persistedReducer, composeWithDevTools());
+const persistor = persistStore(store);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <App />
+    </PersistGate>
     {/* Provider로 Redux 스토어를 제공 */}
-    <App />
   </Provider>
 );
 

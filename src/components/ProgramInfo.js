@@ -9,62 +9,62 @@ export default function ProgramInfo () {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    `
-    const TitleAndPointContainer = styled.div`
+  `;
+  const TitleAndPointContainer = styled.div`
     display: flex;
     width: 1008px;
     height: 54px;
     justify-content: space-between;
     align-items: baseline;
     margin-top: 80px;
-    `
-    const Title = styled.div`
+  `;
+  const Title = styled.div`
     font-size: 24px;
     line-height: 24px;
     font-weight: 700;
-    `
-    const PointBtn = styled.button`
+  `;
+  const PointBtn = styled.button`
     width: 143px;
     height: 53px;
     border-radius: 30px;
     background-color: white;
-    border: 1px solid #CCCCCC;
+    border: 1px solid #cccccc;
     font-size: 18px;
     line-height: 18px;
     align-items: center;
     display: flex;
     justify-content: center;
-    `
-    const InfoContainer = styled.div`
+  `;
+  const InfoContainer = styled.div`
     width: 1010px;
     height: 286px;
     border-radius: 10px;
-    border: 1px solid #BFBFBF;
+    border: 1px solid #bfbfbf;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    `
-    const TextContainer = styled.div`
+  `;
+  const TextContainer = styled.div`
     width: 910px;
     height: 38px;
     display: flex;
     margin: 10px;
-    `
-    const Text = styled.div`
+  `;
+  const Text = styled.div`
     width: 455px;
     height: 38px;
     display: flex;
-    `
-    const TextKind = styled.div`
+  `;
+  const TextKind = styled.div`
     width: 125px;
     height: 38px;
     color: #717171;
     font-size: 20px;
     line-height: 24px;
-    `
-    const TextAbout = styled.div`
+  `;
+  const TextAbout = styled.div`
     width: 330px;
     height: 38px;
     font-size: 20px;
