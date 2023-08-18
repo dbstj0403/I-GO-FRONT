@@ -8,7 +8,6 @@ import styled from "styled-components";
 import point from "../img/point.png";
 
 export default function NavBar() {
-  //   const { isLogin } = useSelector(({ login }) => login);
   const moveToPage = useNavigate();
   const { userData } = useSelector(({ user }) => user);
   useEffect(() => {

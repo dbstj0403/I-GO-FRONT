@@ -10,13 +10,15 @@ export default function TitleTable({ isStudent }) {
   const SearchingResultText = styled.div`
     font-size: 16px;
     line-height: 24px;
+    position: relative;
+    top: ${isStudent ? null : "17px"};
     span {
       color: #d88e00;
     }
   `;
   const TextContainer = styled.div`
     display: flex;
-    height: 61px;
+    height: ${isStudent ? "24px" : "61px"};
     width: 1220px;
     align-items: baseline;
   `;
@@ -34,6 +36,8 @@ export default function TitleTable({ isStudent }) {
     font-size: 16px;
     line-height: 24px;
     color: #717171;
+    position: relative;
+    top: ${isStudent ? null : "17px"};
   `;
   const TableTitle = styled.div`
     width: ${(props) => props.width};
