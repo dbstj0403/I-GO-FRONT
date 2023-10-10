@@ -39,10 +39,14 @@
   line-height: 66px; /* 117.857% */
 }
 
+.dona_equip_radio {
+  padding: 20px 0px 20px 0px;
+}
+
 .input_title {
   color: var(--gray-5, #2c2c2c);
   width: 120px;
-  line-height: 72px;
+  padding: 20px 0px 20px 0px;
   font-feature-settings: "clig" off, "liga" off;
   justify-content: center;
   /* Text single/200/Bold */
@@ -61,37 +65,36 @@
 .input_box {
   margin: auto;
   width: 400px;
+  padding: 20px 40px 20px 40px;
+  height: 72px;
+  border: none;
+  font-size: 18px;
+  border-radius: 30px;
+  background: #fff;
+}
+
+.non_input_box {
+  margin: auto;
+  width: 400px;
+  padding: 20px 40px 20px 40px;
   text-align: center;
   height: 72px;
-  line-height: 72px;
   border: none;
   font-size: 18px;
   border-radius: 30px;
   background: #fff;
 }
 
-.input_box input {
-  margin: auto;
-  padding: 0px 20px 0px 20px;
-  width: 360px;
-  height: 72px;
-  border: none;
-  font-size: 18px;
-  border-radius: 30px;
-  background: #fff;
-}
-
-.input_box textarea {
-  margin: auto;
-  padding: 20px 20px 20px 20px;
-  width: 360px;
+.text_box {
+  width: 400px;
   height: 120px;
-  border: none;
-  font-family: DM Sans;
+  padding: 20px 40px 20px 40px;
+  line-height: 30px;
   font-size: 18px;
   border-radius: 30px;
-  background: #fff;
+  border: none;
   resize: none;
+  font-family: DM Sans;
 }
 
 .deliver_info {
@@ -100,30 +103,26 @@
   margin: 20px;
 }
 
-.round_container {
+.round_container_gray {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  justify-content: center;
   margin: 20px 0px 20px 0px;
   padding: 60px;
-  align-items: center;
-  border-radius: 30px;
   border: 1px solid var(--gray-2, #e3e3e3);
   background: var(--gray-2, #e3e3e3);
+  border-radius: 30px;
 }
 
 .round_container_pink {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  justify-content: baseline;
   margin: 20px;
-  height: 320px;
   padding: 60px;
-  border-radius: 30px;
   border: 1px solid var(--gray-2, #e3e3e3);
   background: var(--red-1, #f4dee5);
+  border-radius: 30px;
 }
 
 .dona_text {
@@ -131,13 +130,10 @@
   width: 1220px;
   height: 42px;
   margin: auto;
-  padding-top: 10px;
-  justify-content: center;
   color: var(--gray-5, #2c2c2c);
-  text-align: center;
+  justify-content: center;
   font-family: DM Sans;
   font-size: 20px;
-  font-style: normal;
   font-weight: 500;
   line-height: 30px; /* 150% */
 }
