@@ -5,16 +5,37 @@ import { useParams } from 'react-router-dom'
 import point from '../img/point.png'
 
 export default function DeviceDetail() {
+
     const { id } = useParams();
     const [device, setDevice] = useState({});
 
-    useEffect(() => {
-        axios.get("/data/devices.json").then((data) => {
-            setDevice(data.data.devices.find((device) => device.id === parseInt(id)))
-        });
-    }, [id]);
+    const getDevice = async () => {
+        try {
+            const response = await axios.get(
+                "/data/products.json",
+                {
+                    // 헤더
+                }
+            );
+            console.log(response);
+            console.log(response.data);
+            setDevice(response.data.find((device) => device.id === parseInt(id)))
+        }
+        catch {
+            alert("Get Device Detail error!");
+        }
+    }
 
-    console.log(device);
+    useEffect(() => {
+        getDevice();
+    }, []);
+
+    const today = new Date();
+    const monthAfter = new Date();
+    monthAfter.setMonth(today.getMonth()+1);
+
+    const rentalStartDate = `${today.getFullYear()}.${today.getMonth() + 1}.${today.getDate()}`;
+    const rentalEndDate = `${monthAfter.getFullYear()}.${monthAfter.getMonth() + 1}.${monthAfter.getDate()}`;
 
     return (
         <div className='detail_container'>
@@ -30,8 +51,37 @@ export default function DeviceDetail() {
                             {" "}{device.point}{" "}p
                         </div>
                     </div>
-                    <div className='device_detail'>
-                        <div className='device_detail'></div>
+                    <div className='info_container'>
+                        <div className='text_container'>
+                            <div className='text'>
+                                <div className='text_kind'>제조사</div>
+                                <div className='text_about'>{device.manufacturer}</div>
+                            </div>
+                            <div className='text'>
+                                <div className='text_kind'>모델명</div>
+                                <div className='text_about'>{device.model_name}</div>
+                            </div>
+                        </div>
+                        <div className='text_container'>
+                            <div className='text'>
+                                <div className='text_kind'>제조연원</div>
+                                <div className='text_about'>{device.manufacturing_date}</div>
+                            </div>
+                            <div className='text'>
+                                <div className='text_kind'>등록일</div>
+                                <div className='text_about'>{device.registration_date}</div>
+                            </div>
+                        </div>
+                        <div className='text_container'>
+                            <div className='text'>
+                                <div className='text_kind'>배터리 용량</div>
+                                <div className='text_about'>{device.battery_capacity}</div>
+                            </div>
+                            <div className='text'>
+                                <div className='text_kind'>내장메모리</div>
+                                <div className='text_about'>{device.memory_amount}</div>
+                            </div>
+                        </div>
                     </div>
                     <div className='rental_detail'>
                         <span>※ 대여 시 포인트는 차감되지 않습니다.</span>
@@ -46,9 +96,9 @@ export default function DeviceDetail() {
                 <div className='rental_term'>
                     <hr />
                     <div className='rental_term_text'>
-                        <div style={{display: "flex", justifyContent: "space-between"}}><span>대여 신청일</span> 2020.03.17</div>
-                        <div style={{display: "flex", justifyContent: "space-between"}}><span>대여 기간</span> 2020.03.17 ~ 2020.03.17</div>
-                        <div style={{display: "flex", justifyContent: "space-between"}}><span>대여 만료일</span> 2020.03.17</div>
+                        <div style={{display: "flex", justifyContent: "space-between"}}><span>대여 신청일</span> {rentalStartDate}</div>
+                        <div style={{display: "flex", justifyContent: "space-between"}}><span>대여 기간</span> {rentalStartDate} ~ {rentalEndDate}</div>
+                        <div style={{display: "flex", justifyContent: "space-between"}}><span>대여 만료일</span> {rentalEndDate}</div>
                         <div style={{display: "flex", justifyContent: "space-between"}}><span>연장 시 필요한 포인트</span> {device.point}{" "}p</div>
                     </div>
                     <hr />
