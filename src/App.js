@@ -15,6 +15,7 @@ import RegisterProgramPage from "./pages/RegisterProgramPage";
 import RentalHome from "./pages/RentalHome";
 import RentalDetail from "./pages/RentalDetail";
 import ChatPage from "./pages/ChatPage";
+
 function App() {
   return (
     <div className="app-container">
