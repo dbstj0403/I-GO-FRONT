@@ -8,7 +8,6 @@ import "../componentsCss/Swiper.css";
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
 export default function HomePage() {
-  //console.log(process.env.REACT_APP_KAKAO_JAVASCRIPT_KEY);
   SwiperCore.use([Navigation, Pagination, Autoplay]);
   return (
     <div>

@@ -78,6 +78,11 @@ export default function NavBar() {
             기기 기부
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink to="/chat" className="nav-menu">
+            1:1 문의
+          </NavLink>
+        </li>
       </ul>
       {userData.is_register && userData.is_student ? (
         <Container>
