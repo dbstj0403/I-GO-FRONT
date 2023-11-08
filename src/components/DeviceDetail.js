@@ -56,7 +56,7 @@ export default function DeviceDetail() {
     const submitRental = async () => {
         try {
             await axios.post(
-                "http://localhost:8000/rental/:id/subscribe/",
+                "http://api.igoofficial.com/rental/:id/subscribe/",
                 {
                     addressee_name : addressee_name,
                     addressee_phone : addressee_phone,

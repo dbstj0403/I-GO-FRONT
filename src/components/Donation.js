@@ -18,7 +18,7 @@ export default function App() {
     // 응답 (성공)
     try {
       const response = await axios.post(
-        "http://localhost:8000/donation/",
+        "http://api.igoofficial.com/donation/",
         {
           model_category: model_category,
           model_name: model_name,
