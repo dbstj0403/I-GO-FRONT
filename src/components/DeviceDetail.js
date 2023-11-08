@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../componentsCss/DeviceDetail.css'
 import { useParams } from 'react-router-dom'
 import point from '../img/point.png'
+import GoBackBtn from './GoBackBtn';
 
 export default function DeviceDetail() {
 
@@ -113,7 +114,8 @@ export default function DeviceDetail() {
             </div>
             <div className='btn_container'>
                 <button className='rental_btn'>대여 신청하기</button>
-                <button className='return_btn'>돌아가기</button>
+                {/* <button className='return_btn' onClick={onClickBtn}>돌아가기</button> */}
+                <GoBackBtn/>
             </div>
         </div>
     )

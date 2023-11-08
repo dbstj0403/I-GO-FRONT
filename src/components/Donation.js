@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../componentsCss/Donation.css";
 import axios from "axios";
 import RadioButton from "./RadioButton";
+import GoBackBtn from './GoBackBtn';
 
 export default function App() {
   // state 변수 선언
@@ -16,14 +17,16 @@ export default function App() {
   const submitDona = async () => {
     // 응답 (성공)
     try {
-      const response = await axios.post("http://localhost:8000/donation/", {
-        model_category: model_category,
-        model_name: model_name,
-        remarks: remarks,
-        sender_name: sender_name,
-        sender_phone: sender_phone,
-        sender_address: sender_address,
-      });
+      const response = await axios.post(
+        "http://localhost:8000/donation/",
+        {
+          model_category: model_category,
+          model_name: model_name,
+          remarks: remarks,
+          sender_name: sender_name,
+          sender_phone: sender_phone,
+          sender_address: sender_address,
+        });
       console.log(response);
     } catch {
       // 응답 (실패)
@@ -126,12 +129,12 @@ export default function App() {
               <span>* </span>특이사항
             </div>
 
-              <textarea className="text_box"
-                placeholder="ex. 블루투스 연결이 안 됨 / 액정 깨짐"
-                onChange={(e) => {
-                  setRemarks(e.target.value);
-                }}
-              />
+            <textarea className="text_box"
+              placeholder="ex. 블루투스 연결이 안 됨 / 액정 깨짐"
+              onChange={(e) => {
+                setRemarks(e.target.value);
+              }}
+            />
 
           </div>
         </div>
@@ -209,10 +212,11 @@ export default function App() {
         </span>
       </div>
 
-      <div className="btn_container">
+      <div className="btn_container" style={{display: "flex"}}>
         <button className="dona_btn" onClick={submitDona}>
           선물하기
         </button>
+        <GoBackBtn/>
       </div>
     </div>
   );
