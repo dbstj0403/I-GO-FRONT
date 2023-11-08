@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import '../componentsCss/DeviceDetail.css'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import point from '../img/point.png'
 import GoBackBtn from './GoBackBtn';
 
 export default function DeviceDetail() {
 
+    const movePage = useNavigate();
+
     const { id } = useParams();
     const [device, setDevice] = useState({});
 
+    const [addressee_name, setAddresseeName] = useState("");
+    const [addressee_phone, setAddresseePhone] = useState("");
+    const [enrollAddress, setEnrollAddress] = useState({
+      address: "",
+      zoneCode: "",
+      detailAddress: "",
+    });
+
+    /* 디바이스 디테일 불러오기 */
     const getDevice = async () => {
         try {
             const response = await axios.get(
                 "/data/products.json",
                 {
-                    // 헤더
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+                    },
                 }
             );
             console.log(response);
@@ -31,12 +44,42 @@ export default function DeviceDetail() {
         getDevice();
     }, []);
 
+    /* 대여 기간 설정 */
     const today = new Date();
     const monthAfter = new Date();
     monthAfter.setMonth(today.getMonth()+1);
 
     const rentalStartDate = `${today.getFullYear()}.${today.getMonth() + 1}.${today.getDate()}`;
     const rentalEndDate = `${monthAfter.getFullYear()}.${monthAfter.getMonth() + 1}.${monthAfter.getDate()}`;
+
+    /* 대여 신청하기 버튼 함수 */
+    const submitRental = async () => {
+        try {
+            await axios.post(
+                "http://localhost:8000/rental/:id/subscribe/",
+                {
+                    addressee_name : addressee_name,
+                    addressee_phone : addressee_phone,
+                    address: {
+                        address: enrollAddress.address,
+                        detail_address: enrollAddress.detailAddress,
+                        zone_code: enrollAddress.zoneCode,
+                      },
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+                    },
+                }
+            );
+            alert("대여 신청이 완료되었습니다.");
+            movePage("/");
+        }
+        catch (error) {
+            alert("대여 신청에 문제가 발생하였습니다. 다시 시도해주시기 바랍니다.");
+            console.log("SubmitRental Error!");
+        }
+    }
 
     return (
         <div className='detail_container'>
@@ -113,7 +156,7 @@ export default function DeviceDetail() {
                 </div>
             </div>
             <div className='btn_container'>
-                <button className='rental_btn'>대여 신청하기</button>
+                <button className='rental_btn' onClick={submitRental}>대여 신청하기</button>
                 {/* <button className='return_btn' onClick={onClickBtn}>돌아가기</button> */}
                 <GoBackBtn/>
             </div>
