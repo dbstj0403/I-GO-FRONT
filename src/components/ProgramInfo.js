@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import point from '../img/point.png';
-export default function ProgramInfo () {
+import KakaoMap from "./KakaoMap";
+export default function ProgramInfo() {
     const location = useLocation();
     //const searchList = location.state.searchList;
-    
+
     const movePage = useNavigate();
     const moveToSearchPage = () => {
         movePage('/program');
@@ -28,7 +29,7 @@ export default function ProgramInfo () {
     justify-content: center;
     align-items: center;
   `;
-  const TitleAndPointContainer = styled.div`
+    const TitleAndPointContainer = styled.div`
     display: flex;
     width: 1008px;
     height: 54px;
@@ -36,12 +37,12 @@ export default function ProgramInfo () {
     align-items: baseline;
     margin-top: 80px;
   `;
-  const Title = styled.div`
+    const Title = styled.div`
     font-size: 24px;
     line-height: 24px;
     font-weight: 700;
   `;
-  const PointBtn = styled.button`
+    const PointBtn = styled.button`
     width: 143px;
     height: 53px;
     border-radius: 30px;
@@ -53,7 +54,7 @@ export default function ProgramInfo () {
     display: flex;
     justify-content: center;
   `;
-  const InfoContainer = styled.div`
+    const InfoContainer = styled.div`
     width: 1010px;
     height: 286px;
     border-radius: 10px;
@@ -64,30 +65,51 @@ export default function ProgramInfo () {
     justify-content: center;
     align-items: center;
   `;
-  const TextContainer = styled.div`
+    const TextContainer = styled.div`
     width: 910px;
     height: 38px;
     display: flex;
     margin: 10px;
   `;
-  const Text = styled.div`
+    const Text = styled.div`
     width: 455px;
     height: 38px;
     display: flex;
   `;
-  const TextKind = styled.div`
+    const TextKind = styled.div`
     width: 125px;
     height: 38px;
     color: #717171;
     font-size: 20px;
     line-height: 24px;
   `;
-  const TextAbout = styled.div`
+    const TextAbout = styled.div`
     width: 330px;
     height: 38px;
     font-size: 20px;
     line-height: 24px;
     `
+
+    const DetailInfoContainer = styled.div`
+    width: 1008px;
+    height: 322px;
+    border-radius: 10px;
+    border: 1px solid #bfbfbf;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  `;
+
+    const DetailInfoText = styled.div`
+    width: 750px;
+    height; 180px;
+    font-size: 20px;
+    line-height: 24px;
+    `;
+
     const BtnContainer = styled.div`
     width: 378px;
     height: 67px;
@@ -142,7 +164,7 @@ export default function ProgramInfo () {
         <ProgramInfoContainer>
             <TitleAndPointContainer>
                 <Title>aa</Title>
-                <PointBtn><img src={point} alt='' style={{paddingRight: '10px'}}></img>300 P</PointBtn>
+                <PointBtn><img src={point} alt='' style={{ paddingRight: '10px' }}></img>300 P</PointBtn>
             </TitleAndPointContainer>
             <InfoContainer>
                 <TextContainer>
@@ -186,19 +208,30 @@ export default function ProgramInfo () {
                     </Text>
                 </TextContainer>
             </InfoContainer>
+            <DetailInfoContainer>
+                <TextKind>상세설명</TextKind>
+                <DetailInfoText>
+                    설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설
+                    명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
+                    설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설
+                    명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
+                    설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
+                </DetailInfoText>
+            </DetailInfoContainer>
+            <KakaoMap />
             <BtnContainer>
                 <EnrollBtn>신청하기</EnrollBtn>
                 <BackToListBtn onClick={moveToSearchPage}>뒤로 가기</BackToListBtn>
             </BtnContainer>
             <BottomBanner>
                 <BottomText>
-                ※ 모든 프로그램은 선착순으로 모집하며, 해당 프로그램이 ‘모집중’ 상태인 경우, 신청이 가능합니다. 
+                    ※ 모든 프로그램은 선착순으로 모집하며, 해당 프로그램이 ‘모집중’ 상태인 경우, 신청이 가능합니다.
                 </BottomText>
                 <BottomText>
-                ※ [신청하기] 클릭 시 바로 프로그램 신청이 완료되며, [신청 완료] 상태가 되어 요양센터에 학생 정보가 건네집니다.  
+                    ※ [신청하기] 클릭 시 바로 프로그램 신청이 완료되며, [신청 완료] 상태가 되어 요양센터에 학생 정보가 건네집니다.
                 </BottomText>
                 <BottomText>
-                ※ 프로그램 내용 혹은 승인 여부 등 자세한 문의사항은 요양센터 전화 혹은 이메일을 통해 빠른 문의가 가능합니다.
+                    ※ 프로그램 내용 혹은 승인 여부 등 자세한 문의사항은 요양센터 전화 혹은 이메일을 통해 빠른 문의가 가능합니다.
                 </BottomText>
             </BottomBanner>
 

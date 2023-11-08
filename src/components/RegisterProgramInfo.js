@@ -3,29 +3,34 @@ import point from '../img/point.png';
 import axios from 'axios';
 import arrow from '../img/arrow.png';
 import { useState } from 'react';
-export default function RegisterProgramInfo () {
+import GoBackBtn from './GoBackBtn';
+import KakaoMap from './KakaoMap';
+
+export default function RegisterProgramInfo() {
     const [InfoList, setInfoList] = useState({});
     const [facilityName, setFacilityName] = useState('');
     const getFacilityName = async () => {
         try {
             const response = await axios.get(`/profile/${localStorage.getItem('user-id')}`,
-                {headers: {
-                  Authorization: `Bearer ${localStorage.getItem("access-token")}`,
-                }},
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+                    }
+                },
             );
             setInfoList(response.data);
         }
-        catch(error){
+        catch (error) {
             console.log('get facility name error!')
         }
-      }
+    }
     const ProgramInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   `;
-  const TitleAndPointContainer = styled.div`
+    const TitleAndPointContainer = styled.div`
     display: flex;
     width: 1008px;
     height: 54px;
@@ -37,7 +42,7 @@ export default function RegisterProgramInfo () {
         margin-right: 5px;
     }
   `;
-  const TitleInput = styled.input`
+    const TitleInput = styled.input`
   background-color: #F5F5F5;
   width: 644px;
   height: 53px;
@@ -51,12 +56,12 @@ export default function RegisterProgramInfo () {
     outline: none;
   }
   `
-  const Title = styled.div`
+    const Title = styled.div`
     font-size: 24px;
     line-height: 24px;
     font-weight: 700;
   `;
-  const PointBtn = styled.button`
+    const PointBtn = styled.button`
     width: 143px;
     height: 53px;
     border-radius: 30px;
@@ -68,7 +73,7 @@ export default function RegisterProgramInfo () {
     display: flex;
     justify-content: center;
   `;
-  const InfoContainer = styled.div`
+    const InfoContainer = styled.div`
     width: 1010px;
     height: 286px;
     border-radius: 10px;
@@ -79,13 +84,13 @@ export default function RegisterProgramInfo () {
     justify-content: center;
     align-items: center;
   `;
-  const TextContainer = styled.div`
+    const TextContainer = styled.div`
     width: 910px;
     height: 38px;
     display: flex;
     margin: 10px;
   `;
-  const Text = styled.div`
+    const Text = styled.div`
     width: 455px;
     height: 38px;
     display: flex;
@@ -93,7 +98,7 @@ export default function RegisterProgramInfo () {
         padding-right: 10px;
     }
   `;
-  const TextKind = styled.div`
+    const TextKind = styled.div`
     width: 125px;
     height: 38px;
     color: #717171;
@@ -104,13 +109,79 @@ export default function RegisterProgramInfo () {
         padding-right: 5px;
     }
   `;
-  const TextAbout = styled.div`
+    const TextAbout = styled.div`
     width: 330px;
     height: 38px;
     font-size: 20px;
     line-height: 24px;
     font-weight: 700;
     `
+
+    const DetailInfoContainer = styled.div`
+    width: 1008px;
+    height: 322px;
+    border-radius: 10px;
+    border: 1px solid #bfbfbf;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+  `;
+
+    const DetailInfoInput = styled.textarea`
+    background-color: #fff;
+    width: 749px;
+    height: 235px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 20px;
+    line-height: 30px;
+    &:focus {
+      outline: none;
+    }
+    resize: none;
+    font-family: DM Sans;
+    `
+
+    const BtnContainer = styled.div`
+    width: 378px;
+    height: 67px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    `
+    const EnrollBtn = styled.button`
+    width: 194px;
+    height: 67px;
+    border-radius: 30px;
+    border: 0;
+    background-color: #ADBBEC;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+    box-shadow: 5px 5px 5px #CCCCCC;
+    cursor: pointer;
+    `
+    const BottomBanner = styled.div`
+    width: 1010px;
+    height: 165px;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    `
+    const BottomText = styled.div`
+    font-size: 16px;
+    line-height: 16px;
+    color: #2C2C2C;
+    margin: 10px;
+    `
+
     const GreyInput = styled.input`
     width: ${props => props.width};
     height: 38px;
@@ -152,10 +223,10 @@ export default function RegisterProgramInfo () {
     line-height: 38px;`
     return (
         <ProgramInfoContainer>
-             <TitleAndPointContainer>
+            <TitleAndPointContainer>
                 <Title><span>*</span>제목</Title>
-                <TitleInput placeholder='제목을 입력하세요. (15자 이내)'/>
-                <PointBtn><img src={point}alt='' style={{paddingRight: '10px'}}></img>300 P</PointBtn>
+                <TitleInput placeholder='제목을 입력하세요. (15자 이내)' />
+                <PointBtn><img src={point} alt='' style={{ paddingRight: '10px' }}></img>300 P</PointBtn>
             </TitleAndPointContainer>
             <InfoContainer>
                 <TextContainer>
@@ -179,7 +250,7 @@ export default function RegisterProgramInfo () {
                 <TextContainer>
                     <Text>
                         <TextKind><span>*</span>활동 분야</TextKind>
-                        <Select width= '281px'>
+                        <Select width='281px'>
                             <option value='스마트폰 사용법'>스마트폰 사용법</option>
                             <option value='SNS 활용법'>SNS 활용법</option>
                             <option value='유튜브 활용법'>유튜브 활용법</option>
@@ -221,6 +292,26 @@ export default function RegisterProgramInfo () {
                     </Text>
                 </TextContainer>
             </InfoContainer>
+            <DetailInfoContainer>
+                <TextKind>상세설명</TextKind>
+                <DetailInfoInput placeholder='상세 설명을 입력하세요. (400자 이내)' />
+            </DetailInfoContainer>
+            <KakaoMap />
+            <BtnContainer>
+                <EnrollBtn>등록하기</EnrollBtn>
+                <GoBackBtn />
+            </BtnContainer>
+            <BottomBanner>
+                <BottomText>
+                    ※ 모든 프로그램은 선착순으로 모집하며, 해당 프로그램이 ‘모집중’ 상태인 경우, 신청이 가능합니다.
+                </BottomText>
+                <BottomText>
+                    ※ [등록하기] 클릭 시 바로 프로그램이 등록되며, 학생들의 신청으로 튜터 선생님을 모집합니다.
+                </BottomText>
+                <BottomText>
+                    ※ 등록 즉시 학생들의 신청을 받기 때문에, 등록 후에는 게시글을 수정 및 삭제할 수 없습니다.
+                </BottomText>
+            </BottomBanner>
         </ProgramInfoContainer>
     );
 }
