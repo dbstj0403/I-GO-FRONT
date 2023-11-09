@@ -112,100 +112,91 @@ export default function App() {
             <div className="input_title">
               <span>* </span>기기명
             </div>
-            <div className="input_box">
-              <input
-                placeholder="ex. 갤럭시 Z플립 3"
-                onChange={(e) => {
-                  setModelName(e.target.value);
-                }}
-              />
-            </div>
+            <input className="input_box"
+              placeholder="ex. 갤럭시 Z플립 3"
+              onChange={(e) => {
+                setModelName(e.target.value);
+              }}
+            />
+
           </div>
           {/* 특이사항 입력 (선택)  */}
           <div style={{ display: "flex" }}>
             <div className="input_title">
               <span>* </span>특이사항
             </div>
-            <div className="input_box">
-              <span>
-                <textarea
-                  placeholder="ex. 블루투스 연결이 안 됨 / 액정 깨짐"
-                  onChange={(e) => {
-                    setRemarks(e.target.value);
-                  }}
-                />
-              </span>
-            </div>
+
+              <textarea className="text_box"
+                placeholder="ex. 블루투스 연결이 안 됨 / 액정 깨짐"
+                onChange={(e) => {
+                  setRemarks(e.target.value);
+                }}
+              />
+
           </div>
         </div>
       </div>
       <div className="dona_container" style={{ display: "flex" }}>
         <div className="deliver_info">
           보내는 분
-          <div className="round_container">
+          <div className="round_container_gray">
             <div style={{ display: "flex" }}>
               <div className="input_title">
                 <span>* </span>성명
               </div>
-              <div className="input_box">
-                <input
-                  placeholder="ex. 홍길동"
-                  onChange={(e) => {
-                    setSenderName(e.target.value);
-                  }}
-                />
-              </div>
+              <input className="input_box"
+                placeholder="ex. 홍길동"
+                onChange={(e) => {
+                  setSenderName(e.target.value);
+                }}
+              />
             </div>
             <div style={{ display: "flex" }}>
               <div className="input_title">
                 <span>* </span>전화
               </div>
-              <div className="input_box">
-                <input
-                  placeholder="ex. ex. 010-1234-5678"
-                  onChange={(e) => {
-                    setSenderPhone(e.target.value);
-                  }}
-                />
-              </div>
+              <input className="input_box"
+                placeholder="ex. ex. 010-1234-5678"
+                onChange={(e) => {
+                  setSenderPhone(e.target.value);
+                }}
+              />
             </div>
             <div style={{ display: "flex" }}>
               <div className="input_title">
                 <span>* </span>주소
               </div>
-              <div className="input_box">
-                <input
-                  placeholder="상세주소까지 입력"
-                  onChange={(e) => {
-                    setSenderAddress(e.target.value);
-                  }}
-                />
-              </div>
+              <input className="input_box"
+                placeholder="상세주소까지 입력"
+                onChange={(e) => {
+                  setSenderAddress(e.target.value);
+                }}
+              />
             </div>
             <div style={{ display: "flex" }}>
               <div className="input_title">내용물</div>
-              <div className="input_box">주의사항에 파손 체크 필수!</div>
+              <div className="non_input_box">주의사항에 파손 체크 필수!</div>
             </div>
           </div>
         </div>
         <div className="deliver_info">
           받는 분
-          <div className="round_container">
+          <div className="round_container_gray">
             <div style={{ display: "flex" }}>
               <div className="input_title">성명</div>
-              <div className="input_box">I-Go</div>
+              <div className="non_input_box">I-Go</div>
             </div>
             <div style={{ display: "flex" }}>
               <div className="input_title">전화</div>
-              <div className="input_box">02-XXXX-XXXX</div>
+              <div className="non_input_box">02-XXXX-XXXX</div>
             </div>
             <div style={{ display: "flex" }}>
               <div className="input_title">주소</div>
-              <div className="input_box">서울시 마포구 와우산로 94 608호</div>
+              <div className="non_input_box">서울시 마포구 와우산로 94 608호</div>
             </div>
             <div style={{ display: "flex" }}>
               <div className="input_title">비고</div>
-              <div className="input_box">-</div>
+              <div className="non_input_box">-</div>
             </div>
           </div>
         </div>
