@@ -9,3 +9,19 @@
     font-weight: 700;
     cursor: pointer;
 }
+
+@media screen and (min-width: 769px) and (max-width: 1400px) {
+    .return_btn {
+        width: 130px;
+        height: 60px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .return_btn {
+        width: 120px;
+        height: 55px;
+        font-size: 14px;
+    }
+}

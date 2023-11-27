@@ -44,3 +44,10 @@
     opacity: 0;
     transition: opacity 0.2s; 
   }
+
+  @media screen and (max-width: 1400px) {
+    .radio_label {
+      font-size: 12px;
+      margin-right: 10px;
+    }
+  }
