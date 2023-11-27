@@ -6,7 +6,6 @@
   flex-direction: row;
   justify-content: center;
   gap: 30px;
-  margin: 50px 50px;
 }
 
 .dona_direction {
@@ -33,7 +32,8 @@
   font-family: DM Sans;
   font-size: 50px;
   font-weight: bold;
-  line-height: 66px; /* 117.857% */
+  line-height: 66px;
+  /* 117.857% */
 }
 
 .dona_equip_radio {
@@ -51,7 +51,8 @@
   font-size: 18px;
   font-style: normal;
   font-weight: bold;
-  line-height: 18px; /* 100% */
+  line-height: 18px;
+  /* 100% */
 }
 
 .input_title span {
@@ -133,7 +134,8 @@
   font-family: DM Sans;
   font-size: 20px;
   font-weight: 500;
-  line-height: 30px; /* 150% */
+  line-height: 30px;
+  /* 150% */
 }
 
 .btn_container {
@@ -163,43 +165,44 @@
   .dona_home {
     padding: 30px 50px 80px 50px;
   }
-  
+
   .dona_direction {
     width: 500px;
     font-size: 14px;
     font-weight: 600;
     line-height: 30px;
   }
-  
+
   .dona_direction span {
     line-height: 50px;
     font-size: 28px;
   }
-  
+
   .dona_equip_radio {
     padding: 10px 0px 10px 0px;
   }
-  
+
   .input_title {
     color: var(--gray-5, #2c2c2c);
     width: 80px;
     padding: 20px 0px 10px 10px;
     font-size: 12px;
-    line-height: 12px; /* 100% */
+    line-height: 12px;
+    /* 100% */
   }
-  
+
   .input_title span {
     color: #c52f61;
     font-size: 18px;
   }
-  
+
   .input_box {
     padding: 10px 20px 10px 20px;
     width: 300px;
     height: 60px;
     font-size: 12px;
   }
-  
+
   .non_input_box {
     padding: 10px 20px 10px 20px;
     width: 300px;
@@ -207,7 +210,7 @@
     font-size: 12px;
     line-height: 40px;
   }
-  
+
   .text_box {
     padding: 10px 20px 10px 20px;
     width: 300px;
@@ -215,28 +218,28 @@
     font-size: 12px;
     line-height: 30px;
   }
-  
+
   .deliver_info {
     font-size: 18px;
     margin: 10px;
   }
-  
+
   .round_container_gray {
     gap: 20px;
     margin: 20px 0px 20px 0px;
     padding: 40px;
   }
-  
+
   .round_container_pink {
     gap: 20px;
     margin: 20px 0px 20px 0px;
     padding: 40px;
   }
-  
+
   .dona_text {
     font-size: 12px;
   }
-  
+
   .dona_btn {
     width: 150px;
     height: 60px;
@@ -252,79 +255,82 @@
   .dona_container {
     flex-direction: column;
   }
-  
+
   .dona_direction {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: normal;
     line-height: 25px;
   }
-  
+
   .dona_direction span {
     line-height: 50px;
     font-size: 24px;
   }
-  
+
   .dona_equip_radio {
     padding: 10px 0px 10px 0px;
   }
-  
+
   .input_title {
     color: var(--gray-5, #2c2c2c);
     width: 80px;
     padding: 20px 0px 10px 10px;
-    font-size: 12px;
-    line-height: 12px; /* 100% */
+    font-size: 10px;
+    line-height: 10px;
+    /* 100% */
   }
-  
+
   .input_title span {
     color: #c52f61;
     font-size: 18px;
   }
-  
+
   .input_box {
     padding: 10px 20px 10px 20px;
     width: 250px;
     height: 50px;
-    font-size: 12px;
+    font-size: 10px;
   }
-  
+
   .non_input_box {
     padding: 10px 20px 10px 20px;
     width: 250px;
     height: 50px;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 30px;
   }
-  
+
   .text_box {
     padding: 10px 20px 10px 20px;
     width: 250px;
     height: 100px;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 30px;
   }
-  
+
   .deliver_info {
     font-size: 16px;
     margin: 5px;
   }
-  
+
   .round_container_gray {
-    gap: 20px;
+    width: 350px;
+    gap: 15px;
     margin: 20px 0px 20px 0px;
-    padding: 40px;
+    padding: 30px;
   }
-  
+
   .round_container_pink {
-    gap: 20px;
+    width: 350px;
+    gap: 15px;
     margin: 20px 0px 20px 0px;
-    padding: 40px;
+    padding: 30px;
   }
-  
+
   .dona_text {
     font-size: 10px;
   }
-  
+
   .dona_btn {
     width: 130px;
     height: 55px;
