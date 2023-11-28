@@ -2,21 +2,50 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Chat from "../components/Chat";
 import ChatList from "../components/ChatLIst";
-import socket from "socket.io-client";
+import io from "socket.io-client";
+import socket from "../hooks/useSocket";
 
 function ChatPage() {
-  const [message, setMessage] = useState(""); // 메시지 내용 담기
-  const [messageList, setMessageList] = useState("");
+  const [user, setUser] = useState(null);
+  const [message, setMessage] = useState("");
+  const [messageList, setMessageList] = useState([]);
+  const [rooms, setRooms] = useState([]);
+  const roomName = ""; // 현재 메시지를 보내고자 하는 roomName rooms에서 가져오거나 라우팅 중에 params로 가져오면 될듯?
+
+  // 전송하고자 하는 메시지 서버에 전송
   const sendMessage = (event) => {
     event.preventDefault();
-    socket.emit("sendMessage", message);
+    socket.emit("sendMessage", message, roomName);
+    setMessage("");
   };
+
+  // 서버로부터
   useEffect(() => {
-    socket.on("receiveMessage", (message) => {
-      console.log(message);
-      setMessageList((prev) => prev.concat(message));
+    askUserName();
+    // 현재 속한 room 정보 가져오기
+    socket.on("rooms", (res) => {
+      setRooms(res);
     });
-  });
+    // 나눈 대화 메시지 목록 가져오기
+    socket.on("receiveMessage", (res) => {
+      console.log("Res", res);
+      setMessageList((prev) => prev.concat(res));
+    });
+  }, []);
+
+  const askUserName = () => {
+    const userName = prompt("당신의 이름을 입력하세요.");
+    socket.emit("login", userName, (res) => {
+      console.log("Res", res);
+      if (res?.ok) {
+        // 성공적으로 로그인하면 유저 데이터 state에 저장
+        setUser(res.data);
+      }
+    });
+    const id = ""; // room의 아이디
+    // 채팅방에 join 받아온 room 목록에서 연결
+    socket.emit("joinRoom", id);
+  };
   return (
     <>
       <Banner>
@@ -28,7 +57,13 @@ function ChatPage() {
       </Banner>
       <ChatContainer>
         <ChatList />
-        <Chat />
+        <Chat
+          message={message}
+          setMessage={setMessage}
+          sendMessage={sendMessage}
+          messageList={messageList}
+          user={user}
+        />
       </ChatContainer>
     </>
   );
