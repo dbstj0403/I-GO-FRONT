@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import point from "../img/point.png";
 import { FiMenu } from "react-icons/fi";
+import Dropdown from "./ProfileDropdown";
 
 
 export default function NavBar() {
@@ -32,11 +33,31 @@ export default function NavBar() {
     moveToPage("/");
   };
 
+  // 반응형 - mobile 햄버거바
   const [isToggled, setIsToggled] = useState(false);
 
   const toggleMenu = () => {
     setIsToggled((e) => !e);
   }
+
+  // 프로필 버튼 드롭다운 (마이페이지 / 로그아웃 중 선택)
+  const [view, setView] = useState(false);
+
+  {/** 
+  function Dropdown() {
+    return (
+      <DropDownContainer>
+        <DropDownMenu onClick={moveToMypageStudent}>
+          마이페이지
+        </DropDownMenu>
+        <DropDownMenu>
+          로그아웃
+
+        </DropDownMenu>
+      </DropDownContainer>
+    )
+  }
+  */}
 
   const PointBtn = styled.button`
     border-radius: 30px;
@@ -61,9 +82,31 @@ export default function NavBar() {
     right: 50px;
   `;
 
+  {/*
+  const DropDownContainer = styled.div`
+    width: auto;
+    margin: 10px;
+    padding: 5px;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.3);
+    font-size: 14px;
+    cursor: pointer;
+    @media screen and (max-width: 768px) {
+      font-size: 10px;
+    }
+    
+  `
+  
+  const DropDownMenu = styled.div`
+    padding: 10px;
+    &:hover {
+      background-color: lightgray;
+    }
+  `
+  */}
+
 
   return (
-    <div isToggled={isToggled}>
+    <div isToggled={isToggled} style={{ position: 'relative', zIndex: 10 }}>
       <div className="navBar" >
 
         {/* Mobile - 햄버거바 */}
@@ -105,15 +148,33 @@ export default function NavBar() {
               <img className="pointImg" src={point} alt="" style={{ paddingRight: "10px" }} object-fit="cover" ></img>
               {userData.point} P
             </PointBtn>
+            {/** 
             <ProfileBtn className="profilebtn" onClick={moveToMypageStudent}>
               <img src={userData.img} alt=""></img>학생 {userData.name}님
             </ProfileBtn>
+            */}
+
+            <ul style={{ display: "flex", justifyContent: "center" }}>
+              <ProfileBtn className="profilebtn" onClick={() => { setView(!view) }}>
+                <img src={userData.img} alt=""></img>학생 {userData.name}님
+              </ProfileBtn>
+              {view && <Dropdown user={userData.is_student} moveToMypageStudent={moveToMypageStudent} moveToMypageCarer={moveToMypageCarer} />}
+            </ul>
+
           </Container>
         ) : userData.is_carer ? (
           <Container>
+            {/*}
             <ProfileBtn onClick={moveToMypageCarer}>
-              <img src={userData.img} alt=""></img>관리자 {userData.admin_name}님
+              <img src={userData.img} alt=""></img>관리자 {userData.name}님
             </ProfileBtn>
+        */}
+            <ul style={{ display: "flex", justifyContent: "center" }}>
+              <ProfileBtn className="profilebtn" onClick={() => { setView(!view) }}>
+                <img src={userData.img} alt=""></img>학생 {userData.name}님
+              </ProfileBtn>
+              {view && <Dropdown user={userData.is_student} moveToMypageStudent={moveToMypageStudent} moveToMypageCarer={moveToMypageCarer} />}
+            </ul>
           </Container>
         ) : (
           <button className="loginbtn" onClick={moveToLogin}>

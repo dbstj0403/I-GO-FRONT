@@ -40,11 +40,11 @@ export default function LoginBox() {
    * 각 버튼 css style
    */
   const kakaoBtnStyle = {
-    width: "350px",
+    width: "300px",
     height: "48px",
     marginLeft: "0",
     borderRadius: "10px",
-    fontSize: "17px",
+    fontSize: "16px",
     fontWeight: "550",
     display: "flex",
     justifyContent: "center",
@@ -53,11 +53,11 @@ export default function LoginBox() {
     color: "black",
   };
   const googleBtnStyle = {
-    width: "350px",
+    width: "300px",
     height: "48px",
     marginLeft: "0",
     borderRadius: "10px",
-    fontSize: "17px",
+    fontSize: "16px",
     fontWeight: "550",
     display: "flex",
     justifyContent: "center",
@@ -65,11 +65,11 @@ export default function LoginBox() {
     color: "black",
   };
   const githubBtnStyle = {
-    width: "350px",
+    width: "300px",
     height: "48px",
     marginLeft: "0",
     borderRadius: "10px",
-    fontSize: "17px",
+    fontSize: "16px",
     fontWeight: "550",
     display: "flex",
     justifyContent: "center",
@@ -86,7 +86,7 @@ export default function LoginBox() {
               icon={RiKakaoTalkFill}
               activeStyle={{ background: "#FFDC37" }}
               align={"center"}
-              iconSize={"35px"}
+              iconSize={"30px"}
               iconColor={"black"}
               style={kakaoBtnStyle}
               onClick={handleKakaoLogin}
@@ -97,7 +97,7 @@ export default function LoginBox() {
           <div className="google">
             <GoogleLoginButton
               align={"center"}
-              iconSize={"35px"}
+              iconSize={"30px"}
               style={googleBtnStyle}
               onClick={handleGoogleLogin}
             >
@@ -107,7 +107,7 @@ export default function LoginBox() {
           <div className="github">
             <GithubLoginButton
               align={"center"}
-              iconSize={"35px"}
+              iconSize={"30px"}
               style={githubBtnStyle}
               onClick={handGithubleLogin}
             >

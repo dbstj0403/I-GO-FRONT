@@ -133,7 +133,10 @@
         margin-left: 50px;
         width: 140px;
     }
-    .loginbtn {
+    .loginbtn{
+        width: 80px;
+        height: 48px;
+        font-size: 14px;
         margin-right: 80px;
     }
     .pointbtn {
@@ -176,6 +179,13 @@
     }
     .logo {
         width: 100px;
+        margin: auto;
+    }
+    .loginbtn{
+        width: 70px;
+        height: 40px;
+        font-size: 12px;
+        margin-right: 20px;
     }
     .pointbtn {
         padding: 0px 10px 0px 10px;
