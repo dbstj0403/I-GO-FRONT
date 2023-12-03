@@ -9,7 +9,6 @@
 }
 
 .dona_direction {
-  width: 620px;
   white-space: nowrap;
   color: #717171;
   margin: 20px;
@@ -254,9 +253,11 @@
 
   .dona_container {
     flex-direction: column;
+    margin: 40px 0px 40px 0px;
   }
 
   .dona_direction {
+    margin: auto;
     font-size: 10px;
     font-weight: normal;
     line-height: 25px;
@@ -310,7 +311,7 @@
 
   .deliver_info {
     font-size: 16px;
-    margin: 5px;
+    margin: auto;
   }
 
   .round_container_gray {
@@ -321,9 +322,9 @@
   }
 
   .round_container_pink {
+    margin: auto;
     width: 350px;
     gap: 15px;
-    margin: 20px 0px 20px 0px;
     padding: 30px;
   }
 
