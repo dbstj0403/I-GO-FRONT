@@ -136,7 +136,7 @@ export default function NavBar() {
           </li>
           <li className="nav-item">
             <NavLink to="/donation" className="nav-menu">
-              기기 기부
+              기기 선물
             </NavLink>
           </li>
         </ul>
@@ -197,7 +197,7 @@ export default function NavBar() {
             </li>
             <li className="toggle-item">
               <NavLink to="/donation" className="toggle-menu">
-                기기 기부
+                기기 선물
               </NavLink>
             </li>
           </ul>

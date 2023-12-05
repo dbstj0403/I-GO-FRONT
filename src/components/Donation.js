@@ -1,17 +1,21 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../componentsCss/Donation.css";
 import axios from "axios";
 import RadioButton from "./RadioButton";
 import GoBackBtn from './GoBackBtn';
 
 export default function App() {
+  // 페이지 이동 
+  const moveToPage = useNavigate();
+
   // state 변수 선언
-  const [model_category, setModelCategory] = useState("smartphone"); // 모델 기종
+  const [model_category, setModelCategory] = useState("스마트폰"); // 모델 기종
   const [model_name, setModelName] = useState(""); // 모델 이름
   const [remarks, setRemarks] = useState(""); // 특이사항
   const [sender_name, setSenderName] = useState(""); // 기부자 이름
   const [sender_phone, setSenderPhone] = useState(""); // 기부자 연락처
-  const [sender_address, setSenderAddress] = useState(""); // 기부자 주소
+  const [sender_address, setSenderAddress] = useState({address: "", detail_address: "", zone_code: ""}); // 기부자 주소
 
   // 선물하기 버튼
   const submitDona = async () => {
@@ -26,8 +30,12 @@ export default function App() {
           sender_name: sender_name,
           sender_phone: sender_phone,
           sender_address: sender_address,
+          content: "잘 써주세용"
         });
       console.log(response);
+      alert("기기 선물이 완료되었습니다! 좋은 하루 보내세요!🥰");
+      moveToPage('/');
+      
     } catch {
       // 응답 (실패)
       console.log("Donation submit error!");
@@ -41,7 +49,7 @@ export default function App() {
       else if (
         sender_name === "" ||
         sender_phone === "" ||
-        sender_address === ""
+        sender_address.address === "" || sender_address.detail_address === "" || sender_address.zone_code === ""
       ) {
         alert("보내는 분 정보를 모두 입력해주세요!");
       }
@@ -84,29 +92,29 @@ export default function App() {
               <RadioButton
                 name="스마트폰"
                 id="1"
-                value="smartphone"
+                value="스마트폰"
                 onChange={(e) => {
                   setModelCategory(e.target.value);
                 }}
-                checked={model_category === "smartphone"}
+                checked={model_category === "스마트폰"}
               />
               <RadioButton
                 name="태블릿"
                 id="2"
-                value="tablet"
+                value="태블릿"
                 onChange={(e) => {
                   setModelCategory(e.target.value);
                 }}
-                checked={model_category === "tablet"}
+                checked={model_category === "태블릿"}
               />
               <RadioButton
                 name="노트북"
                 id="3"
-                value="notebook"
+                value="노트북"
                 onChange={(e) => {
                   setModelCategory(e.target.value);
                 }}
-                checked={model_category === "notebook"}
+                checked={model_category === "노트북"}
               />
             </div>
           </div>
@@ -172,7 +180,7 @@ export default function App() {
               <input className="input_box"
                 placeholder="상세주소까지 입력"
                 onChange={(e) => {
-                  setSenderAddress(e.target.value);
+                  setSenderAddress({address : e.target.value, detail_address: "-", zone_code: "-"});
                 }}
               />
             </div>
