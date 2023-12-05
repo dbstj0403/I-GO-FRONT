@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import point from "../img/point.png";
 import { useNavigate } from "react-router-dom";
-export default function TitleTable({ isStudent }) {
+export default function TitleTable({ isStudent, isCarer }) {
   const searchList = [];
   const PostContainer = styled.div`
     width: 1220px;
@@ -75,7 +75,7 @@ export default function TitleTable({ isStudent }) {
           ※ 모집/활동 시작일은 해당 월의 1일, 마감일은 해당 월의 마지막 일을
           의미합니다.
         </DateInfoText>
-        {!isStudent && (
+        {isCarer && (
           <RegisterProgramBtn onClick={moveToRegisterProgramPage}>
             프로그램 등록하기
           </RegisterProgramBtn>

@@ -8,11 +8,11 @@ import ProgramExample from "../components/ProgramExample";
 import { useSelector } from "react-redux";
 
 export default function ProgramPage() {
-  const [selectGu, setSelectGu] = useState("");
-  const [selectActivity, setSelectActivity] = useState("");
-  const [searchList, setSearchList] = useState([]);
-  const [onSearch, setOnsearch] = useState(false);
-  const { userData } = useSelector(({ user }) => user);
+  const [selectGu, setSelectGu] = useState("");  // 활동 지역 中 구 선택
+  const [selectActivity, setSelectActivity] = useState("");  // 활동 분야 선택
+  const [searchList, setSearchList] = useState([]);  
+  const [onSearch, setOnsearch] = useState(false);  // 검색버튼 클릭 여부
+  const { userData } = useSelector(({ user }) => user);  // user {student? carer?} 여부
 
   const search = async () => {
     setOnsearch(true);
@@ -69,6 +69,8 @@ export default function ProgramPage() {
   ];
   return (
     <Container>
+
+      {/* 페이지 타이틀 */}
       <TitleContainer>
         <BigTitle>디지털 교육 프로그램 목록</BigTitle>
         <SmallTitle>
@@ -76,7 +78,11 @@ export default function ProgramPage() {
           포인트를 적립하세요!
         </SmallTitle>
       </TitleContainer>
-      <SearchContainer isStudent={userData.is_student}>
+
+      {/* 프로그램 검색 박스 */}
+      <SearchContainer isCarer={userData.is_carer}>
+
+        {/* 활동 지역 검색 */}
         <SelectContainer>
           <SelectTitle>활동 지역</SelectTitle>
           <Select width="200px">
@@ -99,6 +105,8 @@ export default function ProgramPage() {
             ))}
           </Select>
         </SelectContainer>
+
+        {/* 활동 분야 검색 */}
         <SelectContainer>
           <SelectTitle>활동 분야</SelectTitle>
           <Select
@@ -114,11 +122,18 @@ export default function ProgramPage() {
             ))}
           </Select>
         </SelectContainer>
+
+        {/* 검색 버튼 */}
         <SearchBtn onClick={search}>검색</SearchBtn>
+
       </SearchContainer>
+
+      {/* 프로그램 목록 타이틀 및 프로그램 등록하기 버튼 */}
       {onSearch && (
-        <TitleTable searchList={searchList} isStudent={userData.is_student} />
+        <TitleTable searchList={searchList} isStudent={userData.is_student} isCarer={userData.is_carer} />
       )}
+
+      {/* 프로그램 목록 */}
       <ComponentContainer onSearch={onSearch}>
         {searchList.length !== 0
           ? searchList.map((item, idx) => (
@@ -126,7 +141,7 @@ export default function ProgramPage() {
             ))
           : null}
       </ComponentContainer>
-      {onSearch && <ProgramExample />}
+      <ProgramExample />
     </Container>
   );
 }
@@ -163,7 +178,7 @@ const SearchContainer = styled.div`
   height: 212px;
   border-radius: 30px;
   background-color: ${(props) =>
-    props.isStudent === true ? "#fdd888" : "#ADBBEC"};
+    props.isCarer === true ? "#ADBBEC" : "#fdd888"};
   margin-top: 20px;
   display: flex;
   flex-direction: column;
