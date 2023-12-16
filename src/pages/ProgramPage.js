@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 export default function ProgramPage() {
   const [selectGu, setSelectGu] = useState("");  // 활동 지역 中 구 선택
   const [selectActivity, setSelectActivity] = useState("");  // 활동 분야 선택
-  const [searchList, setSearchList] = useState([]);  
+  const [searchList, setSearchList] = useState([]);  // 프로그램 목록
   const [onSearch, setOnsearch] = useState(false);  // 검색버튼 클릭 여부
   const { userData } = useSelector(({ user }) => user);  // user {student? carer?} 여부
 
@@ -141,6 +141,8 @@ export default function ProgramPage() {
             ))
           : null}
       </ComponentContainer>
+
+      {/* 프로그램 분야 설명 */}
       <ProgramExample />
     </Container>
   );

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 
 function Dropdown({user, moveToMypageStudent, moveToMypageCarer}) {
@@ -27,13 +27,16 @@ function Dropdown({user, moveToMypageStudent, moveToMypageCarer}) {
       background-color: lightgray;
     }
   `
-  const movePage = useNavigate();
+  //const movePage = useNavigate();
 
   const logout = () => {
     localStorage.clear();
-    localStorage.removeItem("access-token");
-    localStorage.removeItem("refresh-token");
-    movePage('/');
+    //localStorage.removeItem("access-token");
+    //localStorage.removeItem("refresh-token");
+    //localStorage.removeItem("user-id");
+    //movePage('/');
+    window.location.replace("/");
+
 }
 
     return (

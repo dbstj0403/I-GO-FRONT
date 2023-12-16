@@ -171,7 +171,7 @@ export default function NavBar() {
         */}
             <ul style={{ display: "flex", justifyContent: "center" }}>
               <ProfileBtn className="profilebtn" onClick={() => { setView(!view) }}>
-                <img src={userData.img} alt=""></img>학생 {userData.name}님
+                <img src={userData.img} alt=""></img>보호자 {userData.adminName}님
               </ProfileBtn>
               {view && <Dropdown user={userData.is_student} moveToMypageStudent={moveToMypageStudent} moveToMypageCarer={moveToMypageCarer} />}
             </ul>
