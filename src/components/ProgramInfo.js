@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import point from '../img/point.png';
 import KakaoMap from "./KakaoMap";
-export default function ProgramInfo() {
+import GoBackBtn from './GoBackBtn';
+export default function ProgramInfo({ isCarer }) {
     const location = useLocation();
     //const searchList = location.state.searchList;
 
@@ -115,7 +116,7 @@ export default function ProgramInfo() {
     height: 67px;
     display: flex;
     margin-top: 20px;
-    justify-content: space-between;
+    justify-content: space-around;
     `
     const EnrollBtn = styled.button`
     width: 194px;
@@ -164,7 +165,9 @@ export default function ProgramInfo() {
         <ProgramInfoContainer>
             <TitleAndPointContainer>
                 <Title>aa</Title>
-                <PointBtn><img src={point} alt='' style={{ paddingRight: '10px' }}></img>300 P</PointBtn>
+                {isCarer ? null :
+                    <PointBtn><img src={point} alt='' style={{ paddingRight: '10px' }}></img>300 P</PointBtn>
+                }
             </TitleAndPointContainer>
             <InfoContainer>
                 <TextContainer>
@@ -220,8 +223,11 @@ export default function ProgramInfo() {
             </DetailInfoContainer>
             <KakaoMap />
             <BtnContainer>
-                <EnrollBtn>신청하기</EnrollBtn>
-                <BackToListBtn onClick={moveToSearchPage}>뒤로 가기</BackToListBtn>
+                {isCarer ? null :
+                    <EnrollBtn>신청하기</EnrollBtn>
+                }
+                {/*<BackToListBtn onClick={moveToSearchPage}>뒤로 가기</BackToListBtn>*/}
+                <GoBackBtn/>
             </BtnContainer>
             <BottomBanner>
                 <BottomText>
