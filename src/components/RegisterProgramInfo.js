@@ -31,35 +31,63 @@ export default function RegisterProgramInfo() {
     align-items: center;
   `;
     const TitleAndPointContainer = styled.div`
-    display: flex;
     width: 1008px;
+    display: flex;
     height: 54px;
-    justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     margin-top: 80px;
     span {
         color: #3A55B5;
         margin-right: 5px;
     }
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 720px;
+        height: 40px;
+        margin-top: 60px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 400px;
+        height: 30px;
+        margin-top: 40px;
+    }
+
   `;
     const TitleInput = styled.input`
-  background-color: #F5F5F5;
-  width: 644px;
-  height: 53px;
-  border-radius: 10px;
-  border: 0;
-  text-indent: 15px;
-  font-size: 24px;
-  line-height: 24px;
-  margin-right: 100px;
-  &:focus {
-    outline: none;
-  }
+    background-color: #F5F5F5;
+    width: 680px;
+    height: 53px;
+    border-radius: 10px;
+    border: 0;
+    text-indent: 15px;
+    font-size: 24px;
+    line-height: 24px;
+    margin-right: 100px;
+    &:focus {
+        outline: none;
+    }
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 450px;
+        font-size: 16px;
+        margin-right: 60px;
+    }
+    @media screen and (max-width: 768px) {
+        font-size: 12px;
+        width: 220px;
+        height: 40px;
+        margin-right: 30px;
+    }
   `
     const Title = styled.div`
     font-size: 24px;
     line-height: 24px;
     font-weight: 700;
+    margin-right: 10px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 768px) {
+        font-size: 12px;
+    }
   `;
     const PointBtn = styled.button`
     width: 143px;
@@ -72,6 +100,14 @@ export default function RegisterProgramInfo() {
     align-items: center;
     display: flex;
     justify-content: center;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 100px;
+        height: 40px;
+        font-size: 12px;
+    }
   `;
     const InfoContainer = styled.div`
     width: 1010px;
@@ -83,27 +119,60 @@ export default function RegisterProgramInfo() {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 720px;
+        height: 200px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 440px;
+        height: 140px;
+    }
   `;
     const TextContainer = styled.div`
     width: 910px;
     height: 38px;
     display: flex;
     margin: 10px;
+    font-size: 20px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 640px;
+        height: 30px;
+        font-size: 14px;
+        margin: 5px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 400px;
+        height: 20px;
+        font-size: 10px;
+        margin: 5px;
+    }
   `;
     const Text = styled.div`
     width: 455px;
     height: 38px;
     display: flex;
+    align-items: center;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 320px;
+        height: 28px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 200px;
+        height: 20px;
+    }
     span {
         padding-right: 10px;
     }
   `;
     const TextKind = styled.div`
     width: 125px;
-    height: 38px;
     color: #717171;
-    font-size: 20px;
-    line-height: 24px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 100px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 60px;
+    }
     span {
         color: #3A55B5;
         padding-right: 5px;
@@ -111,32 +180,51 @@ export default function RegisterProgramInfo() {
   `;
     const TextAbout = styled.div`
     width: 330px;
-    height: 38px;
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 700;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 220px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 140px;
+    }
     `
 
     const DetailInfoContainer = styled.div`
     width: 1008px;
-    height: 322px;
     border-radius: 10px;
     border: 1px solid #bfbfbf;
     margin-top: 20px;
     display: flex;
-    justify-content: center;
     align-items: flex-start;
-    padding: 40px;
+    padding: 40px 30px;
+    font-size: 20px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 720px;
+        font-size: 16px;
+        padding: 30px 40px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 440px;
+        font-size: 10px;
+        padding: 20px 20px;
+    }
   `;
 
     const DetailInfoInput = styled.textarea`
-    background-color: #fff;
-    width: 749px;
-    height: 235px;
-    border-radius: 10px;
-    border: 0;
+    width: 750px;
+    height: 240px;
+    line-height: 24px;
+    border: none;
     font-size: 20px;
-    line-height: 30px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 680px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 300px;
+        font-size: 10px;
+        line-height: 16px;
+    }
     &:focus {
       outline: none;
     }
@@ -150,6 +238,12 @@ export default function RegisterProgramInfo() {
     display: flex;
     margin-top: 20px;
     justify-content: space-between;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 300px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 220px;
+    }
     `
     const EnrollBtn = styled.button`
     width: 194px;
@@ -162,28 +256,51 @@ export default function RegisterProgramInfo() {
     font-weight: 700;
     box-shadow: 5px 5px 5px #CCCCCC;
     cursor: pointer;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 130px;
+        height: 60px;
+        font-size: 16px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 95px;
+        height: 40px;
+        font-size: 12px;
+    }
     `
     const BottomBanner = styled.div`
     width: 1010px;
-    height: 165px;
     border-radius: 10px;
     background-color: #F5F5F5;
     margin-top: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding: 30px 40px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 720px;
+        padding: 20px 40px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 400px;
+        padding: 15px 20px;
+    }
     `
     const BottomText = styled.div`
     font-size: 16px;
-    line-height: 16px;
     color: #2C2C2C;
     margin: 10px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        font-size: 12px;
+        margin: 5px;
+    }
+    @media screen and (max-width: 768px) {
+        font-size: 10px;
+        margin: 5px;
+    }
     `
 
-    const GreyInput = styled.input`
-    width: ${props => props.width};
+    const GreyInput1 = styled.input`
+    width: 67px;
     height: 38px;
     border-radius: 10px;
     background-color: #F5F5F5;
@@ -194,19 +311,58 @@ export default function RegisterProgramInfo() {
     line-height: 24px;
     &:focus {
         outline: none;
-    }`
+    }
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        font-size: 14px;
+        height: 34px;
+        width: 45px;
+        text-indent: 5px;
+    }
+    @media screen and (max-width: 768px) {
+        font-size: 10px;
+        width: 30px;
+        height: 25px;
+        text-indent: 3px;
+    }
+    `
+    const GreyInput2 = styled.input`
+    width: 41px;
+    height: 38px;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+    border: 0;
+    margin-right: 5px;
+    text-indent: 10px;
+    font-size: 16px;
+    line-height: 24px;
+    &:focus {
+        outline: none;
+    }
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        font-size: 14px;
+        height: 34px;
+        width: 35px;
+        text-indent: 5px;
+    }
+    @media screen and (max-width: 768px) {
+        font-size: 10px;
+        width: 20px;
+        height: 25px;
+        text-indent: 3px;
+    }
+    `
     const GreyInputContainer = styled.div`
     display: flex;
-    width: 273px;
-    height: 38px;
-    align-items: baseline;`
+    align-items: baseline;
+    `
     const Select = styled.select`
     border-radius: 15px;
     font-size: 16px;
     text-indent: 5px;
     line-height: 16px;
     border: 0;
-    width: ${(props) => props.width};
+    width: 280px;
+    height: 38px;
     padding-left: 10px;
     appearance: none;
     background: url("${arrow}") no-repeat right center;
@@ -215,6 +371,18 @@ export default function RegisterProgramInfo() {
     border: 1px solid black;: 
     &:focus {
     outline: none;
+    }
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        font-size: 14px;
+        width: 180px;
+        height: 34px;
+        padding-left: 5px;
+    }
+    @media screen and (max-width: 768px) {
+        font-size: 10px;
+        width: 110px;
+        height: 25px;
+        padding-left: 5px;
     }
     `;
     const Span = styled.div`
@@ -237,20 +405,20 @@ export default function RegisterProgramInfo() {
                     <Text>
                         <TextKind><span>*</span>모집기간</TextKind>
                         <GreyInputContainer>
-                            <GreyInput width='67px' placeholder='2023'></GreyInput>
+                            <GreyInput1 placeholder='2023'></GreyInput1>
                             .
-                            <GreyInput width='41px' placeholder='07'></GreyInput>
+                            <GreyInput2 placeholder='07'></GreyInput2>
                             ~
-                            <GreyInput width='67px' placeholder='2023'></GreyInput>
+                            <GreyInput1 placeholder='2023'></GreyInput1>
                             .
-                            <GreyInput width='41px' placeholder='08'></GreyInput>
+                            <GreyInput2 placeholder='08'></GreyInput2>
                         </GreyInputContainer>
                     </Text>
                 </TextContainer>
                 <TextContainer>
                     <Text>
                         <TextKind><span>*</span>활동 분야</TextKind>
-                        <Select width='281px'>
+                        <Select>
                             <option value='스마트폰 사용법'>스마트폰 사용법</option>
                             <option value='SNS 활용법'>SNS 활용법</option>
                             <option value='유튜브 활용법'>유튜브 활용법</option>
@@ -259,7 +427,7 @@ export default function RegisterProgramInfo() {
                     </Text>
                     <Text>
                         <TextKind><span>*</span>모집인원</TextKind>
-                        <GreyInput width='67px'></GreyInput>
+                        <GreyInput1></GreyInput1>
                         <Span>명</Span>
                     </Text>
                 </TextContainer>
@@ -267,13 +435,13 @@ export default function RegisterProgramInfo() {
                     <Text>
                         <TextKind><span>*</span>활동기간</TextKind>
                         <GreyInputContainer>
-                            <GreyInput width='67px' placeholder='2023'></GreyInput>
+                            <GreyInput1 placeholder='2023'></GreyInput1>
                             .
-                            <GreyInput width='41px' placeholder='09'></GreyInput>
+                            <GreyInput2 placeholder='09'></GreyInput2>
                             ~
-                            <GreyInput width='67px' placeholder='2023'></GreyInput>
+                            <GreyInput1 placeholder='2023'></GreyInput1>
                             .
-                            <GreyInput width='41px' placeholder='12'></GreyInput>
+                            <GreyInput2 placeholder='12'></GreyInput2>
                         </GreyInputContainer>
                     </Text>
                     <Text>

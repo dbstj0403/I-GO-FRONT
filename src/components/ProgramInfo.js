@@ -196,7 +196,13 @@ export default function ProgramInfo({ isCarer }) {
     height: 67px;
     display: flex;
     margin-top: 20px;
-    justify-content: space-around;
+    justify-content: space-between;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 300px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 220px;
+    }
     `
     const EnrollBtn = styled.button`
     width: 194px;

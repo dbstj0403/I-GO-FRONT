@@ -16,17 +16,40 @@ export default function RegisterProgramPage() {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    height: 140px;
+  }
+  @media screen and (max-width: 768px) {
+    height: 120px;
+  }
   `
   const BannerTitle = styled.div`
-  font-sizE: 40px;
+  font-size: 40px;
   line-height: 40px;
   font-weight: 700;
   margin-bottom: 15px;
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 28px;
+    line-height: 28px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+    line-height: 24px;
+  }
   `
   const BannerText = styled.div`
-  font-sizE: 16px;
+  font-size: 16px;
   line-height: 30px;
   color: #717171;
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 14px;
+    line-height: 14px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 300px;
+    font-size: 12px;
+    line-height: 12px;
+  }
   `
  
   return (
