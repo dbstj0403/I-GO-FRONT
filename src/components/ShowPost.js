@@ -10,7 +10,7 @@ export default function ShowPost({ searchList }) {
   const Container = styled.div`
     width: 1220px;
     height: 68px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
     align-items: center;
     display: flex;
@@ -34,7 +34,7 @@ export default function ShowPost({ searchList }) {
   const TableTitle1 = styled.div`
     width: 459px;
     height: 40px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
     align-items: center;
     display: flex;
@@ -54,9 +54,9 @@ export default function ShowPost({ searchList }) {
     }
   `;
   const TableTitle2 = styled.div`
-    width: 152px;
+    width: 160px;
     height: 40px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
     align-items: center;
     display: flex;
@@ -78,14 +78,14 @@ export default function ShowPost({ searchList }) {
     }
 `;
   const IsApplied = styled.div`
-    width: 153px;
+    width: 121px;
     height: 40px;
     color: ${searchList.activity_status === "before"
       ? "black"
       : searchList.activity_status === "now"
       ? "#2DAB51"
       : "#D23838"};
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
     align-items: center;
     display: flex;

@@ -127,6 +127,14 @@ export default function KakaoMap() {
     height: 400px;
     margin: 20px 20px;
     border-radius: 10px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+      width: 720px;
+      height: 360px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 400px;
+        height: 200px;
+    }
   `
   return <Map id="map" ></Map>;
 }

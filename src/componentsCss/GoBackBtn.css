@@ -20,8 +20,8 @@
 
 @media screen and (max-width: 768px) {
     .return_btn {
-        width: 120px;
-        height: 55px;
-        font-size: 14px;
+        width: 95px;
+        height: 40px;
+        font-size: 12px;
     }
 }

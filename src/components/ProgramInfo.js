@@ -25,27 +25,49 @@ export default function ProgramInfo({ isCarer }) {
         }
     }*/
     const ProgramInfoContainer = styled.div`
+    width: 1008px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 720px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 400px;
+    }
   `;
     const TitleAndPointContainer = styled.div`
-    display: flex;
     width: 1008px;
+    display: flex;
     height: 54px;
-    justify-content: space-between;
     align-items: baseline;
     margin-top: 80px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 720px;
+        height: 40px;
+        margin-top: 60px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 400px;
+        height: 30px;
+        margin-top: 40px;
+    }
   `;
     const Title = styled.div`
     font-size: 24px;
     line-height: 24px;
     font-weight: 700;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 768px) {
+        font-size: 12px;
+    }
   `;
     const PointBtn = styled.button`
     width: 143px;
-    height: 53px;
     border-radius: 30px;
     background-color: white;
     border: 1px solid #cccccc;
@@ -54,6 +76,14 @@ export default function ProgramInfo({ isCarer }) {
     align-items: center;
     display: flex;
     justify-content: center;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        font-size: 16px;
+        line-height: 16px;
+    }
+    @media screen and (max-width: 768px) {
+        font-size: 12px;
+        line-height: 12px;
+    }
   `;
     const InfoContainer = styled.div`
     width: 1010px;
@@ -65,50 +95,100 @@ export default function ProgramInfo({ isCarer }) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 720px;
+        height: 200px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 400px;
+        height: 140px;
+    }
   `;
     const TextContainer = styled.div`
     width: 910px;
     height: 38px;
     display: flex;
     margin: 10px;
+    font-size: 20px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 600px;
+        height: 30px;
+        font-size: 14px;
+        margin: 5px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 320px;
+        height: 20px;
+        font-size: 10px;
+        margin: 5px;
+    }
   `;
     const Text = styled.div`
     width: 455px;
     height: 38px;
     display: flex;
+    align-items: center;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 340px;
+        height: 28px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 160px;
+        height: 20px;
+    }
   `;
     const TextKind = styled.div`
     width: 125px;
-    height: 38px;
     color: #717171;
-    font-size: 20px;
-    line-height: 24px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 100px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 60px;
+    }
   `;
     const TextAbout = styled.div`
     width: 330px;
-    height: 38px;
-    font-size: 20px;
-    line-height: 24px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 240px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 100px;
+    }
     `
 
     const DetailInfoContainer = styled.div`
     width: 1008px;
-    height: 322px;
     border-radius: 10px;
     border: 1px solid #bfbfbf;
     margin-top: 20px;
     display: flex;
-    justify-content: center;
     align-items: flex-start;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding: 40px 50px;
+    font-size: 20px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 720px;
+        font-size: 16px;
+        padding: 30px 60px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 400px;
+        font-size: 10px;
+        padding: 20px 40px;
+    }
   `;
 
     const DetailInfoText = styled.div`
     width: 750px;
-    height; 180px;
-    font-size: 20px;
     line-height: 24px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 680px;
+        line-height: 20px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 300px;
+        line-height: 16px;
+    }
     `;
 
     const BtnContainer = styled.div`
@@ -129,7 +209,19 @@ export default function ProgramInfo({ isCarer }) {
     font-weight: 700;
     box-shadow: 5px 5px 5px #CCCCCC;
     cursor: pointer;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 130px;
+        height: 60px;
+        font-size: 16px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 95px;
+        height: 40px;
+        font-size: 12px;
+    }
     `
+    
+    {/*
     const BackToListBtn = styled.button`
     width: 150px;
     height: 67px;
@@ -142,23 +234,39 @@ export default function ProgramInfo({ isCarer }) {
     box-shadow: 5px 5px 5px #CCCCCC;
     cursor: pointer;
     `
+    */}
+
     const BottomBanner = styled.div`
     width: 1010px;
-    height: 165px;
     border-radius: 10px;
     background-color: #F5F5F5;
     margin-top: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding: 30px 40px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        width: 720px;
+        padding: 20px 40px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 400px;
+        padding: 15px 20px;
+    }
+    
     `
     const BottomText = styled.div`
     font-size: 16px;
-    line-height: 16px;
     color: #2C2C2C;
     margin: 10px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+        font-size: 12px;
+        margin: 5px;
+    }
+    @media screen and (max-width: 768px) {
+        font-size: 10px;
+        margin: 5px;
+    }
     `
 
     return (
@@ -227,7 +335,7 @@ export default function ProgramInfo({ isCarer }) {
                     <EnrollBtn>신청하기</EnrollBtn>
                 }
                 {/*<BackToListBtn onClick={moveToSearchPage}>뒤로 가기</BackToListBtn>*/}
-                <GoBackBtn/>
+                <GoBackBtn />
             </BtnContainer>
             <BottomBanner>
                 <BottomText>

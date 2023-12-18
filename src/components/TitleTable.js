@@ -101,13 +101,13 @@ export default function TitleTable({ isStudent, isCarer }) {
 
  
       <Table>
-        <TableTitle width="153px">모집 여부</TableTitle>
+        <TableTitle width="121px">모집 여부</TableTitle>
         <TableTitle width="459px">모집 제목</TableTitle>
-        <TableTitle width="152px">활동 분야</TableTitle>
-        <TableTitle width="152px">요양원</TableTitle>
-        <TableTitle width="152px">활동 기간</TableTitle>
-        <TableTitle width="152px">
-          <img src={point} alt=""></img>포인트
+        <TableTitle width="160px">활동 분야</TableTitle>
+        <TableTitle width="160px">요양원</TableTitle>
+        <TableTitle width="160px">활동 기간</TableTitle>
+        <TableTitle width="160px">
+          <img src={point} alt="" style={{paddingRight:"5px"}}></img> 포인트
         </TableTitle>
       </Table>
 
