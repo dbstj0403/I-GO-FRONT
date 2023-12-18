@@ -116,7 +116,7 @@
     cursor: pointer;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1400px) {
+@media screen and (min-width: 769px) and (max-width: 1200px) {
     .intro-container {
         padding: 30px 30px 60px 30px;
         min-height: 50vh;

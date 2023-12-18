@@ -160,7 +160,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1400px) {
+@media screen and (min-width: 769px) and (max-width: 1200px) {
   .dona_home {
     padding: 30px 50px 80px 50px;
   }

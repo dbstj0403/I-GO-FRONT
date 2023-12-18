@@ -10,7 +10,7 @@
     cursor: pointer;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1400px) {
+@media screen and (min-width: 769px) and (max-width: 1200px) {
     .return_btn {
         width: 130px;
         height: 60px;
