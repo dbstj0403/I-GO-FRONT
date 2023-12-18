@@ -21,7 +21,7 @@ function Chat({
         <form
           onSubmit={sendMessage}
           onKeyDown={(e) => {
-            if (e.key === "Enter") sendMessage();
+            if (e.key === "Enter") sendMessage(e);
           }}
         >
           <InputField

@@ -6,7 +6,7 @@ function MessageBox({ messageList, user }) {
       {messageList.map((message, index) => {
         return (
           <Container key={index}>
-            {message.user.name === user.userName ? (
+            {message.senderName === user.userName ? (
               <Mymessage>{message.message}</Mymessage>
             ) : (
               <OtherMessage>{message.message}</OtherMessage>
