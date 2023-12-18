@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import img from "../img/chatHeaderImg.png";
+import MessageBox from "./MessageBox";
 function Chat({
   message,
   setMessage,
@@ -15,14 +15,15 @@ function Chat({
         <RoomTitle>{roomName}</RoomTitle>
       </ChatHeader>
       <ChatBox>
-        <div>
-          {messageList.map((message, index) => {
-            return <div key={index}>{message}</div>;
-          })}
-        </div>
+        <MessageBox messageList={messageList} user={user} />
       </ChatBox>
       <MessageContainer messageList={messageList} user={user}>
-        <form onSubmit={sendMessage}>
+        <form
+          onSubmit={sendMessage}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") sendMessage();
+          }}
+        >
           <InputField
             placeholder="메시지를 입력해 주세요."
             onChange={(e) => setMessage(e.target.value)}
@@ -85,7 +86,7 @@ const InputField = styled.textarea`
   height: 100px;
   font-size: 15px;
   padding-top: 10px;
-  text-indent: 15px;
+  padding-left: 15px;
   border: none;
   resize: none;
   &:focus {

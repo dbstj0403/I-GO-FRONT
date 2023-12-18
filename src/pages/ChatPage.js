@@ -42,7 +42,8 @@ function ChatPage() {
       setRoomName(roomName);
       if (res?.ok) {
         // 성공적으로 로그인하면 유저 데이터 state에 저장
-        setUser(res.data);
+        console.log("유저 정보 저장!");
+        setUser(res);
       } else {
         alert("접속에 실패했습니다. 다시 시도해 주세요.");
         window.location.reload();
