@@ -6,16 +6,17 @@ import io from "socket.io-client";
 import socket from "../hooks/useSocket";
 
 function ChatPage() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // userName, roomName 저장
   const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   const [rooms, setRooms] = useState([]);
-  const roomName = ""; // 현재 메시지를 보내고자 하는 roomName rooms에서 가져오거나 라우팅 중에 params로 가져오면 될듯?
+  const [roomName, setRoomName] = useState("");
+  // const roomName = ""; // 현재 메시지를 보내고자 하는 roomName rooms에서 가져오거나 라우팅 중에 params로 가져오면 될듯?
 
   // 전송하고자 하는 메시지 서버에 전송
   const sendMessage = (event) => {
     event.preventDefault();
-    socket.emit("sendMessage", message, roomName);
+    socket.emit("sendMessage", message, user.userName, user.roomName);
     setMessage("");
   };
 
@@ -26,7 +27,7 @@ function ChatPage() {
     socket.on("rooms", (res) => {
       setRooms(res);
     });
-    // 나눈 대화 메시지 목록 가져오기
+    // 나눈 대화 메시지 목록 가져오기 & 실시간 메시지 수신
     socket.on("receiveMessage", (res) => {
       console.log("Res", res);
       setMessageList((prev) => prev.concat(res));
@@ -34,17 +35,23 @@ function ChatPage() {
   }, []);
 
   const askUserName = () => {
-    const userName = prompt("당신의 이름을 입력하세요.");
-    socket.emit("login", userName, (res) => {
-      console.log("Res", res);
+    const userName = prompt("이름을 입력해 주세요!");
+    const roomName = prompt("접속할 채팅방 이름을 입력해 주세요!");
+    socket.emit("joinRoom", userName, roomName, (res) => {
+      console.log("login 완료!", res);
+      setRoomName(roomName);
       if (res?.ok) {
         // 성공적으로 로그인하면 유저 데이터 state에 저장
         setUser(res.data);
+      } else {
+        alert("접속에 실패했습니다. 다시 시도해 주세요.");
+        window.location.reload();
       }
     });
-    const id = ""; // room의 아이디
-    // 채팅방에 join 받아온 room 목록에서 연결
-    socket.emit("joinRoom", id);
+
+    //   const id = ""; // room의 아이디
+    //   // 채팅방에 join 받아온 room 목록에서 연결
+    //   socket.emit("joinRoom", id);
   };
   return (
     <>
@@ -63,6 +70,7 @@ function ChatPage() {
           sendMessage={sendMessage}
           messageList={messageList}
           user={user}
+          roomName={roomName}
         />
       </ChatContainer>
     </>

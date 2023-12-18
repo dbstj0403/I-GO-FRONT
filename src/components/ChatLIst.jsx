@@ -2,7 +2,7 @@ import styled from "styled-components";
 function ChatList() {
   return (
     <Container>
-      <h1>채팅방 리스트</h1>
+      <h3>Chatting Room List</h3>
       <ChatListBox />
     </Container>
   );
@@ -13,10 +13,12 @@ export default ChatList;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
+  width: 40%;
+  height: 100%;
+  border-bottom: solid 3px rgba(245, 245, 245, 1);
+  min-height: 717px;
 `;
 const ChatListBox = styled.div`
-  width: 500px;
-  height: 400px;
-  border: solid 2px;
+  width: 433px;
+  height: 100px;
 `;

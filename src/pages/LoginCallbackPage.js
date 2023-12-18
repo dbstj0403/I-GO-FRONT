@@ -52,7 +52,7 @@ export default function LoginCallbackPage() {
           Authorization: `Bearer ${localStorage.getItem("access-token")}`,
         },
       });
-      localStorage.setItem('user-id', response.data.id);
+      localStorage.setItem("user-id", response.data.id);
       //이걸 리덕스에 dispatch하기
       const user = response.data;
       const newUser = {

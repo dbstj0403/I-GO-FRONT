@@ -9,7 +9,7 @@ export default function LoginBox() {
    * 카카오 로그인 관련 변수 및 AUTH URL
    */
   const KAKAO_REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
-  const KAKAO_REDIRECT_URI = "http://www.igoofficial.com/loginCallback"; // 리다이렉션 URI 협의 필요
+  const KAKAO_REDIRECT_URI = "http://localhost:3000/loginCallback"; // 리다이렉션 URI 협의 필요
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code&scope=account_email`;
   const handleKakaoLogin = () => {
     localStorage.setItem("login-provider", "kakao");

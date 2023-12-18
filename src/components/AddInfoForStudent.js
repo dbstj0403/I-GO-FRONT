@@ -177,20 +177,22 @@ const Text = styled.div`
   font-weight: 700;
 `;
 const Input = styled.input`
-    border-radius: 30px;
-    background-color: #F5F5F5;
-    width: ${(props) => props.width};
-    height: 72px;
-    border: 0;
-    margin-top: 15px;
-    text-indent: 20px;
-    Input:: placeholder: 18px;
-    font-size: 18px;
-    line-height: 18px;
-    &:focus {
-        outline: 2px solid black;
-    }
-    `;
+  border-radius: 30px;
+  background-color: #f5f5f5;
+  width: ${(props) => props.width};
+  height: 72px;
+  border: 0;
+  margin-top: 15px;
+  text-indent: 20px;
+  font-size: 18px;
+  line-height: 18px;
+  &:focus {
+    outline: 2px solid black;
+  }
+  &::placeholder {
+    font: 18px;
+  }
+`;
 const Container = styled.div`
   margin-top: 24px;
   display: flex;
