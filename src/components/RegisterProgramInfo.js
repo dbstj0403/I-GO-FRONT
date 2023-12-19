@@ -2,11 +2,47 @@ import styled from 'styled-components';
 import point from '../img/point.png';
 import axios from 'axios';
 import arrow from '../img/arrow.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import GoBackBtn from './GoBackBtn';
 import KakaoMap from './KakaoMap';
+import { useSelector } from 'react-redux';
 
 export default function RegisterProgramInfo() {
+
+    const [profile, setProfile] = useState();
+    const [facility_name, setFacilityName] = useState("");
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+
+
+    const getUserProfile = async () => {
+        try {
+            const response = await axios.get(
+                "http://api.igoofficial.com/accounts/",
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+                    },
+                }
+            )
+            setProfile(response.data.profile);
+            setFacilityName(response.data.profile.facility_name);
+            setAddress(response.data.profile.address.address);
+            setPhone(response.data.profile.phone);
+            setEmail(response.data.profile.email);
+            console.log("profile:", profile);
+        }
+        catch (e) {
+            alert("Get User information error!")
+        }
+    }
+
+    useEffect(() => {
+        getUserProfile(0);
+    }, []);
+
+    /*
     const [InfoList, setInfoList] = useState({});
     const [facilityName, setFacilityName] = useState('');
     const getFacilityName = async () => {
@@ -24,383 +60,24 @@ export default function RegisterProgramInfo() {
             console.log('get facility name error!')
         }
     }
-    const ProgramInfoContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  `;
-    const TitleAndPointContainer = styled.div`
-    width: 1008px;
-    display: flex;
-    height: 54px;
-    align-items: center;
-    margin-top: 80px;
-    span {
-        color: #3A55B5;
-        margin-right: 5px;
-    }
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 720px;
-        height: 40px;
-        margin-top: 60px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 400px;
-        height: 30px;
-        margin-top: 40px;
-    }
+    */
 
-  `;
-    const TitleInput = styled.input`
-    background-color: #F5F5F5;
-    width: 680px;
-    height: 53px;
-    border-radius: 10px;
-    border: 0;
-    text-indent: 15px;
-    font-size: 24px;
-    line-height: 24px;
-    margin-right: 100px;
-    &:focus {
-        outline: none;
-    }
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 450px;
-        font-size: 16px;
-        margin-right: 60px;
-    }
-    @media screen and (max-width: 768px) {
-        font-size: 12px;
-        width: 220px;
-        height: 40px;
-        margin-right: 30px;
-    }
-  `
-    const Title = styled.div`
-    font-size: 24px;
-    line-height: 24px;
-    font-weight: 700;
-    margin-right: 10px;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        font-size: 16px;
-    }
-    @media screen and (max-width: 768px) {
-        font-size: 12px;
-    }
-  `;
-    const PointBtn = styled.button`
-    width: 143px;
-    height: 53px;
-    border-radius: 30px;
-    background-color: white;
-    border: 1px solid #cccccc;
-    font-size: 18px;
-    line-height: 18px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        font-size: 16px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 100px;
-        height: 40px;
-        font-size: 12px;
-    }
-  `;
-    const InfoContainer = styled.div`
-    width: 1010px;
-    height: 286px;
-    border-radius: 10px;
-    border: 1px solid #bfbfbf;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 720px;
-        height: 200px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 440px;
-        height: 140px;
-    }
-  `;
-    const TextContainer = styled.div`
-    width: 910px;
-    height: 38px;
-    display: flex;
-    margin: 10px;
-    font-size: 20px;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 640px;
-        height: 30px;
-        font-size: 14px;
-        margin: 5px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 400px;
-        height: 20px;
-        font-size: 10px;
-        margin: 5px;
-    }
-  `;
-    const Text = styled.div`
-    width: 455px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 320px;
-        height: 28px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 200px;
-        height: 20px;
-    }
-    span {
-        padding-right: 10px;
-    }
-  `;
-    const TextKind = styled.div`
-    width: 125px;
-    color: #717171;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 100px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 60px;
-    }
-    span {
-        color: #3A55B5;
-        padding-right: 5px;
-    }
-  `;
-    const TextAbout = styled.div`
-    width: 330px;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 220px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 140px;
-    }
-    `
 
-    const DetailInfoContainer = styled.div`
-    width: 1008px;
-    border-radius: 10px;
-    border: 1px solid #bfbfbf;
-    margin-top: 20px;
-    display: flex;
-    align-items: flex-start;
-    padding: 40px 30px;
-    font-size: 20px;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 720px;
-        font-size: 16px;
-        padding: 30px 40px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 440px;
-        font-size: 10px;
-        padding: 20px 20px;
-    }
-  `;
-
-    const DetailInfoInput = styled.textarea`
-    width: 750px;
-    height: 240px;
-    line-height: 24px;
-    border: none;
-    font-size: 20px;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 680px;
-        font-size: 16px;
-        line-height: 20px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 300px;
-        font-size: 10px;
-        line-height: 16px;
-    }
-    &:focus {
-      outline: none;
-    }
-    resize: none;
-    font-family: DM Sans;
-    `
-
-    const BtnContainer = styled.div`
-    width: 378px;
-    height: 67px;
-    display: flex;
-    margin-top: 20px;
-    justify-content: space-between;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 300px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 220px;
-    }
-    `
-    const EnrollBtn = styled.button`
-    width: 194px;
-    height: 67px;
-    border-radius: 30px;
-    border: 0;
-    background-color: #ADBBEC;
-    font-size: 20px;
-    line-height: 20px;
-    font-weight: 700;
-    box-shadow: 5px 5px 5px #CCCCCC;
-    cursor: pointer;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 130px;
-        height: 60px;
-        font-size: 16px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 95px;
-        height: 40px;
-        font-size: 12px;
-    }
-    `
-    const BottomBanner = styled.div`
-    width: 1010px;
-    border-radius: 10px;
-    background-color: #F5F5F5;
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 30px 40px;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 720px;
-        padding: 20px 40px;
-    }
-    @media screen and (max-width: 768px) {
-        width: 400px;
-        padding: 15px 20px;
-    }
-    `
-    const BottomText = styled.div`
-    font-size: 16px;
-    color: #2C2C2C;
-    margin: 10px;
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        font-size: 12px;
-        margin: 5px;
-    }
-    @media screen and (max-width: 768px) {
-        font-size: 10px;
-        margin: 5px;
-    }
-    `
-
-    const GreyInput1 = styled.input`
-    width: 67px;
-    height: 38px;
-    border-radius: 10px;
-    background-color: #F5F5F5;
-    border: 0;
-    margin-right: 5px;
-    text-indent: 10px;
-    font-size: 16px;
-    line-height: 24px;
-    &:focus {
-        outline: none;
-    }
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        font-size: 14px;
-        height: 34px;
-        width: 45px;
-        text-indent: 5px;
-    }
-    @media screen and (max-width: 768px) {
-        font-size: 10px;
-        width: 30px;
-        height: 25px;
-        text-indent: 3px;
-    }
-    `
-    const GreyInput2 = styled.input`
-    width: 41px;
-    height: 38px;
-    border-radius: 10px;
-    background-color: #F5F5F5;
-    border: 0;
-    margin-right: 5px;
-    text-indent: 10px;
-    font-size: 16px;
-    line-height: 24px;
-    &:focus {
-        outline: none;
-    }
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        font-size: 14px;
-        height: 34px;
-        width: 35px;
-        text-indent: 5px;
-    }
-    @media screen and (max-width: 768px) {
-        font-size: 10px;
-        width: 20px;
-        height: 25px;
-        text-indent: 3px;
-    }
-    `
-    const GreyInputContainer = styled.div`
-    display: flex;
-    align-items: baseline;
-    `
-    const Select = styled.select`
-    border-radius: 15px;
-    font-size: 16px;
-    text-indent: 5px;
-    line-height: 16px;
-    border: 0;
-    width: 280px;
-    height: 38px;
-    padding-left: 10px;
-    appearance: none;
-    background: url("${arrow}") no-repeat right center;
-    background-size: 40px;
-    background-color: white;
-    border: 1px solid black;: 
-    &:focus {
-    outline: none;
-    }
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-        font-size: 14px;
-        width: 180px;
-        height: 34px;
-        padding-left: 5px;
-    }
-    @media screen and (max-width: 768px) {
-        font-size: 10px;
-        width: 110px;
-        height: 25px;
-        padding-left: 5px;
-    }
-    `;
-    const Span = styled.div`
-    width: 28px;
-    height: 38px;
-    line-height: 38px;`
     return (
         <ProgramInfoContainer>
             <TitleAndPointContainer>
                 <Title><span>*</span>제목</Title>
                 <TitleInput placeholder='제목을 입력하세요. (15자 이내)' />
-                <PointBtn><img src={point} alt='' style={{ paddingRight: '10px' }}></img>300 P</PointBtn>
+                <PointBtn>
+                    <img src={point} alt='' style={{ paddingRight: '10px' }}></img>
+                    <GreyInput2 placeholder='30'></GreyInput2> p
+                </PointBtn>
             </TitleAndPointContainer>
             <InfoContainer>
                 <TextContainer>
                     <Text>
                         <TextKind>요양원</TextKind>
-                        <TextAbout>행복요양원</TextAbout>
+                        <TextAbout>{facility_name}</TextAbout>
                     </Text>
                     <Text>
                         <TextKind><span>*</span>모집기간</TextKind>
@@ -446,17 +123,17 @@ export default function RegisterProgramInfo() {
                     </Text>
                     <Text>
                         <TextKind>주소</TextKind>
-                        <TextAbout>ddd</TextAbout>
+                        <TextAbout>{address}</TextAbout>
                     </Text>
                 </TextContainer>
                 <TextContainer>
                     <Text>
                         <TextKind>연락처</TextKind>
-                        <TextAbout>010</TextAbout>
+                        <TextAbout>{phone}</TextAbout>
                     </Text>
                     <Text>
                         <TextKind>Email</TextKind>
-                        <TextAbout>eee</TextAbout>
+                        <TextAbout>{email}</TextAbout>
                     </Text>
                 </TextContainer>
             </InfoContainer>
@@ -483,3 +160,369 @@ export default function RegisterProgramInfo() {
         </ProgramInfoContainer>
     );
 }
+
+const ProgramInfoContainer = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`;
+const TitleAndPointContainer = styled.div`
+width: 1008px;
+display: flex;
+height: 54px;
+align-items: center;
+margin-top: 80px;
+span {
+    color: #3A55B5;
+    margin-right: 5px;
+}
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 720px;
+    height: 40px;
+    margin-top: 60px;
+}
+@media screen and (max-width: 768px) {
+    width: 400px;
+    height: 30px;
+    margin-top: 40px;
+}
+
+`;
+const TitleInput = styled.input`
+background-color: #F5F5F5;
+width: 680px;
+height: 53px;
+border-radius: 10px;
+border: 0;
+text-indent: 15px;
+font-size: 24px;
+line-height: 24px;
+margin-right: 100px;
+&:focus {
+    outline: none;
+}
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 450px;
+    font-size: 16px;
+    margin-right: 60px;
+}
+@media screen and (max-width: 768px) {
+    font-size: 12px;
+    width: 220px;
+    height: 40px;
+    margin-right: 30px;
+}
+`
+const Title = styled.div`
+font-size: 24px;
+line-height: 24px;
+font-weight: 700;
+margin-right: 10px;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 16px;
+}
+@media screen and (max-width: 768px) {
+    font-size: 12px;
+}
+`;
+const PointBtn = styled.button`
+width: 143px;
+height: 53px;
+border-radius: 30px;
+background-color: white;
+border: 1px solid #cccccc;
+font-size: 18px;
+line-height: 18px;
+align-items: center;
+display: flex;
+justify-content: center;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 16px;
+}
+@media screen and (max-width: 768px) {
+    width: 100px;
+    height: 40px;
+    font-size: 12px;
+}
+`;
+const InfoContainer = styled.div`
+width: 1010px;
+height: 286px;
+border-radius: 10px;
+border: 1px solid #bfbfbf;
+margin-top: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 720px;
+    height: 200px;
+}
+@media screen and (max-width: 768px) {
+    width: 440px;
+    height: 140px;
+}
+`;
+const TextContainer = styled.div`
+width: 910px;
+height: 38px;
+display: flex;
+margin: 10px;
+font-size: 20px;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 640px;
+    height: 30px;
+    font-size: 14px;
+    margin: 5px;
+}
+@media screen and (max-width: 768px) {
+    width: 400px;
+    height: 20px;
+    font-size: 10px;
+    margin: 5px;
+}
+`;
+const Text = styled.div`
+width: 455px;
+height: 38px;
+display: flex;
+align-items: center;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 320px;
+    height: 28px;
+}
+@media screen and (max-width: 768px) {
+    width: 200px;
+    height: 20px;
+}
+span {
+    padding-right: 10px;
+}
+`;
+const TextKind = styled.div`
+width: 125px;
+color: #717171;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 100px;
+}
+@media screen and (max-width: 768px) {
+    width: 60px;
+}
+span {
+    color: #3A55B5;
+    padding-right: 5px;
+}
+`;
+const TextAbout = styled.div`
+width: 330px;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 220px;
+}
+@media screen and (max-width: 768px) {
+    width: 140px;
+}
+`
+
+const DetailInfoContainer = styled.div`
+width: 1008px;
+border-radius: 10px;
+border: 1px solid #bfbfbf;
+margin-top: 20px;
+display: flex;
+align-items: flex-start;
+padding: 40px 30px;
+font-size: 20px;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 720px;
+    font-size: 16px;
+    padding: 30px 40px;
+}
+@media screen and (max-width: 768px) {
+    width: 440px;
+    font-size: 10px;
+    padding: 20px 20px;
+}
+`;
+
+const DetailInfoInput = styled.textarea`
+width: 750px;
+height: 240px;
+line-height: 24px;
+border: none;
+font-size: 20px;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 680px;
+    font-size: 16px;
+    line-height: 20px;
+}
+@media screen and (max-width: 768px) {
+    width: 300px;
+    font-size: 10px;
+    line-height: 16px;
+}
+&:focus {
+  outline: none;
+}
+resize: none;
+font-family: DM Sans;
+`
+
+const BtnContainer = styled.div`
+width: 378px;
+height: 67px;
+display: flex;
+margin-top: 20px;
+justify-content: space-between;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 300px;
+}
+@media screen and (max-width: 768px) {
+    width: 220px;
+}
+`
+const EnrollBtn = styled.button`
+width: 194px;
+height: 67px;
+border-radius: 30px;
+border: 0;
+background-color: #ADBBEC;
+font-size: 20px;
+line-height: 20px;
+font-weight: 700;
+box-shadow: 5px 5px 5px #CCCCCC;
+cursor: pointer;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 130px;
+    height: 60px;
+    font-size: 16px;
+}
+@media screen and (max-width: 768px) {
+    width: 95px;
+    height: 40px;
+    font-size: 12px;
+}
+`
+const BottomBanner = styled.div`
+width: 1010px;
+border-radius: 10px;
+background-color: #F5F5F5;
+margin-top: 40px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 30px 40px;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 720px;
+    padding: 20px 40px;
+}
+@media screen and (max-width: 768px) {
+    width: 400px;
+    padding: 15px 20px;
+}
+`
+const BottomText = styled.div`
+font-size: 16px;
+color: #2C2C2C;
+margin: 10px;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 12px;
+    margin: 5px;
+}
+@media screen and (max-width: 768px) {
+    font-size: 10px;
+    margin: 5px;
+}
+`
+
+const GreyInput1 = styled.input`
+width: 67px;
+height: 38px;
+border-radius: 10px;
+background-color: #F5F5F5;
+border: 0;
+margin-right: 5px;
+text-indent: 10px;
+font-size: 16px;
+line-height: 24px;
+&:focus {
+    outline: none;
+}
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 14px;
+    height: 34px;
+    width: 45px;
+    text-indent: 5px;
+}
+@media screen and (max-width: 768px) {
+    font-size: 10px;
+    width: 30px;
+    height: 25px;
+    text-indent: 3px;
+}
+`
+const GreyInput2 = styled.input`
+width: 41px;
+height: 38px;
+border-radius: 10px;
+background-color: #F5F5F5;
+border: 0;
+margin-right: 5px;
+text-indent: 10px;
+font-size: 16px;
+line-height: 24px;
+&:focus {
+    outline: none;
+}
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 14px;
+    height: 34px;
+    width: 35px;
+    text-indent: 5px;
+}
+@media screen and (max-width: 768px) {
+    font-size: 10px;
+    width: 20px;
+    height: 25px;
+    text-indent: 3px;
+}
+`
+const GreyInputContainer = styled.div`
+display: flex;
+align-items: baseline;
+`
+const Select = styled.select`
+border-radius: 15px;
+font-size: 16px;
+text-indent: 5px;
+line-height: 16px;
+border: 0;
+width: 280px;
+height: 38px;
+padding-left: 10px;
+appearance: none;
+background: url("${arrow}") no-repeat right center;
+background-size: 40px;
+background-color: white;
+border: 1px solid black;: 
+&:focus {
+outline: none;
+}
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 14px;
+    width: 180px;
+    height: 34px;
+    padding-left: 5px;
+}
+@media screen and (max-width: 768px) {
+    font-size: 10px;
+    width: 110px;
+    height: 25px;
+    padding-left: 5px;
+}
+`;
+const Span = styled.div`
+width: 28px;
+height: 38px;
+line-height: 38px;`
