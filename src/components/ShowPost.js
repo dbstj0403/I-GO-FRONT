@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-export default function ShowPost({ searchList }) {
-  console.log(searchList);
-  const movePage = useNavigate();
-  const moveToProgramDetailPage = () => {
-    movePage("/programDetail");
-  };
+import { Link } from "react-router-dom";
+export default function ShowPost({ key, searchList }) {
+  console.log("searchList:", searchList);
+
   const Container = styled.div`
     width: 1220px;
     height: 68px;
@@ -80,9 +78,9 @@ export default function ShowPost({ searchList }) {
   const IsApplied = styled.div`
     width: 121px;
     height: 40px;
-    color: ${searchList.activity_status === "before"
+    color: ${searchList.regist_status === "before"
       ? "black"
-      : searchList.activity_status === "now"
+      : searchList.regist_status === "now"
       ? "#2DAB51"
       : "#D23838"};
     font-size: 14px;
@@ -95,6 +93,7 @@ export default function ShowPost({ searchList }) {
       width: 180px;
       font-size: 14px;
       height: 40px;
+      font-weight: 700;
       align-items: flex-end;
     }
     @media screen and (max-width: 768px) {
@@ -107,14 +106,15 @@ export default function ShowPost({ searchList }) {
     }
   `;
   return (
-    <Container onClick={moveToProgramDetailPage}>
+    <Container>
+      <Link to={`/program/${searchList.id}`} style={{textDecoration: "none", display: "flex", flexWrap: "wrap", color: "black"}} >
       {/*<SmallContent>
 
   </SmallContent>*/}
       <IsApplied>
-        {searchList.activity_status === "before"
+        {searchList.regist_status === "before"
           ? "모집 전"
-          : searchList.activity_status === "now"
+          : searchList.regist_status === "now"
           ? "모집 중"
           : "모집 마감"}
       </IsApplied>
@@ -127,6 +127,7 @@ export default function ShowPost({ searchList }) {
       <TableTitle2 bold="700">
         {searchList.reward} p
       </TableTitle2>
+      </Link>
     </Container>
   );
 }

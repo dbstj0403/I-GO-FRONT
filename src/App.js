@@ -26,7 +26,7 @@ function App() {
           <Route path="/addInfo" element={<AddInfoPage />} />
           <Route path="/donation" element={<DonationPage />} />
           <Route path="/program" element={<ProgramPage />} />
-          <Route path="/programDetail" element={<ProgramDetailPage />} />
+          <Route path="/program/:id" element={<ProgramDetailPage />} />
           <Route path="/mypageStudent" element={<MypageStudent />} />
           <Route path="/mypageCarer" element={<MypageCarer />} />
           <Route path="/registerProgram" element={<RegisterProgramPage />} />

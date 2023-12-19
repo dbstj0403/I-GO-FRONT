@@ -1,18 +1,21 @@
 import styled from 'styled-components';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import point from '../img/point.png';
 import KakaoMap from "./KakaoMap";
 import GoBackBtn from './GoBackBtn';
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 export default function ProgramInfo({ isCarer }) {
     const location = useLocation();
     //const searchList = location.state.searchList;
 
+    /*
     const movePage = useNavigate();
     const moveToSearchPage = () => {
         movePage('/program');
     }
-    /*const enrollProgram = async () => {
+    const enrollProgram = async () => {
         try {
             const response = await axios.post(`/program/${searchList.id}/subscribe/`,
                 { headers: {
@@ -129,7 +132,7 @@ export default function ProgramInfo({ isCarer }) {
     display: flex;
     align-items: center;
     @media screen and (min-width: 769px) and (max-width: 1200px) {
-        width: 340px;
+        width: 300px;
         height: 28px;
     }
     @media screen and (max-width: 768px) {
@@ -226,7 +229,7 @@ export default function ProgramInfo({ isCarer }) {
         font-size: 12px;
     }
     `
-    
+
     {/*
     const BackToListBtn = styled.button`
     width: 150px;
@@ -274,11 +277,35 @@ export default function ProgramInfo({ isCarer }) {
         margin: 5px;
     }
     `
+    const { id } = useParams();
+
+    const [program, setProgram] = useState("");
+    
+    const getProgram = async () => {
+        try {
+            const response = await axios.get(
+                "http://api.igoofficial.com/program/",
+                {
+                    // 헤더
+                }
+            );
+            console.log(response);
+            console.log(response.data);
+            setProgram(response.data.find((program) => program.id === parseInt(id)))
+        }
+        catch {
+            alert("Get Program Detail error!")
+        }
+    }
+
+    useEffect(() => {
+        getProgram();
+    }, []);
 
     return (
         <ProgramInfoContainer>
             <TitleAndPointContainer>
-                <Title>aa</Title>
+                <Title>{program.title}</Title>
                 {isCarer ? null :
                     <PointBtn><img src={point} alt='' style={{ paddingRight: '10px' }}></img>300 P</PointBtn>
                 }
@@ -287,52 +314,48 @@ export default function ProgramInfo({ isCarer }) {
                 <TextContainer>
                     <Text>
                         <TextKind>요양원</TextKind>
-                        <TextAbout>dd</TextAbout>
+                        <TextAbout>{program.facility_name}</TextAbout>
                     </Text>
                     <Text>
                         <TextKind>모집기간</TextKind>
-                        <TextAbout>dd</TextAbout>
+                        <TextAbout>{program.regist_start_at} ~ {program.regist_end_at}</TextAbout>
                     </Text>
                 </TextContainer>
                 <TextContainer>
                     <Text>
                         <TextKind>활동 분야</TextKind>
-                        <TextAbout>dd</TextAbout>
+                        <TextAbout>{program.activity_category}</TextAbout>
                     </Text>
                     <Text>
                         <TextKind>모집인원</TextKind>
-                        <TextAbout>dd명</TextAbout>
+                        <TextAbout>{program.subscriber_limit}명</TextAbout>
                     </Text>
                 </TextContainer>
                 <TextContainer>
                     <Text>
                         <TextKind>활동기간</TextKind>
-                        <TextAbout>dd</TextAbout>
+                        <TextAbout>{program.activity_start_at} ~ {program.activity_end_at}</TextAbout>
                     </Text>
                     <Text>
                         <TextKind>주소</TextKind>
-                        <TextAbout>dd</TextAbout>
+                        <TextAbout>{program.address.address}</TextAbout>
                     </Text>
                 </TextContainer>
                 <TextContainer>
                     <Text>
                         <TextKind>연락처</TextKind>
-                        <TextAbout>dd</TextAbout>
+                        <TextAbout>{program.phone}</TextAbout>
                     </Text>
                     <Text>
                         <TextKind>Email</TextKind>
-                        <TextAbout>dd</TextAbout>
+                        <TextAbout>{program.email}</TextAbout>
                     </Text>
                 </TextContainer>
             </InfoContainer>
             <DetailInfoContainer>
                 <TextKind>상세설명</TextKind>
                 <DetailInfoText>
-                    설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설
-                    명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
-                    설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설
-                    명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
-                    설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
+                    {program.content}
                 </DetailInfoText>
             </DetailInfoContainer>
             <KakaoMap />
