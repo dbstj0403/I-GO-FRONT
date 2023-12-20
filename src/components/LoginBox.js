@@ -19,7 +19,7 @@ export default function LoginBox() {
    * 구글 로그인 관련 변수 및 AUTH URL
    */
   const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  const GOOGLE_REDIRECT_URI = `http://www.igoofficial.com/loginCallback`;
+  const GOOGLE_REDIRECT_URI = `http://localhost:3000/loginCallback`;
   const GOOGLE_AUTH_URL = `https://accounts.google.com/o/oauth2/v2/auth?scope=profile%20email%20openid&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=${GOOGLE_REDIRECT_URI}&response_type=code&client_id=${GOOGLE_CLIENT_ID}&access_type=offline&prompt=consent`;
   const handleGoogleLogin = () => {
     localStorage.setItem("login-provider", "google");
@@ -29,7 +29,7 @@ export default function LoginBox() {
    * 깃허브 로그인 관련 변수 및 AUTH URL
    */
   const GITHUB_CLIENT_ID = process.env.REACT_APP_GITHUB_CLIENT_ID;
-  const GITHUB_REDIRECT_URI = `http://www.igoofficial.com/loginCallback`;
+  const GITHUB_REDIRECT_URI = `http://localhost:3000/loginCallback`;
   const GITHUB_AUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${GITHUB_REDIRECT_URI}&scope=user:email`;
 
   const handGithubleLogin = () => {
@@ -40,11 +40,11 @@ export default function LoginBox() {
    * 각 버튼 css style
    */
   const kakaoBtnStyle = {
-    width: "350px",
+    width: "300px",
     height: "48px",
     marginLeft: "0",
     borderRadius: "10px",
-    fontSize: "17px",
+    fontSize: "16px",
     fontWeight: "550",
     display: "flex",
     justifyContent: "center",
@@ -53,11 +53,11 @@ export default function LoginBox() {
     color: "black",
   };
   const googleBtnStyle = {
-    width: "350px",
+    width: "300px",
     height: "48px",
     marginLeft: "0",
     borderRadius: "10px",
-    fontSize: "17px",
+    fontSize: "16px",
     fontWeight: "550",
     display: "flex",
     justifyContent: "center",
@@ -65,11 +65,11 @@ export default function LoginBox() {
     color: "black",
   };
   const githubBtnStyle = {
-    width: "350px",
+    width: "300px",
     height: "48px",
     marginLeft: "0",
     borderRadius: "10px",
-    fontSize: "17px",
+    fontSize: "16px",
     fontWeight: "550",
     display: "flex",
     justifyContent: "center",
@@ -86,7 +86,7 @@ export default function LoginBox() {
               icon={RiKakaoTalkFill}
               activeStyle={{ background: "#FFDC37" }}
               align={"center"}
-              iconSize={"35px"}
+              iconSize={"30px"}
               iconColor={"black"}
               style={kakaoBtnStyle}
               onClick={handleKakaoLogin}
@@ -97,7 +97,7 @@ export default function LoginBox() {
           <div className="google">
             <GoogleLoginButton
               align={"center"}
-              iconSize={"35px"}
+              iconSize={"30px"}
               style={googleBtnStyle}
               onClick={handleGoogleLogin}
             >
@@ -107,7 +107,7 @@ export default function LoginBox() {
           <div className="github">
             <GithubLoginButton
               align={"center"}
-              iconSize={"35px"}
+              iconSize={"30px"}
               style={githubBtnStyle}
               onClick={handGithubleLogin}
             >

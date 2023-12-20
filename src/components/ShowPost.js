@@ -1,66 +1,135 @@
 import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-export default function ShowPost({ searchList }) {
-  console.log(searchList);
-  const movePage = useNavigate();
-  const moveToProgramDetailPage = () => {
-    movePage("/programDetail");
-  };
-  const Container = styled.div`
-    width: 1220px;
-    height: 68px;
-    font-size: 16px;
-    line-height: 24px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    font-weight: ${(props) => props.bold};
-    border-bottom: 1px solid black;
-  `;
-  const TableTitle = styled.div`
-    width: ${(props) => props.width};
-    height: 40px;
-    font-size: 16px;
-    line-height: 24px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    font-weight: ${(props) => props.bold};
-  `;
+import { Link } from "react-router-dom";
+export default function ShowPost({ key, searchList }) {
+  console.log("searchList:", searchList);
+
   const IsApplied = styled.div`
-    width: ${(props) => props.width};
-    height: 40px;
-    color: ${searchList.activity_status === "before"
+width: 121px;
+height: 40px;
+color: ${searchList.regist_status === "before"
       ? "black"
-      : searchList.activity_status === "now"
-      ? "#2DAB51"
-      : "#D23838"};
-    font-size: 16px;
-    line-height: 24px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    font-weight: ${(props) => props.bold};
-  `;
+      : searchList.regist_status === "now"
+        ? "#2DAB51"
+        : "#D23838"};
+font-size: 14px;
+line-height: 24px;
+align-items: center;
+display: flex;
+justify-content: center;
+font-weight: ${(props) => props.bold};
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  width: 180px;
+  font-size: 14px;
+  height: 40px;
+  font-weight: 700;
+  align-items: flex-end;
+}
+@media screen and (max-width: 768px) {
+  width: 110px;
+  font-size: 10px;
+  height: 30px;
+  font-weight: 700;
+  align-items: flex-end;
+
+}
+`
+
   return (
-    <Container onClick={moveToProgramDetailPage}>
-      <IsApplied width="153px">
-        {searchList.activity_status === "before"
-          ? "모집 전"
-          : searchList.activity_status === "now"
-          ? "모집 중"
-          : "모집 마감"}
-      </IsApplied>
-      <TableTitle width="459px">{searchList.title}</TableTitle>
-      <TableTitle width="152px">{searchList.activity_category}</TableTitle>
-      <TableTitle width="152px">{searchList.facility_name}</TableTitle>
-      <TableTitle width="152px">
-        {searchList.activity_start_at}~{searchList.activity_end_at}
-      </TableTitle>
-      <TableTitle width="152px" bold="700">
-        {searchList.reward}
-      </TableTitle>
+    <Container>
+      <Link to={`/program/${searchList.id}`} style={{ textDecoration: "none", display: "flex", flexWrap: "wrap", color: "black" }} >
+        {/*<SmallContent>
+
+  </SmallContent>*/}
+        <IsApplied searchList={searchList}>
+          {searchList.regist_status === "before"
+            ? "모집 전"
+            : searchList.regist_status === "now"
+              ? "모집 중"
+              : "모집 마감"}
+        </IsApplied>
+        <TableTitle1>{searchList.title}</TableTitle1>
+        <TableTitle2>{searchList.activity_category}</TableTitle2>
+        <TableTitle2>{searchList.facility_name}</TableTitle2>
+        <TableTitle2>
+          {searchList.activity_start_at}~{searchList.activity_end_at}
+        </TableTitle2>
+        <TableTitle2 bold="700">
+          {searchList.reward} p
+        </TableTitle2>
+      </Link>
     </Container>
   );
 }
+
+const Container = styled.div`
+width: 1220px;
+height: 68px;
+font-size: 14px;
+line-height: 24px;
+align-items: center;
+display: flex;
+justify-content: center;
+font-weight: ${(props) => props.bold};
+border-bottom: 1px solid black;
+cursor: pointer;
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  width: 720px;
+  flex-wrap: wrap;
+  margin: auto;
+  height: 90px;
+}
+@media screen and (max-width: 768px) {
+  width: 440px;
+  flex-wrap: wrap;
+  margin: auto;
+  height: 60px;
+}
+`;
+const TableTitle1 = styled.div`
+width: 459px;
+height: 40px;
+font-size: 14px;
+line-height: 24px;
+align-items: center;
+display: flex;
+justify-content: center;
+font-weight: ${(props) => props.bold};
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  width: 540px;
+  font-size: 14px;
+  height: 40px;
+  align-items: flex-end;
+}
+@media screen and (max-width: 768px) {
+  width: 330px;
+  font-size: 10px;
+  height: 30px;
+  align-items: flex-end;
+}
+`;
+const TableTitle2 = styled.div`
+width: 160px;
+height: 40px;
+font-size: 14px;
+line-height: 24px;
+align-items: center;
+display: flex;
+justify-content: center;
+font-weight: ${(props) => props.bold};
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  width: 180px;
+  font-size: 14px;
+  height: 50px;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+@media screen and (max-width: 768px) {
+  width: 110px;
+  font-size: 10px;
+  height: 30px;
+  align-items: flex-start;
+
+}
+`;

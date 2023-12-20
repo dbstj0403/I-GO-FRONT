@@ -6,30 +6,36 @@ import axios from "axios";
 import ShowPost from "../components/ShowPost";
 import ProgramExample from "../components/ProgramExample";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function ProgramPage() {
-  const [selectGu, setSelectGu] = useState("");
-  const [selectActivity, setSelectActivity] = useState("");
-  const [searchList, setSearchList] = useState([]);
-  const [onSearch, setOnsearch] = useState(false);
-  const { userData } = useSelector(({ user }) => user);
+  const [selectGu, setSelectGu] = useState("");  // 활동 지역 中 구 선택
+  const [selectActivity, setSelectActivity] = useState("");  // 활동 분야 선택
+  const [searchList, setSearchList] = useState([]);  // 프로그램 목록
+  const [onSearch, setOnsearch] = useState(false);  // 검색버튼 클릭 여부
+  const { userData } = useSelector(({ user }) => user);  // user {student? carer?} 여부
 
   const search = async () => {
     setOnsearch(true);
     try {
       const response = await axios.get(
         `http://api.igoofficial.com/program/?address=${selectGu}&activity=${selectActivity}`,
-        {
+        {/*
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access-token")}`,
           },
-        }
+        */}
       );
       console.log(response.data);
       setSearchList(response.data);
     } catch (error) {
       console.log("SubmitInfo Error!");
     }
+  };
+
+  const movePage = useNavigate();
+  const moveToRegisterProgramPage = () => {
+    movePage("/registerProgram");
   };
 
   const option1 = [{ value: "서울특별시", label: "서울특별시" }];
@@ -69,25 +75,43 @@ export default function ProgramPage() {
   ];
   return (
     <Container>
+
+      {/* 페이지 타이틀 */}
       <TitleContainer>
         <BigTitle>디지털 교육 프로그램 목록</BigTitle>
-        <SmallTitle>
-          어르신을 위한 디지털 기기 교육 프로그램입니다. 활동을 신청하고
-          포인트를 적립하세요!
-        </SmallTitle>
+        {userData.is_carer ?
+          <SmallTitle>
+            어르신을 위한 디지털 기기 교육 프로그램입니다.
+          </SmallTitle>
+          : <SmallTitle>
+            어르신을 위한 디지털 기기 교육 프로그램입니다. 활동을 신청하고
+            포인트를 적립하세요!
+          </SmallTitle>
+        }
+
       </TitleContainer>
-      <SearchContainer isStudent={userData.is_student}>
+
+      {/* 프로그램 등록 버튼 */}
+      {userData.is_carer && (
+        <RegisterProgramBtn onClick={moveToRegisterProgramPage}>
+          우리 요양원 프로그램 등록하기
+        </RegisterProgramBtn>
+      )}
+
+      {/* 프로그램 검색 박스 */}
+      <SearchContainer isCarer={userData.is_carer}>
+
+        {/* 활동 지역 검색 */}
         <SelectContainer>
           <SelectTitle>활동 지역</SelectTitle>
-          <Select width="200px">
+          <ShortSelect>
             {option1.map((item, idx) => (
               <option value={item.value} key={idx}>
                 {item.label}
               </option>
             ))}
-          </Select>
-          <Select
-            width="200px"
+          </ShortSelect>
+          <ShortSelect
             onChange={(e) => {
               setSelectGu(e.target.value);
             }}
@@ -97,12 +121,13 @@ export default function ProgramPage() {
                 {item.label}
               </option>
             ))}
-          </Select>
+          </ShortSelect>
         </SelectContainer>
+
+        {/* 활동 분야 검색 */}
         <SelectContainer>
           <SelectTitle>활동 분야</SelectTitle>
-          <Select
-            width="420px"
+          <LongSelect
             onChange={(e) => {
               setSelectActivity(e.target.value);
             }}
@@ -112,28 +137,42 @@ export default function ProgramPage() {
                 {item.label}
               </option>
             ))}
-          </Select>
+          </LongSelect>
         </SelectContainer>
+
+        {/* 검색 버튼 */}
         <SearchBtn onClick={search}>검색</SearchBtn>
+
       </SearchContainer>
+
+      {/* 프로그램 목록 타이틀 및 프로그램 등록하기 버튼 */}
       {onSearch && (
-        <TitleTable searchList={searchList} isStudent={userData.is_student} />
+        <TitleTable searchList={searchList} isStudent={userData.is_student} isCarer={userData.is_carer} />
       )}
+
+      {/* 프로그램 목록 */}
       <ComponentContainer onSearch={onSearch}>
         {searchList.length !== 0
           ? searchList.map((item, idx) => (
-              <ShowPost key={item.id} searchList={searchList[idx]} />
-            ))
+            <ShowPost key={item.id} searchList={searchList[idx]} />
+          ))
           : null}
       </ComponentContainer>
-      {onSearch && <ProgramExample />}
+
+      {/* 프로그램 분야 설명 */}
+      <ProgramExample />
     </Container>
   );
 }
 const ComponentContainer = styled.div`
   width: 1220px;
-  min-height: 600px;
-  border-bottom: ${(props) => (props.onSearch ? "1px solid" : null)};
+  border-top: ${(props) => (props.onSearch ? "1px solid" : null)};
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 720px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 440px;
+  }
 `;
 const Container = styled.div`
   display: flex;
@@ -147,45 +186,113 @@ const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 50px 0px 20px 0px;
+  @media screen and (max-width: 768px) {
+    width: 400px;
+    height: 80px;
+    margin: 30px 0px 10px 0px;
+  }
 `;
 const BigTitle = styled.div`
   font-size: 40px;
   font-weight: 700;
   line-height: 66px;
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 28px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+    line-height: 40px;
+  }
 `;
 const SmallTitle = styled.div`
   font-size: 16px;
   line-height: 30px;
   color: #717171;
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+`;
+const RegisterProgramBtn = styled.button`
+  width: 320px;
+  height: 61px;
+  color: white;
+  background-color: #3a55b5;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  border: 0;
+  margin: auto;
+  margin-bottom: 20px;
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 16px;
+    width: 280px;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+    border-radius: 15px;
+    width: 240px;
+    height: 40px;
+    margin-bottom: 0px;
+  }
 `;
 const SearchContainer = styled.div`
   width: 806px;
   height: 212px;
   border-radius: 30px;
   background-color: ${(props) =>
-    props.isStudent === true ? "#fdd888" : "#ADBBEC"};
+    props.isCarer === true ? "#ADBBEC" : "#fdd888"};
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 700px;
+    height: 200px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 400px;
+    height: 150px;
+  }
 `;
 const SelectContainer = styled.div`
   width: 534px;
   height: 40px;
   display: flex;
+  justify-content: center;
   margin-bottom: 20px;
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    width: 500px;
+    height: 40px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 400px;
+    height: 30px;
+    margin-bottom: 10px;
+  }
 `;
 const SelectTitle = styled.div`
   font-size: 16px;
   font-weight: 700;
   line-height: 40px;
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
-const Select = styled.select`
+const ShortSelect = styled.select`
   border-radius: 15px;
   margin-left: 20px;
   border: 0;
-  width: ${(props) => props.width};
+  width: 200px;
   padding-left: 10px;
   appearance: none;
   background: url("${arrow}") no-repeat right center;
@@ -193,6 +300,36 @@ const Select = styled.select`
   background-color: white;
   &:focus {
     outline: none;
+  }
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+    margin-left: 10px;
+    width: 100px;
+  }
+`;
+const LongSelect = styled.select`
+  border-radius: 15px;
+  margin-left: 20px;
+  border: 0;
+  width: 420px;
+  padding-left: 10px;
+  appearance: none;
+  background: url("${arrow}") no-repeat right center;
+  background-size: 40px;
+  background-color: white;
+  &:focus {
+    outline: none;
+  }
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+    margin-left: 10px;
+    width: 210px;
   }
 `;
 const SearchBtn = styled.button`
@@ -206,4 +343,12 @@ const SearchBtn = styled.button`
   font-weight: 700;
   line-height: 16px;
   cursor: pointer;
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 50px;
+    height: 31px;
+    font-size: 10px;
+  }
 `;

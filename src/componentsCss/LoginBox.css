@@ -2,19 +2,19 @@
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    margin-left: 160px;
+    margin-left: 120px;
     margin-right: 120px;
 }
 
 .loginbox{
-    width: 350px;
+    width: 300px;
     height: 352px;
     margin-top: 80px;
     margin-bottom: 80px;
 }
 
 .welcome{
-    font-size: 40px;
+    font-size: 36px;
     font-weight: bold;
     line-height: 66px;
 }
@@ -32,4 +32,16 @@
 
 .github{
     margin-top: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .welcome{
+        font-size: 28px;
+        line-height: 40px;
+    }
+    .welcome2{
+        font-size: 12px;
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
 }

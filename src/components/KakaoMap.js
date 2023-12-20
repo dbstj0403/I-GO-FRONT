@@ -46,6 +46,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 
 export default function KakaoMap() {
   const { userData } = useSelector(({ user }) => user);
@@ -120,5 +121,20 @@ export default function KakaoMap() {
     getProfile();
     showMap();
   }, [address]);
-  return <div id="map" style={{ width: "100%", height: "400px" }}></div>;
+
+  const Map = styled.div`
+    width: 1008px;
+    height: 400px;
+    margin: 20px 20px;
+    border-radius: 10px;
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+      width: 720px;
+      height: 360px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 400px;
+        height: 200px;
+    }
+  `
+  return <Map id="map" ></Map>;
 }
