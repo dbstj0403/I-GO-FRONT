@@ -115,7 +115,7 @@ export default function ProgramInfo({ isCarer }) {
         <TextKind>상세설명</TextKind>
         <DetailInfoText>{program.content}</DetailInfoText>
       </DetailInfoContainer>
-      <KakaoMap />
+      <KakaoMap address={address} />
       <BtnContainer>
         {isCarer ? null : <EnrollBtn>신청하기</EnrollBtn>}
         {/*<BackToListBtn onClick={moveToSearchPage}>뒤로 가기</BackToListBtn>*/}
