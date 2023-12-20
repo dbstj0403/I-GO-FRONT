@@ -16,9 +16,7 @@ export default function Introduction3 () {
                     <button className='btn3'>안 쓰는 전자기기 선물하러 가기</button>
                 </div>
             </div>
-            <div className='intro-img'>
-                <img alt='' src={introImg3}/>
-            </div>
+            <img className='intro-img' alt='' src={introImg3} object-fit="fit" />
         </div>
     );
 }

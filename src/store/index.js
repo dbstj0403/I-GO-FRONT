@@ -1,0 +1,17 @@
+// import { combineReducers } from "redux";
+// import user from "./user/reducer";
+
+// const rootReducer = combineReducers({
+//   user,
+// });
+
+// export default rootReducer;
+
+import { combineReducers } from "redux";
+import user from "./user/reducer";
+
+const rootReducer = combineReducers({
+  user,
+});
+
+export default rootReducer;

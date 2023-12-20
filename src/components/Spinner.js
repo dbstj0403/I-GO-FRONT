@@ -26,7 +26,6 @@ export default function Spinner () {
                 <LoadingText>로딩 중입니다... 잠시만 기다려 주세요! 😀</LoadingText>
                 <ClipLoader/>
             </ItemWrapper>
-            
         </SpinnerWrapper>
     );
 }
