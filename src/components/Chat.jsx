@@ -53,7 +53,6 @@ const ChatHeader = styled.div`
   align-items: center;
   display: flex;
   border-left: solid 5px rgba(245, 245, 245, 1);
-  margin-bottom: 10px;
 `;
 
 const RoomTitle = styled.div`
@@ -67,6 +66,7 @@ const ChatBox = styled.div`
   height: 409px;
   background-color: rgba(245, 245, 245, 1);
   overflow-y: auto;
+  margin-top: 10px;
 `;
 
 const MessageContainerWrapper = styled.div`

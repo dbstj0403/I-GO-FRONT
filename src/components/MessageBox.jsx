@@ -31,6 +31,7 @@ const Box1 = styled.div`
   width: auto;
   height: 50px;
   align-items: center;
+  padding-top: 15px;
 `;
 
 const Box2 = styled.div`

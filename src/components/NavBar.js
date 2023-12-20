@@ -139,6 +139,11 @@ export default function NavBar() {
               기기 선물
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink to="/chat" className="nav-menu">
+              1:1 문의
+            </NavLink>
+          </li>
         </ul>
 
         {/* 포인트 및 프로필 버튼 */}
