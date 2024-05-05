@@ -59,17 +59,21 @@
 
 - **교육 프로그램 등록 및 조회 기능**
 	- 지역과 교육 분야에 따른 필터링 제공
+
 <br/>
 
 <img width="1278" alt="스크린샷 2024-05-05 오후 12 58 25" src="https://github.com/Lion-11th-Team/I-GO-FRONT/assets/113417326/e77c2132-55ff-4dac-b342-4d5ead9c2459">
+
 
 <br/>
 
 - **기부할 전자기기 등록 기능**
 	- 기종과 기기명, 특이사항 등을 기입 받아 DB에서 관리
+
 <br/>
 
 <img width="1267" alt="스크린샷 2024-05-05 오후 12 58 56" src="https://github.com/Lion-11th-Team/I-GO-FRONT/assets/113417326/2e055a12-90b6-42d8-9da9-50710fea2617">
+
 
 <br/>
 
