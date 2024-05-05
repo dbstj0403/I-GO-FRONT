@@ -2,11 +2,15 @@
 
 <img width="1274" alt="스크린샷 2024-05-05 오후 12 58 07" src="https://github.com/Lion-11th-Team/I-GO-FRONT/assets/113417326/edc407f9-0695-4bd8-bf23-eadbfdf4485d">
 
+<br/>
+
 ## 🏠 프로젝트 소개
 
  - 홍익대학교 멋쟁이사자처럼 11기에서 진행한 중앙 해커톤의 주제 **'디지털 소외'** 를 해결할 수 있는 서비스를 고안하고자 했습니다.
  - I-GO는 가장 대표적인 디지털 소외 계층인 노인층과, 주로 디지털 기기를 이용해 학습하는 학생층의 기기 수요를 동시에 충족하는 서비스입니다.
  - 해당 서비스에서 요양원이나 복지원이 교육 프로그램을 등록하게 되면 디지털 기기 대여를 원하는 학생들이 교육 프로그램에 참여하여 노인 분들께 키오스크 사용법, 스마트폰 사용법 등을 가르쳐 드린 후, 저희가 보유한 디지털 기기를 대여받을 수 있습니다.
+
+<br/>
 
 # 💌 팀원 소개
 
@@ -20,6 +24,8 @@
 |:-:|:-:|:-:|
 |👑 손지석 <br/>[@jiseokson](https://github.com/jiseokson)|김동현 <br/>[@unam17](https://github.com/unam17)|이다인<br/>[@dainnida](https://github.com/dainnida)|
 
+<br/>
+
 ## 🛠️ 기술 스택
 
 ### Front-end 
@@ -31,11 +37,13 @@
 ### Cowork tools
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Notion&logoColor=white">
 
+<br/>
+
 ## 🗓️ 개발 기간
 
 - `2023.07 ~ 2023.12`
 
-
+<br/>
 
 ## ⭐️ 주요 기능
 
@@ -46,6 +54,8 @@
 <br/>
 	
 <img width="1274" alt="스크린샷 2024-05-05 오후 12 59 26" src="https://github.com/Lion-11th-Team/I-GO-FRONT/assets/113417326/9de26882-2c3d-4d30-b4c3-1df852a86c00">
+
+<br/>
 
 - **교육 프로그램 등록 및 조회 기능**
 	- 지역과 교육 분야에 따른 필터링 제공
