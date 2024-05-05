@@ -1,10 +1,7 @@
 # I-GO
 
-<p align="center">
-  <br>
+
   <img src=<img width="1274" alt="스크린샷 2024-05-05 오후 12 58 07" src="https://github.com/Lion-11th-Team/I-GO-FRONT/assets/113417326/edc407f9-0695-4bd8-bf23-eadbfdf4485d">
-  <br>
-</p>
 
 ## 🏠 프로젝트 소개
 
