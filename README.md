@@ -26,9 +26,7 @@
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white"> <img src="https://img.shields.io/badge/styled-색상?style=for-the-badge&logo=styled-components&logoColor=#DB7093"> <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple">
 
 ### Back-end
-<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white">
-<img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white">
-<img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white">
+<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white"> <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"> <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white">
 
 ### Cowork tools
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Notion&logoColor=white">
@@ -40,6 +38,8 @@
 
 
 ## ⭐️ 주요 기능
+
+<br/>
 
 - **OAuth 2.0을 이용한 소셜 로그인 기능**
 	- Kakao, Google, Github
@@ -53,11 +53,15 @@
 
 <img width="1278" alt="스크린샷 2024-05-05 오후 12 58 25" src="https://github.com/Lion-11th-Team/I-GO-FRONT/assets/113417326/e77c2132-55ff-4dac-b342-4d5ead9c2459">
 
+<br/>
+
 - **기부할 전자기기 등록 기능**
 	- 기종과 기기명, 특이사항 등을 기입 받아 DB에서 관리
 <br/>
 
 <img width="1267" alt="스크린샷 2024-05-05 오후 12 58 56" src="https://github.com/Lion-11th-Team/I-GO-FRONT/assets/113417326/2e055a12-90b6-42d8-9da9-50710fea2617">
+
+<br/>
 
 - **1:1 문의 기능**
 	- soket.io를 이용한 실시간 채팅 기능
