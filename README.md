@@ -1,3 +1,60 @@
-## 🙌🏻 디지털 소외 계층을 돕는 I-GO 서비스
-### 어르신들께 디지털 지식을 공유하고, 최신 전자기기를 대여받아요!
-<img width="630" alt="스크린샷 2024-05-01 오후 10 23 35" src="https://github.com/Lion-11th-Team/I-GO-FRONT/assets/113417326/87688bc1-865d-4b99-a24c-439a558fdeb6">
+# 프로젝트 이름
+🎁 I-GO
+<p align="center">
+  <br>
+  <img src="./images/common/logo-sample.jpeg">
+  <br>
+</p>
+
+목차
+
+## 프로젝트 소개
+
+<p align="justify">
+프로젝트 개요/동기
+</p>
+
+<p align="center">
+GIF Images
+</p>
+
+<br>
+
+## 기술 스택
+
+| JavaScript | TypeScript |  React   |  Node   |
+| :--------: | :--------: | :------: | :-----: |
+|   ![js]    |   ![ts]    | ![react] | ![node] |
+
+<br>
+
+## 구현 기능
+
+### 기능 1
+
+### 기능 2
+
+### 기능 3
+
+### 기능 4
+
+<br>
+
+## 배운 점 & 아쉬운 점
+
+<p align="justify">
+
+</p>
+
+<br>
+
+## 라이센스
+
+MIT &copy; [NoHack](mailto:lbjp114@gmail.com)
+
+<!-- Stack Icon Refernces -->
+
+[js]: /images/stack/javascript.svg
+[ts]: /images/stack/typescript.svg
+[react]: /images/stack/react.svg
+[node]: /images/stack/node.svg
