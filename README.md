@@ -1,7 +1,6 @@
 # I-GO
 
-
-  <img src=<img width="1274" alt="스크린샷 2024-05-05 오후 12 58 07" src="https://github.com/Lion-11th-Team/I-GO-FRONT/assets/113417326/edc407f9-0695-4bd8-bf23-eadbfdf4485d">
+<img width="1274" alt="스크린샷 2024-05-05 오후 12 58 07" src="https://github.com/Lion-11th-Team/I-GO-FRONT/assets/113417326/edc407f9-0695-4bd8-bf23-eadbfdf4485d">
 
 ## 🏠 프로젝트 소개
 
@@ -10,8 +9,6 @@
  - 해당 서비스에서 요양원이나 복지원이 교육 프로그램을 등록하게 되면 디지털 기기 대여를 원하는 학생들이 교육 프로그램에 참여하여 노인 분들께 키오스크 사용법, 스마트폰 사용법 등을 가르쳐 드린 후, 저희가 보유한 디지털 기기를 대여받을 수 있습니다.
 
 # 💌 팀원 소개
-
-<div align="center">
 
 ### Front-end
 |<img src="https://avatars.githubusercontent.com/u/113417326?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/122738157?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/102723459?v=4" width="150" height="150"/>|
